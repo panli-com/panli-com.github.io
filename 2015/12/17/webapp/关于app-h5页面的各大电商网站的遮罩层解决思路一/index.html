@@ -1,0 +1,710 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+
+  <meta name="description" content="不折腾，哪来的新技术" />
+
+
+
+
+  <meta name="keywords" content="app,mobile,h5,ip," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="需求展现举例 H5 嵌入 天猫商品详细页    加入遮罩层后    加入遮罩层后参数说明   参数指南 到这里 我们可以看到 遮罩层有 2 类 ;  分别是:  maskTop(‘顶部遮罩层’)  、 maskBottom(‘底部遮罩层’) ; 每个遮罩层分别有 height(‘高度’) 、backgroundColor(‘背景颜色’)  maskTop(‘顶部遮罩层’)  有 top(‘距离顶部">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于app h5页面的各大电商网站的遮罩层解决思路一">
+<meta property="og:url" content="http://panli-com.github.io/2015/12/17/webapp/关于app-h5页面的各大电商网站的遮罩层解决思路一/index.html">
+<meta property="og:site_name" content="Panli团队技术博客">
+<meta property="og:description" content="需求展现举例 H5 嵌入 天猫商品详细页    加入遮罩层后    加入遮罩层后参数说明   参数指南 到这里 我们可以看到 遮罩层有 2 类 ;  分别是:  maskTop(‘顶部遮罩层’)  、 maskBottom(‘底部遮罩层’) ; 每个遮罩层分别有 height(‘高度’) 、backgroundColor(‘背景颜色’)  maskTop(‘顶部遮罩层’)  有 top(‘距离顶部">
+<meta property="og:image" content="http://zanjs.b0.upaiyun.com/image/c/1a/841e4608c6989cf394e5b1ca98a5b.png">
+<meta property="og:image" content="http://zanjs.b0.upaiyun.com/image/0/b0/5a5f70af00a683037b9a5950e4c3a.png">
+<meta property="og:image" content="http://zanjs.b0.upaiyun.com/image/2/03/2d4b0f88ce78231be4b243aafaf93.png">
+<meta property="og:updated_time" content="2016-04-18T08:43:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于app h5页面的各大电商网站的遮罩层解决思路一">
+<meta name="twitter:description" content="需求展现举例 H5 嵌入 天猫商品详细页    加入遮罩层后    加入遮罩层后参数说明   参数指南 到这里 我们可以看到 遮罩层有 2 类 ;  分别是:  maskTop(‘顶部遮罩层’)  、 maskBottom(‘底部遮罩层’) ; 每个遮罩层分别有 height(‘高度’) 、backgroundColor(‘背景颜色’)  maskTop(‘顶部遮罩层’)  有 top(‘距离顶部">
+<meta name="twitter:image" content="http://zanjs.b0.upaiyun.com/image/c/1a/841e4608c6989cf394e5b1ca98a5b.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> 关于app h5页面的各大电商网站的遮罩层解决思路一 | Panli团队技术博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Panli团队技术博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">追寻最新技术领域</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于app h5页面的各大电商网站的遮罩层解决思路一
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-17T14:06:19+08:00" content="2015-12-17">
+              2015-12-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/mobile/" itemprop="url" rel="index">
+                    <span itemprop="name">mobile</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/17/webapp/关于app-h5页面的各大电商网站的遮罩层解决思路一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/17/webapp/关于app-h5页面的各大电商网站的遮罩层解决思路一/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="需求展现举例"><a href="#需求展现举例" class="headerlink" title="需求展现举例"></a>需求展现举例</h2><blockquote> <p>H5 嵌入 天猫商品详细页</p> </blockquote> <p><img src="http://zanjs.b0.upaiyun.com/image/c/1a/841e4608c6989cf394e5b1ca98a5b.png" alt=""></p> <blockquote> <p>加入遮罩层后</p> </blockquote> <p><img src="http://zanjs.b0.upaiyun.com/image/0/b0/5a5f70af00a683037b9a5950e4c3a.png" alt=""></p> <blockquote> <p>加入遮罩层后参数说明</p> </blockquote> <p><img src="http://zanjs.b0.upaiyun.com/image/2/03/2d4b0f88ce78231be4b243aafaf93.png" alt=""></p> <h2 id="参数指南"><a href="#参数指南" class="headerlink" title="参数指南"></a>参数指南</h2><blockquote> <p>到这里 我们可以看到 遮罩层有 <code>2</code> 类 ;</p> </blockquote> <p>分别是: <strong> maskTop(‘顶部遮罩层’) </strong> 、<strong> maskBottom(‘底部遮罩层’) </strong>;</p> <p>每个遮罩层分别有 <strong>height(‘高度’)</strong> 、<strong>backgroundColor(‘背景颜色’)</strong></p> <p><strong> maskTop(‘顶部遮罩层’) </strong> 有 <strong>top(‘距离顶部位置’)</strong></p> <p><strong> maskBottom(‘底部遮罩层’) </strong> 有 <strong>bottom(‘距离低部位置’)</strong></p> <h2 id="各大电商网站布局的不同"><a href="#各大电商网站布局的不同" class="headerlink" title="各大电商网站布局的不同"></a>各大电商网站布局的不同</h2><blockquote> <p>介于形形色色的电商网站的布局有所不同 , 所以需要我们分别设置 各个网站遮罩层的 <strong>参数</strong></p> </blockquote> <h2 id="遮罩层的参数灵活化"><a href="#遮罩层的参数灵活化" class="headerlink" title="遮罩层的参数灵活化"></a>遮罩层的参数灵活化</h2><blockquote> <p>为了可以更好的管理 遮罩层的参数位置和显现样式，一切都有后台添加设置</p> </blockquote> <h2 id="demo的数据演示"><a href="#demo的数据演示" class="headerlink" title="demo的数据演示"></a>demo的数据演示</h2><p>如下代码可以看到:</p> <p><code>tmall.com</code> 和 <code>taobao.com</code> <strong> 2 </strong> 个网站的 遮罩层的参数</p> <p>由于在挂国外ip vpn代理访问 天猫页面的时候,天猫网站做了页面导向,以致页面布局发生了变动,<br>从而导致页面遮罩层的错误，所以做了 <code>china</code> 和 <code>noChina</code> 的 布局参数</p> <p><code>china</code> 和 <code>noChina</code> 下面的 参数说明：</p> <ul> <li><code>topMask</code> 对应的是 <strong> maskTop(‘顶部遮罩层’) </strong> </li> <li><code>bottomMask</code> 对应的是 <strong> maskBottom(‘底部遮罩层’) </strong></li> </ul> <p>最后可以看到还有一个 <code>status</code> 参数：</p> <ul> <li><code>status</code> 意为是否启用 <code>noChina</code> 0 为启用 ; 若不启用 可以填写其它字符</li> </ul> <blockquote> <p>以下字段必须全部填写， 如果 <code>status</code> 字段为 非 0 , <code>noChina</code>对象 可以无</p> </blockquote> <figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">var fixedLib = &#123;	</span><br><span class="line">	<span class="string">'tmall.com'</span>:&#123;</span><br><span class="line">		<span class="string">'status'</span>:<span class="number">0</span>,</span><br><span class="line">		<span class="string">'china'</span>:&#123;</span><br><span class="line">			<span class="string">'topMask'</span>:&#123;</span><br><span class="line">				<span class="string">'top'</span>:<span class="string">'40px'</span>,</span><br><span class="line">				<span class="string">'height'</span>:<span class="string">'50px'</span>,</span><br><span class="line">				<span class="string">'backgroundColor'</span>:<span class="string">'#FFF'</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="string">'bottomMask'</span>:&#123;</span><br><span class="line">				<span class="string">'bottom'</span>:<span class="string">'0'</span>,</span><br><span class="line">				<span class="string">'height'</span>:<span class="string">'50px'</span>,</span><br><span class="line">				<span class="string">'backgroundColor'</span>:<span class="string">'#FFF'</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="string">'noChina'</span>:&#123;</span><br><span class="line">			<span class="string">'topMask'</span>:&#123;</span><br><span class="line">				<span class="string">'top'</span>:<span class="string">'0px'</span>,</span><br><span class="line">				<span class="string">'height'</span>:<span class="string">'50px'</span>,</span><br><span class="line">				<span class="string">'backgroundColor'</span>:<span class="string">'#FFF'</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="string">'bottomMask'</span>:&#123;</span><br><span class="line">				<span class="string">'bottom'</span>:<span class="string">'20px'</span>,</span><br><span class="line">				<span class="string">'height'</span>:<span class="string">'50px'</span>,</span><br><span class="line">				<span class="string">'backgroundColor'</span>:<span class="string">'#FFF'</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">'taobao.com'</span>:&#123;</span><br><span class="line">		<span class="string">'status'</span>:<span class="number">0</span>,</span><br><span class="line">		<span class="string">'china'</span>:&#123;</span><br><span class="line">			<span class="string">'topMask'</span>:&#123;</span><br><span class="line">				<span class="string">'top'</span>:<span class="string">'20px'</span>,</span><br><span class="line">				<span class="string">'height'</span>:<span class="string">'50px'</span>,</span><br><span class="line">				<span class="string">'backgroundColor'</span>:<span class="string">'#FFF'</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="string">'bottomMask'</span>:&#123;</span><br><span class="line">				<span class="string">'bottom'</span>:<span class="string">'20px'</span>,</span><br><span class="line">				<span class="string">'height'</span>:<span class="string">'50px'</span>,</span><br><span class="line">				<span class="string">'backgroundColor'</span>:<span class="string">'#FFF'</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="string">'noChina'</span>:&#123;</span><br><span class="line">			<span class="string">'topMask'</span>:&#123;</span><br><span class="line">				<span class="string">'top'</span>:<span class="string">'0px'</span>,</span><br><span class="line">				<span class="string">'height'</span>:<span class="string">'50px'</span>,</span><br><span class="line">				<span class="string">'backgroundColor'</span>:<span class="string">'#FFF'</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="string">'bottomMask'</span>:&#123;</span><br><span class="line">				<span class="string">'bottom'</span>:<span class="string">'20px'</span>,</span><br><span class="line">				<span class="string">'height'</span>:<span class="string">'50px'</span>,</span><br><span class="line">				<span class="string">'backgroundColor'</span>:<span class="string">'#FFF'</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <h2 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h2><ol> <li><p>获取当前内嵌页面的 地址url (iframe 进来的电商 url) ，得到当前url 的实体域名 (例如：taobao.com，tmall.com，jd.com)</p> </li> <li><p>客户访问页面 -&gt; 获取用户ip </p> </li> <li>查询用户是否属于中国</li> <li>如果是中国ip 直接 查询 实体域名下面的 <code>china</code> 遮罩层参数</li> <li>如果非中国ip 查询 实体域名下面 <code>status</code> 参数的值 ，如果为 0 查询 实体域名下面的 <code>noChina</code> 遮罩层参数 ,否则取 <code>china</code> 遮罩层参数</li> </ol> <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MATCH 1</span><br><span class="line"><span class="bullet">1.	</span><span class="code">`dangdang.com`</span></span><br><span class="line">MATCH 2</span><br><span class="line"><span class="bullet">1.	</span><span class="code">`taobao.com`</span></span><br><span class="line">MATCH 3</span><br><span class="line"><span class="bullet">1.	</span><span class="code">`jd.com`</span></span><br><span class="line">MATCH 4</span><br><span class="line"><span class="bullet">1.	</span><span class="code">`tmall.com`</span></span><br></pre></td></tr></table></figure> <h2 id="demo-演示"><a href="#demo-演示" class="headerlink" title="demo 演示"></a>demo 演示</h2><p><a href="https://github.com/panli-com/app-h5/tree/gh-pages/20151214" target="_blank" rel="external">https://github.com/panli-com/app-h5/tree/gh-pages/20151214</a></p> <h2 id="最后说明"><a href="#最后说明" class="headerlink" title="最后说明"></a>最后说明</h2><p>由于遮罩层的样式和位置 都是由后台添加修改生成而来，所以辛苦添加数据的同学啦！！(<em>^__^</em>) 嘻嘻……</p></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/app/" rel="tag">#app</a>
+          
+            <a href="/tags/mobile/" rel="tag">#mobile</a>
+          
+            <a href="/tags/h5/" rel="tag">#h5</a>
+          
+            <a href="/tags/ip/" rel="tag">#ip</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/16/express/Node-express项目nginx代理转向绑定域名后-nginx配置获取客户端公网ip/" rel="next" title="Node express项目nginx代理转向绑定域名后 nginx配置获取客户端公网ip">
+                <i class="fa fa-chevron-left"></i> Node express项目nginx代理转向绑定域名后 nginx配置获取客户端公网ip
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/23/nodejs/Node-js文件系统、路径的操作函数/" rel="prev" title="Node.js文件系统、路径的操作学习笔记">
+                Node.js文件系统、路径的操作学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/12/17/webapp/关于app-h5页面的各大电商网站的遮罩层解决思路一/"
+     data-title="关于app h5页面的各大电商网站的遮罩层解决思路一"
+     data-content=""
+     data-url="http://panli-com.github.io/2015/12/17/webapp/关于app-h5页面的各大电商网站的遮罩层解决思路一/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/17/webapp/关于app-h5页面的各大电商网站的遮罩层解决思路一/"
+           data-title="关于app h5页面的各大电商网站的遮罩层解决思路一" data-url="http://panli-com.github.io/2015/12/17/webapp/关于app-h5页面的各大电商网站的遮罩层解决思路一/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/14232344?v=3&s=200" alt="Julaud" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Julaud</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">不折腾，哪来的新技术</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求展现举例"><span class="nav-number">1.</span> <span class="nav-text">需求展现举例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数指南"><span class="nav-number">2.</span> <span class="nav-text">参数指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各大电商网站布局的不同"><span class="nav-number">3.</span> <span class="nav-text">各大电商网站布局的不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遮罩层的参数灵活化"><span class="nav-number">4.</span> <span class="nav-text">遮罩层的参数灵活化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo的数据演示"><span class="nav-number">5.</span> <span class="nav-text">demo的数据演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务流程"><span class="nav-number">6.</span> <span class="nav-text">业务流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo-演示"><span class="nav-number">7.</span> <span class="nav-text">demo 演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后说明"><span class="nav-number">8.</span> <span class="nav-text">最后说明</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Julaud</span>
+</div>
+
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"panli-gg"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>

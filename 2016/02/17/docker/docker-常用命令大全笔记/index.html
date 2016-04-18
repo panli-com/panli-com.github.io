@@ -1,0 +1,704 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+
+  <meta name="description" content="不折腾，哪来的新技术" />
+
+
+
+
+  <meta name="keywords" content="docker,shell,虚拟技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="常用命令查看容器的root用户密码1docker logs &amp;lt;容器名orID&amp;gt; 2&amp;gt;&amp;amp;1 | grep &amp;apos;^User: &amp;apos; | tail -n1  因为docker容器启动时的root用户的密码是随机分配的。所以，通过这种方式就可以得到redmine容器的root用户的密码了。  查看正在运行的容器12docker psdocker ps -a  //">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker 常用命令大全笔记">
+<meta property="og:url" content="http://panli-com.github.io/2016/02/17/docker/docker-常用命令大全笔记/index.html">
+<meta property="og:site_name" content="Panli团队技术博客">
+<meta property="og:description" content="常用命令查看容器的root用户密码1docker logs &amp;lt;容器名orID&amp;gt; 2&amp;gt;&amp;amp;1 | grep &amp;apos;^User: &amp;apos; | tail -n1  因为docker容器启动时的root用户的密码是随机分配的。所以，通过这种方式就可以得到redmine容器的root用户的密码了。  查看正在运行的容器12docker psdocker ps -a  //">
+<meta property="og:updated_time" content="2016-04-18T08:43:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker 常用命令大全笔记">
+<meta name="twitter:description" content="常用命令查看容器的root用户密码1docker logs &amp;lt;容器名orID&amp;gt; 2&amp;gt;&amp;amp;1 | grep &amp;apos;^User: &amp;apos; | tail -n1  因为docker容器启动时的root用户的密码是随机分配的。所以，通过这种方式就可以得到redmine容器的root用户的密码了。  查看正在运行的容器12docker psdocker ps -a  //">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> docker 常用命令大全笔记 | Panli团队技术博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Panli团队技术博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">追寻最新技术领域</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                docker 常用命令大全笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-02-17T13:42:00+08:00" content="2016-02-17">
+              2016-02-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/17/docker/docker-常用命令大全笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/docker/docker-常用命令大全笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="查看容器的root用户密码"><a href="#查看容器的root用户密码" class="headerlink" title="查看容器的root用户密码"></a>查看容器的root用户密码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs &lt;容器名orID&gt; 2&gt;&amp;1 | grep &apos;^User: &apos; | tail -n1</span><br></pre></td></tr></table></figure> <blockquote> <p>因为docker容器启动时的root用户的密码是随机分配的。<br>所以，通过这种方式就可以得到redmine容器的root用户的密码了。</p> </blockquote> <h3 id="查看正在运行的容器"><a href="#查看正在运行的容器" class="headerlink" title="查看正在运行的容器"></a>查看正在运行的容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br><span class="line">docker ps -a  //为查看所有的容器，包括已经停止的。</span><br></pre></td></tr></table></figure> <h3 id="删除所有容器"><a href="#删除所有容器" class="headerlink" title="删除所有容器"></a>删除所有容器</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="gcode">docker rm $<span class="comment">(docker ps -a -q)</span></span></span><br></pre></td></tr></table></figure> <h3 id="删除单个容器"><a href="#删除单个容器" class="headerlink" title="删除单个容器"></a>删除单个容器</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm <span class="tag">&lt;<span class="name">容器名orID</span>&gt;</span></span><br></pre></td></tr></table></figure> <h3 id="停止、启动、杀死一个容器"><a href="#停止、启动、杀死一个容器" class="headerlink" title="停止、启动、杀死一个容器"></a>停止、启动、杀死一个容器</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker stop <span class="tag">&lt;<span class="name">容器名orID</span>&gt;</span></span><br><span class="line">docker start <span class="tag">&lt;<span class="name">容器名orID</span>&gt;</span></span><br><span class="line">docker kill <span class="tag">&lt;<span class="name">容器名orID</span>&gt;</span></span><br></pre></td></tr></table></figure> <h3 id="查看所有镜像"><a href="#查看所有镜像" class="headerlink" title="查看所有镜像"></a>查看所有镜像</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker</span> images</span><br></pre></td></tr></table></figure> <h3 id="删除所有镜像"><a href="#删除所有镜像" class="headerlink" title="删除所有镜像"></a>删除所有镜像</h3><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images | grep none | awk <span class="string">'&#123;print $3&#125;'</span> | <span class="keyword">sort</span> -r)</span><br><span class="line"></span><br><span class="line">不行就用下面这个</span><br><span class="line"></span><br><span class="line">docker rmi <span class="string">`docker images`</span></span><br></pre></td></tr></table></figure> <h3 id="删除-所有-none-镜像"><a href="#删除-所有-none-镜像" class="headerlink" title="删除 所有 none 镜像"></a>删除 所有 none 镜像</h3><blockquote> <p>在删除 none 镜像时，先删除关联的 容器</p> </blockquote> <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker</span> rmi $(docker images | awk <span class="string">'/^&lt;none&gt;/ &#123; print <span class="variable">$3</span> &#125;'</span>)</span><br></pre></td></tr></table></figure> <h3 id="运行新容器"><a href="#运行新容器" class="headerlink" title="运行新容器"></a>运行新容器</h3><blockquote> <p>运行一个新容器，同时为它命名、端口映射、文件夹映射。以redmine镜像为例</p> </blockquote> <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name redmine -p <span class="number">9003</span>:<span class="number">80</span> -p <span class="number">9023</span>:<span class="number">22</span> -d -v /var/redmine/<span class="symbol">files:</span>/redmine/files -v /var/redmine/<span class="symbol">mysql:</span>/var/<span class="class"><span class="keyword">lib</span>/<span class="title">mysql</span> <span class="title">sameersbn</span>/<span class="title">redmine</span></span></span><br></pre></td></tr></table></figure> <h3 id="进入指定容器"><a href="#进入指定容器" class="headerlink" title="进入指定容器"></a>进入指定容器</h3><blockquote> <p><code>docker ps</code> 查询需要进入容器的 <code>id</code></p> </blockquote> <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -<span class="keyword">it</span> <span class="number">40</span>c330755e61 /bin/bash</span><br></pre></td></tr></table></figure> <h3 id="查看容易-分配-的-ip"><a href="#查看容易-分配-的-ip" class="headerlink" title="查看容易 分配 的 ip"></a>查看容易 分配 的 ip</h3><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect --<span class="keyword">format</span>=<span class="string">'&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;'</span> $CONTAINER_ID</span><br></pre></td></tr></table></figure> <h3 id="一个容器连接到另一个容器"><a href="#一个容器连接到另一个容器" class="headerlink" title="一个容器连接到另一个容器"></a>一个容器连接到另一个容器</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -i -t --name sonar -<span class="keyword">d</span> -link mmysql:<span class="keyword">db</span>   tpires/sonar-server</span><br><span class="line">sonar</span><br></pre></td></tr></table></figure> <blockquote> <p>容器连接到mmysql容器，并将mmysql容器重命名为db。这样，sonar容器就可以使用db的相关的环境变量了。</p> </blockquote> <h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull &lt;镜像名<span class="symbol">:tag&gt;</span></span><br></pre></td></tr></table></figure> <p>demo </p> <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull sameersbn/<span class="string">redmine:</span>latest</span><br></pre></td></tr></table></figure> <p>###　镜像迁移</p> <blockquote> <p>当需要把一台机器上的镜像迁移到另一台机器的时候，需要保存镜像与加载镜像。</p> </blockquote> <p>机器a</p> <figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">save</span> busybox-<span class="number">1</span> &gt; /home/<span class="keyword">save</span>.tar</span><br></pre></td></tr></table></figure> <p>使用scp将save.tar拷到机器b上，然后：</p> <figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">load</span> &lt; /home/<span class="keyword">save</span>.tar</span><br></pre></td></tr></table></figure> <h3 id="构建自己的镜像"><a href="#构建自己的镜像" class="headerlink" title="构建自己的镜像"></a>构建自己的镜像</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t <span class="tag">&lt;<span class="name">镜像名</span>&gt;</span> <span class="tag">&lt;<span class="name">Dockerfile路径</span>&gt;</span></span><br></pre></td></tr></table></figure> <p>如Dockerfile在当前路径：</p> <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">docker</span> <span class="keyword">build </span>-t xx/gitlab .</span><br></pre></td></tr></table></figure> <h3 id="重新查看container的stdout"><a href="#重新查看container的stdout" class="headerlink" title="重新查看container的stdout"></a>重新查看container的stdout</h3><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 启动top命令，后台运行</span><br><span class="line">$ ID=$(sudo docker run -<span class="keyword">d</span> ubuntu /usr/bin/top -b)</span><br><span class="line"># 获取正在running的container的输出</span><br><span class="line">$ sudo docker attach <span class="built_in">$ID</span></span><br><span class="line">top - <span class="number">02</span>:<span class="number">05</span>:<span class="number">52</span> up  <span class="number">3</span>:<span class="number">05</span>,  <span class="number">0</span> users,  load average: <span class="number">0.01</span>, <span class="number">0.02</span>, <span class="number">0.05</span></span><br><span class="line">Tasks:   <span class="number">1</span> total,   <span class="number">1</span> running,   <span class="number">0</span> sleeping,   <span class="number">0</span> stopped,   <span class="number">0</span> zombie</span><br><span class="line">Cpu(<span class="keyword">s</span>):  <span class="number">0.1</span><span class="built_in">%us</span>,  <span class="number">0.2</span><span class="built_in">%sy</span>,  <span class="number">0.0</span><span class="built_in">%ni</span>, <span class="number">99.7</span><span class="built_in">%id</span>,  <span class="number">0.0</span><span class="built_in">%wa</span>,  <span class="number">0.0</span><span class="built_in">%hi</span>,  <span class="number">0.0</span><span class="built_in">%si</span>,  <span class="number">0.0</span><span class="built_in">%st</span></span><br><span class="line">Mem:    <span class="number">373572</span><span class="keyword">k</span> total,   <span class="number">355560</span><span class="keyword">k</span> used,    <span class="number">18012</span><span class="keyword">k</span> free,    <span class="number">27872</span><span class="keyword">k</span> buffers</span><br><span class="line">Swap:   <span class="number">786428</span><span class="keyword">k</span> total,        <span class="number">0</span><span class="keyword">k</span> used,   <span class="number">786428</span><span class="keyword">k</span> free,   <span class="number">221740</span><span class="keyword">k</span> cached</span><br><span class="line"><span class="symbol">^C</span>$</span><br><span class="line">$ sudo docker stop <span class="built_in">$ID</span></span><br></pre></td></tr></table></figure> <p>###　后台运行(-d)、并暴露端口(-p)</p> <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">docker</span> <span class="selector-tag">run</span> <span class="selector-tag">-d</span> <span class="selector-tag">-p</span> 127<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.1</span><span class="selector-pseudo">:33301</span><span class="selector-pseudo">:22</span> <span class="selector-tag">centos6-ssh</span></span><br></pre></td></tr></table></figure> <p>###　从container中拷贝文件出来</p> <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp <span class="number">7</span><span class="string">bb0e258aefe:</span><span class="regexp">/etc/</span>debian_version .</span><br></pre></td></tr></table></figure> <p>拷贝7bb0e258aefe中的/etc/debian_version到当前目录下。</p> <p><strong>注意</strong>：只要7bb0e258aefe没有被删除，文件命名空间就还在，可以放心的把exit状态的container的文件拷贝出来</p> <h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><h3 id="权限问题"><a href="#权限问题" class="headerlink" title="权限问题"></a>权限问题</h3><blockquote> <p>ubuntu14下的docker是没有service服务。去除每次sudo运行docker命令，需要添加组：</p> </blockquote> <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Add the docker group if it doesn't already exist.</span></span><br><span class="line"><span class="variable">$ </span>sudo groupadd docker</span><br><span class="line"><span class="comment">#改完后需要重新登陆用户</span></span><br><span class="line"><span class="variable">$ </span>sudo gpasswd -a <span class="variable">$&#123;</span>USER&#125; docker</span><br></pre></td></tr></table></figure> <ul> <li><p>ubuntu14的febootstrap没有-i命令</p> </li> <li><p>Dockerfile中的EXPOSE、docker run –expose、docker run -p之间的区别</p> </li> <li>Dockerfile的EXPOSE相当于docker run –expose，提供container之间的端口访问。</li> <li>docker run -p允许container外部主机访问container的端口</li> </ul></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag">#docker</a>
+          
+            <a href="/tags/shell/" rel="tag">#shell</a>
+          
+            <a href="/tags/虚拟技术/" rel="tag">#虚拟技术</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/" rel="next" title="PanLi app 内嵌厂家页面去除浮动元素 v0.0.2 (注入方案)">
+                <i class="fa fa-chevron-left"></i> PanLi app 内嵌厂家页面去除浮动元素 v0.0.2 (注入方案)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/17/git/docker-安装gitlab-服务/" rel="prev" title="docker 安装gitlab 服务">
+                docker 安装gitlab 服务 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/17/docker/docker-常用命令大全笔记/"
+     data-title="docker 常用命令大全笔记"
+     data-content=""
+     data-url="http://panli-com.github.io/2016/02/17/docker/docker-常用命令大全笔记/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/17/docker/docker-常用命令大全笔记/"
+           data-title="docker 常用命令大全笔记" data-url="http://panli-com.github.io/2016/02/17/docker/docker-常用命令大全笔记/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/14232344?v=3&s=200" alt="Julaud" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Julaud</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">不折腾，哪来的新技术</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">1.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看容器的root用户密码"><span class="nav-number">1.1.</span> <span class="nav-text">查看容器的root用户密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看正在运行的容器"><span class="nav-number">1.2.</span> <span class="nav-text">查看正在运行的容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除所有容器"><span class="nav-number">1.3.</span> <span class="nav-text">删除所有容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除单个容器"><span class="nav-number">1.4.</span> <span class="nav-text">删除单个容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止、启动、杀死一个容器"><span class="nav-number">1.5.</span> <span class="nav-text">停止、启动、杀死一个容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看所有镜像"><span class="nav-number">1.6.</span> <span class="nav-text">查看所有镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除所有镜像"><span class="nav-number">1.7.</span> <span class="nav-text">删除所有镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除-所有-none-镜像"><span class="nav-number">1.8.</span> <span class="nav-text">删除 所有 none 镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行新容器"><span class="nav-number">1.9.</span> <span class="nav-text">运行新容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入指定容器"><span class="nav-number">1.10.</span> <span class="nav-text">进入指定容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看容易-分配-的-ip"><span class="nav-number">1.11.</span> <span class="nav-text">查看容易 分配 的 ip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个容器连接到另一个容器"><span class="nav-number">1.12.</span> <span class="nav-text">一个容器连接到另一个容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取镜像"><span class="nav-number">1.13.</span> <span class="nav-text">拉取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建自己的镜像"><span class="nav-number">1.14.</span> <span class="nav-text">构建自己的镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新查看container的stdout"><span class="nav-number">1.15.</span> <span class="nav-text">重新查看container的stdout</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的坑"><span class="nav-number">2.</span> <span class="nav-text">遇到的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#权限问题"><span class="nav-number">2.1.</span> <span class="nav-text">权限问题</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Julaud</span>
+</div>
+
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"panli-gg"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>

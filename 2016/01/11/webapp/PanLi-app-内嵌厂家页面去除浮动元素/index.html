@@ -1,0 +1,709 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+
+  <meta name="description" content="不折腾，哪来的新技术" />
+
+
+
+
+  <meta name="keywords" content="app,mobile,h5,ip," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="应用场景说明 在第一版的时候,我们尝试通过 Panli.com 主站 ifarme 厂家的各个页面,由于涉及到浏览器安全的问题，浏览器阻住跨域 网站的操作 dom 信息 ;我们只好尝试在 Panli 主站页面 设置遮罩层的方式来弥补随着开发测试的进度一点点完成,最终发现 这个方案不可行  注入方案 在思考许久后， 原生 app 那边 说可以 执行 javascript代码 ;  后来我们就开始执行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PanLi app 内嵌厂家页面去除浮动元素 v0.0.2 (注入方案)">
+<meta property="og:url" content="http://panli-com.github.io/2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/index.html">
+<meta property="og:site_name" content="Panli团队技术博客">
+<meta property="og:description" content="应用场景说明 在第一版的时候,我们尝试通过 Panli.com 主站 ifarme 厂家的各个页面,由于涉及到浏览器安全的问题，浏览器阻住跨域 网站的操作 dom 信息 ;我们只好尝试在 Panli 主站页面 设置遮罩层的方式来弥补随着开发测试的进度一点点完成,最终发现 这个方案不可行  注入方案 在思考许久后， 原生 app 那边 说可以 执行 javascript代码 ;  后来我们就开始执行">
+<meta property="og:image" content="http://zanjs.b0.upaiyun.com/image/1/f5/52ba910f9917a128b2b0ec64f710f.png">
+<meta property="og:image" content="http://zanjs.b0.upaiyun.com/image/4/ae/dd0f6acb0780d2fb129bc0e6e26b3.png">
+<meta property="og:updated_time" content="2016-04-18T08:43:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PanLi app 内嵌厂家页面去除浮动元素 v0.0.2 (注入方案)">
+<meta name="twitter:description" content="应用场景说明 在第一版的时候,我们尝试通过 Panli.com 主站 ifarme 厂家的各个页面,由于涉及到浏览器安全的问题，浏览器阻住跨域 网站的操作 dom 信息 ;我们只好尝试在 Panli 主站页面 设置遮罩层的方式来弥补随着开发测试的进度一点点完成,最终发现 这个方案不可行  注入方案 在思考许久后， 原生 app 那边 说可以 执行 javascript代码 ;  后来我们就开始执行">
+<meta name="twitter:image" content="http://zanjs.b0.upaiyun.com/image/1/f5/52ba910f9917a128b2b0ec64f710f.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> PanLi app 内嵌厂家页面去除浮动元素 v0.0.2 (注入方案) | Panli团队技术博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Panli团队技术博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">追寻最新技术领域</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PanLi app 内嵌厂家页面去除浮动元素 v0.0.2 (注入方案)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-11T09:59:03+08:00" content="2016-01-11">
+              2016-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/mobile/" itemprop="url" rel="index">
+                    <span itemprop="name">mobile</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="应用场景说明"><a href="#应用场景说明" class="headerlink" title="应用场景说明"></a>应用场景说明</h2><blockquote> <p>在第一版的时候,我们尝试通过 <code>Panli.com</code> 主站 ifarme 厂家的各个页面,<br>由于涉及到浏览器安全的问题，浏览器阻住跨域 网站的操作 <code>dom</code> 信息 ;<br>我们只好尝试在 Panli 主站页面 设置遮罩层的方式来弥补<br>随着开发测试的进度一点点完成,最终发现 这个方案不可行</p> </blockquote> <h2 id="注入方案"><a href="#注入方案" class="headerlink" title="注入方案"></a>注入方案</h2><blockquote> <p>在思考许久后， 原生 app 那边 说可以 执行 <code>javascript</code>代码 ;</p> </blockquote> <p>后来我们就开始执行操作， 我们试着写了一下 执行 网页 <code>dom</code> 元素的 <code>javascript</code> 脚本</p> <p>最终发现可以操作 web view 厂家页面的 <code>dom</code> 元素，可行性方案已找到。</p> <h2 id="开发敏捷"><a href="#开发敏捷" class="headerlink" title="开发敏捷"></a>开发敏捷</h2><blockquote> <p>在开发注入脚本的时候，在手机上调试结果，非常痛苦,<br>浪费了大量的时间去小心意义的点击 web view 页面 的链接<br>测试机又不给力</p> </blockquote> <p>无奈之下，既然都是注入 <code>javascript</code> 脚本 何不尝试在 <code>pc</code> 浏览器上一样注入呢；<br>我们开发了一套 基于 <code>Chrome</code> 浏览器的 插件 。</p> <p><a href="https://github.com/browser-extensions/appRemove" target="_blank" rel="external">插件详细介绍 和 安装</a></p> <h2 id="淘宝首页头部元素寻找"><a href="#淘宝首页头部元素寻找" class="headerlink" title="淘宝首页头部元素寻找"></a>淘宝首页头部元素寻找</h2><p><img src="http://zanjs.b0.upaiyun.com/image/1/f5/52ba910f9917a128b2b0ec64f710f.png" alt=""></p> <p>可以看到在代码区域我看到了 <code>id=&quot;v539213&quot; class=&quot;v61dsk&quot;</code> </p> <p>我们要录入的元素 就是 id=后面 双引号里面的值 和 class=后面 双引号里面的值</p> <h2 id="数据录入"><a href="#数据录入" class="headerlink" title="数据录入"></a>数据录入</h2><blockquote> <p>为了能及时跟进 各个厂家的 页面的改动 ,<br>我们将数据统一后台录入为标准，前台调用接口的形式,来操作厂家 页面元素的去除</p> </blockquote> <h3 id="后台录入如下数据"><a href="#后台录入如下数据" class="headerlink" title="后台录入如下数据"></a>后台录入如下数据</h3><p><img src="http://zanjs.b0.upaiyun.com/image/4/ae/dd0f6acb0780d2fb129bc0e6e26b3.png" alt=""></p> <blockquote> <p>id 以#开头，class以.开头<br>录入的数据 以 英文的 <code>,</code> 作为分割</p> </blockquote> <h3 id="淘宝客户端广告"><a href="#淘宝客户端广告" class="headerlink" title="淘宝客户端广告"></a>淘宝客户端广告</h3><p>在测试数据的时候 , 我们发现 淘宝 头部 的客户端 广告 的 <code>id</code> 和 <code>class</code> 都是 随机haxi算法生成的。<br>也就是后台没办法录入这样的数据，因为你录了这次的 <code>id</code> 和 <code>class</code> 值 页面刷新一下 就又变了,<br>所以我们只好 在脚本里面写死，根据我们的算法模糊匹配 <code>id</code> 和 <code>class</code></p> <blockquote> <p>如果您在寻找 浮动广告元素的 <code>id</code> 和 <code>class</code> 的时候，<br>发现 是 数据和 字母组合的，并且没有意义的组合,请告知我 @julian 。 </p> </blockquote></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/app/" rel="tag">#app</a>
+          
+            <a href="/tags/mobile/" rel="tag">#mobile</a>
+          
+            <a href="/tags/h5/" rel="tag">#h5</a>
+          
+            <a href="/tags/ip/" rel="tag">#ip</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/08/webapp/使用Flexible实现手淘H5页面的终端适配2前端实现方案/" rel="next" title="使用Flexible实现手淘H5页面的终端适配 笔记之(2)前端实现方案">
+                <i class="fa fa-chevron-left"></i> 使用Flexible实现手淘H5页面的终端适配 笔记之(2)前端实现方案
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/17/docker/docker-常用命令大全笔记/" rel="prev" title="docker 常用命令大全笔记">
+                docker 常用命令大全笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/"
+     data-title="PanLi app 内嵌厂家页面去除浮动元素 v0.0.2 (注入方案)"
+     data-content=""
+     data-url="http://panli-com.github.io/2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/"
+           data-title="PanLi app 内嵌厂家页面去除浮动元素 v0.0.2 (注入方案)" data-url="http://panli-com.github.io/2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/14232344?v=3&s=200" alt="Julaud" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Julaud</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">不折腾，哪来的新技术</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景说明"><span class="nav-number">1.</span> <span class="nav-text">应用场景说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注入方案"><span class="nav-number">2.</span> <span class="nav-text">注入方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发敏捷"><span class="nav-number">3.</span> <span class="nav-text">开发敏捷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#淘宝首页头部元素寻找"><span class="nav-number">4.</span> <span class="nav-text">淘宝首页头部元素寻找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据录入"><span class="nav-number">5.</span> <span class="nav-text">数据录入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#后台录入如下数据"><span class="nav-number">5.1.</span> <span class="nav-text">后台录入如下数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#淘宝客户端广告"><span class="nav-number">5.2.</span> <span class="nav-text">淘宝客户端广告</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Julaud</span>
+</div>
+
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"panli-gg"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>

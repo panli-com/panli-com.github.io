@@ -227,6 +227,103 @@
             
             
               
+                <a class="post-title-link" href="/2016/02/17/nodejs/ubuntu下搭建最新版和各种版本Node-js环境/" itemprop="url">
+                  ubuntu下搭建最新版和各种版本Node.js环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-02-17T14:43:31+08:00" content="2016-02-17">
+              2016-02-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/17/nodejs/ubuntu下搭建最新版和各种版本Node-js环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/nodejs/ubuntu下搭建最新版和各种版本Node-js环境/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="nvm安装-nodejs"><a href="#nvm安装-nodejs" class="headerlink" title="nvm安装 nodejs"></a>nvm安装 nodejs</h2><h3 id="获取nvm"><a href="#获取nvm" class="headerlink" title="获取nvm"></a>获取nvm</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@iZ28krk4xlkZ:/home/git/node<span class="comment">#   git clone https://github.com/creationix/nvm.git</span></span><br><span class="line">Cloning into <span class="string">'nvm'</span>...</span><br><span class="line">remote: Counting objects: 4399, done.</span><br><span class="line">remote: Compressing objects: 100% (20/20), done.</span><br><span class="line">remote: Total 4399 (delta 4), reused 0 (delta 0), pack-reused 4379</span><br><span class="line">Receiving objects: 100% (4399/4399), 1.11 MiB | 23.00 KiB/s, done.</span><br><span class="line">Resolving deltas: 100% (2578/2578), done.</span><br><span class="line">Checking connectivity... done.</span><br></pre></td></tr></table></figure> <h3 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h3><ul> <li>下载之后，进入目录直行 <code>./install.sh</code></li> <li>安装之后输入 <code>nvm</code> 还是提示没有这时候需要直行 <code>source ./nvm.sh</code></li> </ul> <blockquote> <p>将 <code>source /root/nvm/nvm.sh</code> 写入 <code>~/.bashrc</code> 或者其启动脚本中，<br>这样在系统启动的时候会自动执行这条指令。<br>开机就可以使用 <code>nvm</code> 了；</p> </blockquote> <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">root<span class="variable">@iZ28krk4xlkZ:</span>/home/git/node# ls</span><br><span class="line">nvm</span><br><span class="line">root<span class="variable">@iZ28krk4xlkZ</span>:/home/git/node# cd nvm/</span><br><span class="line">root<span class="variable">@iZ28krk4xlkZ</span>:/home/git/node/nvm# ls</span><br><span class="line">bash_completion  CONTRIBUTING.md  install.sh  LICENSE.md  Makefile  nvm-exec  nvm.sh  package.json  README.markdown  test</span><br><span class="line">root<span class="variable">@iZ28krk4xlkZ</span>:/home/git/node/nvm# ./install.sh </span><br><span class="line">=&gt; Downloading nvm from git to <span class="string">'/root/.nvm'</span></span><br><span class="line">=&gt; Cloning into <span class="string">'/root/.nvm'</span>...</span><br><span class="line"><span class="attribute">remote</span>: Counting <span class="attribute">objects</span>: <span class="number">4399</span>, done.</span><br><span class="line"><span class="attribute">remote</span>: Compressing <span class="attribute">objects</span>: <span class="number">100%</span> (<span class="number">20</span>/<span class="number">20</span>), done.</span><br><span class="line"><span class="attribute">remote</span>: Total <span class="number">4399</span> (delta <span class="number">4</span>), reused <span class="number">0</span> (delta <span class="number">0</span>), pack-reused <span class="number">4379</span></span><br><span class="line">Receiving <span class="attribute">objects</span>: <span class="number">100%</span> (<span class="number">4399</span>/<span class="number">4399</span>), <span class="number">1.11</span> MiB | <span class="number">15.00</span> KiB/s, done.</span><br><span class="line">Resolving <span class="attribute">deltas</span>: <span class="number">100%</span> (<span class="number">2578</span>/<span class="number">2578</span>), done.</span><br><span class="line">Checking connectivity... done.</span><br><span class="line">* (detached from v0.<span class="number">31.0</span>)</span><br><span class="line">  master</span><br><span class="line"></span><br><span class="line">=&gt; Appending source string to /root/.bashrc</span><br><span class="line">=&gt; Close and reopen your terminal to start using nvm</span><br><span class="line">root<span class="variable">@iZ28krk4xlkZ</span>:/home/git/node/nvm# source ./nvm.sh</span><br></pre></td></tr></table></figure> <h3 id="nvm安装任意版本nodejs"><a href="#nvm安装任意版本nodejs" class="headerlink" title="nvm安装任意版本nodejs"></a>nvm安装任意版本nodejs</h3><ul> <li><p>通过nvm ls查看当前已经安装的node或者iojs版本</p> </li> <li><p>通过nvm ls-remote查看当前可以安装的node或者iojs版本</p> </li> <li><p>通过nvm install 5.6.0 安装制定版本的nodejs</p> </li> <li><p>通过nvm use 5.6.0 切换使用的nodejs版本</p> </li> </ul> <p>nvm install 5.0.0 </p> <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">root<span class="variable">@iZ28krk4xlkZ:</span>/home/git/node/nvm# nvm install <span class="number">5.0</span>.<span class="number">0</span></span><br><span class="line">Downloading <span class="attribute">https</span>:<span class="comment">//nodejs.org/dist/v5.0.0/node-v5.0.0-linux-x64.tar.xz...</span></span><br><span class="line">#####                                                                      <span class="number">8.1%</span></span><br><span class="line"><span class="attribute">curl</span>: (<span class="number">56</span>) SSL <span class="attribute">read</span>: <span class="attribute">error</span>:<span class="number">00000000</span>:lib(<span class="number">0</span>):func(<span class="number">0</span>):reason(<span class="number">0</span>), errno <span class="number">104</span></span><br><span class="line">Binary download failed, trying source.</span><br><span class="line">######################################################################## <span class="number">100.0%</span></span><br><span class="line">Checksums empty</span><br><span class="line">Now using node v5.<span class="number">0.0</span> (npm v3.<span class="number">3.6</span>)</span><br><span class="line">Creating default <span class="attribute">alias</span>: default -&gt; <span class="number">5.0</span>.<span class="number">0</span> (-&gt; v5.<span class="number">0.0</span>)</span><br><span class="line">root<span class="variable">@iZ28krk4xlkZ</span>:/home/git/node/nvm# node -v</span><br><span class="line">v5.<span class="number">0.0</span></span><br></pre></td></tr></table></figure> <h3 id="nvm基本用法"><a href="#nvm基本用法" class="headerlink" title="nvm基本用法"></a>nvm基本用法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nvm <span class="keyword">help</span>：显示帮助信息</span><br><span class="line">nvm <span class="comment">--version：查看当前版本</span></span><br><span class="line">nvm <span class="keyword">install</span> [-s] &lt;<span class="keyword">version</span>&gt;：下载安装nodejs/iojs  </span><br><span class="line">nvm <span class="keyword">uninstall</span> &lt;<span class="keyword">version</span>&gt;：卸载安装nodejs/iojs </span><br><span class="line">nvm <span class="keyword">use</span> &lt;<span class="keyword">version</span>&gt; ：切换 nodejs/iojs 版本</span><br><span class="line">nvm ls：列出当前已安装的 nodejs/iojs                </span><br><span class="line">nvm ls-remote：列出当前可安装的nodejs/iojs</span><br></pre></td></tr></table></figure> <p><a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm详细文档</a></p>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2016/02/17/docker/docker-常用命令大全笔记/" itemprop="url">
                   docker 常用命令大全笔记
                 </a>
@@ -1084,103 +1181,6 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/12/09/javascript/javascript-iframe-跨域-操作淘宝手机页面-dom/" itemprop="url">
-                  javascript iframe 跨域 操作淘宝手机页面 dom
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-09T16:57:28+08:00" content="2015-12-09">
-              2015-12-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/09/javascript/javascript-iframe-跨域-操作淘宝手机页面-dom/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/09/javascript/javascript-iframe-跨域-操作淘宝手机页面-dom/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="javascript-操作-iframe"><a href="#javascript-操作-iframe" class="headerlink" title="javascript 操作 iframe"></a>javascript 操作 iframe</h2><p>正常情况下 <code>javascript</code> 可以正常操作 <code>iframe</code> 的子页面元素</p> <p><img src="http://zanjs.b0.upaiyun.com/image/2/ba/307edada2e2ca9cc420ffa81268bb.gif" alt="js操作 iframe 的子页面元素"></p> <p>而在尝试 <code>iframe</code> 引入 淘宝页面的时候 却操作不了 </p> <p><img src="http://zanjs.b0.upaiyun.com/image/7/4f/c416ff8f03dd5afb65488037720f8.gif" alt="js操作 跨域 iframe 的子页面元素"></p> <p>浏览器报错信息如下</p> <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Uncaught DOMException: Failed <span class="built_in">to</span> <span class="built_in">read</span> <span class="keyword">the</span> <span class="string">'contentDocument'</span> property <span class="built_in">from</span> <span class="string">'HTMLIFrameElement'</span>:</span><br><span class="line"> Blocked <span class="keyword">a</span> frame <span class="keyword">with</span> origin <span class="string">"http://localhost:3000"</span> <span class="built_in">from</span> accessing <span class="keyword">a</span> cross-origin frame.(…)</span><br></pre></td></tr></table></figure> <p>可以看出来 浏览器阻止了 跨域操作的请求，操作后 感觉肯定有解决的方案</p> <h2 id="寻找解决方案"><a href="#寻找解决方案" class="headerlink" title="寻找解决方案"></a>寻找解决方案</h2><p>先百度后谷歌</p> <p>百度情况很槽糕，没有我想要的答案， 于是就是去了 <code>segmentfault</code> </p> <p>找到了 类似的 需求 <a href="http://segmentfault.com/q/1010000002670960" target="_blank" rel="external">http://segmentfault.com/q/1010000002670960</a></p> <p>找到的答案就是 </p> <ol> <li><code>浏览器会限制跨与操作的，除非你是为浏览器开发插件，可以绕过权限</code></li> <li><code>无解，只能通过后端。</code></li> </ol> <p>然后 谷歌 寻找更加专业的 解决方案</p> <p>我来到了 <code>stackoverflow</code> 寻找解决方案 </p> <p>地址是 <a href="http://stackoverflow.com/questions/6170925/get-dom-content-of-cross-domain-iframe" target="_blank" rel="external">http://stackoverflow.com/questions/6170925/get-dom-content-of-cross-domain-iframe</a></p> <p>被认知的 答案 是 </p> <blockquote> <p>You can’t. XSS protection. Cross site contents can not be read by javascript.<br>No major browser will allow you that.<br>I’m sorry, but this is a design flaw, you should drop the idea.</p> </blockquote> <p>大概意思就是 ：不可能，浏览器 xss 保护 ，跨域网站的内容不能被JavaScript 操作，目前只好放弃这种想法，不知未来是否有改善。</p> <h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><p>目前而言 对应前端来说真是没有解决方案了，好无奈， 而我能想到的就是 后端做服务了 ， 抓到页面内容渲染到前端显示操作，就不存在 跨域的问题了</p> <p>如果您找到了更好的解决方案， 欢迎留言交流 ！！</p>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1226,7 +1226,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1240,7 +1240,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

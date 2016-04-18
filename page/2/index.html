@@ -1100,8 +1100,8 @@
             
             
               
-                <a class="post-title-link" href="/2015/12/16/express/Node-express项目nginx代理转向绑定域名后-nginx配置获取客户端公网ip/" itemprop="url">
-                  Node express项目nginx代理转向绑定域名后 nginx配置获取客户端公网ip
+                <a class="post-title-link" href="/2015/12/16/api-nnn-li-接口说明初始化/" itemprop="url">
+                  api.nnn.li 接口说明初始化
                 </a>
               
             
@@ -1111,7 +1111,7 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-16T16:29:51+08:00" content="2015-12-16">
+            <time itemprop="dateCreated" datetime="2015-12-16T17:59:33+08:00" content="2015-12-16">
               2015-12-16
             </time>
           </span>
@@ -1121,8 +1121,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">nodejs</span>
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -1137,8 +1137,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/16/express/Node-express项目nginx代理转向绑定域名后-nginx配置获取客户端公网ip/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/16/express/Node-express项目nginx代理转向绑定域名后-nginx配置获取客户端公网ip/" itemprop="commentsCount"></span>
+                <a href="/2015/12/16/api-nnn-li-接口说明初始化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/16/api-nnn-li-接口说明初始化/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1160,7 +1160,7 @@
         
           <span itemprop="articleBody">
             
-              <h2 id="node-代码"><a href="#node-代码" class="headerlink" title="node 代码"></a>node 代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> os = <span class="built_in">require</span>(<span class="string">'os'</span>);</span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> cors = <span class="built_in">require</span>(<span class="string">'cors'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.use(cors());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, cors(),<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;  </span><br><span class="line">  <span class="keyword">var</span> ip = getClientIp(req).match(<span class="regexp">/\d+\.\d+\.\d+\.\d+/</span>); </span><br><span class="line">  <span class="built_in">console</span>.log(ip);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getClientIp</span>(<span class="params">req</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> req.headers[<span class="string">'x-forwarded-for'</span>] ||</span><br><span class="line">        req.connection.remoteAddress ||</span><br><span class="line">        req.socket.remoteAddress ||</span><br><span class="line">        req.connection.socket.remoteAddress;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8081</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'listening on port http://localhost:8081/'</span>);</span><br></pre></td></tr></table></figure> <h2 id="nginx-代理"><a href="#nginx-代理" class="headerlink" title="nginx 代理"></a>nginx 代理</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span>  &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> nnn.com;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_set_header</span>  X-real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_pass</span>      http://127.0.0.1:8081;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     <span class="attribute">access_log</span>  /home/wwwlogs/nnn.com.log  access;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure> <p>直接访问服务器的ip 是正常返回客户端的ip</p> <p>而访问 nginx 代理转向 的域名地址 返回的ip 却是 127.0.01</p> <p>nginx 转向的 proxy_pass 地址是多少 ，返回的就是多少</p> <p>node 如何更好的绑定域名呢？</p> <p><img src="http://sfault-image.b0.upaiyun.com/406/186/4061862233-5670f440a4d08_articlex" alt=""></p> <h2 id="nginx-解决方案"><a href="#nginx-解决方案" class="headerlink" title="nginx 解决方案"></a>nginx 解决方案</h2><p>修改 nginx</p> <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span>  &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> nnn.com;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span>      http://localhost:8081;</span><br><span class="line">        <span class="attribute">proxy_redirect</span> <span class="literal">off</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$http_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-NginX-Proxy <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">       <span class="attribute">access_log</span>  /home/wwwlogs/nnn.com.log  access;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure> <h2 id="解构知识"><a href="#解构知识" class="headerlink" title="解构知识"></a>解构知识</h2><p><code>req.ip</code> <a href="http://expressjs.com/en/4x/api.html#req.ip" target="_blank" rel="external">http://expressjs.com/en/4x/api.html#req.ip</a></p> <p><code>trust proxy</code> <a href="http://expressjs.com/en/4x/api.html#trust.proxy.options.table" target="_blank" rel="external">http://expressjs.com/en/4x/api.html#trust.proxy.options.table</a></p>
+              <h2 id="开放接口"><a href="#开放接口" class="headerlink" title="开放接口"></a>开放接口</h2><ol> <li><a href="http://api.nnn.li/ip/" target="_blank" rel="external">http://api.nnn.li/ip/</a></li> <li><a href="http://api.nnn.li/ip/37.115.98.238" target="_blank" rel="external">http://api.nnn.li/ip/37.115.98.238</a></li> </ol> <p>ip/ -&gt; 获取当前客户端的 ip 信息<br>ip/37.115.98.238 -&gt; 查询指定 ip 的信息</p> <h2 id="ajax-调用"><a href="#ajax-调用" class="headerlink" title="ajax 调用"></a>ajax 调用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">        type:<span class="string">"GET"</span>,    </span><br><span class="line">        url: <span class="string">"http://api.nnn.li/ip/"</span>,</span><br><span class="line">        dataType:<span class="string">"json"</span>,</span><br><span class="line">        success:<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(result));</span><br><span class="line">        &#125;,</span><br><span class="line">        error:<span class="function"><span class="keyword">function</span> (<span class="params">result, status</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//处理错误</span></span><br><span class="line">            <span class="built_in">console</span>.log(result);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
             
           </span>
         
@@ -1226,7 +1226,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1240,7 +1240,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

@@ -227,6 +227,103 @@
             
             
               
+                <a class="post-title-link" href="/2016/05/10/ubuntu/ubuntu-16-04-开启root用户ssh登录/" itemprop="url">
+                  ubuntu 16.04 开启root用户ssh登录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-10T10:06:58+08:00" content="2016-05-10">
+              2016-05-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/10/ubuntu/ubuntu-16-04-开启root用户ssh登录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/10/ubuntu/ubuntu-16-04-开启root用户ssh登录/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="修改-root-密码"><a href="#修改-root-密码" class="headerlink" title="修改 root 密码"></a>修改 root 密码</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> passwd root</span><br></pre></td></tr></table></figure> <h2 id="修改ssh-配置文件"><a href="#修改ssh-配置文件" class="headerlink" title="修改ssh 配置文件"></a>修改ssh 配置文件</h2><p>以其他账户登录，通过 <code>sudo vi</code> 修改 <code>/etc/ssh/sshd_config</code><br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">z<span class="variable">@zans:</span>~$ su</span><br><span class="line">密码： </span><br><span class="line">root<span class="variable">@zans</span>:/home/z# vi /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure></p> <p>找到以下内容区域</p> <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Authentication:</span></span><br><span class="line"><span class="attribute">LoginGraceTime</span> <span class="number">120</span></span><br><span class="line"><span class="comment">#PermitRootLogin prohibit-password</span></span><br><span class="line">PermitRootLogin <span class="literal">yes</span></span><br><span class="line">StrictModes <span class="literal">yes</span></span><br></pre></td></tr></table></figure> <p>注释掉 #PermitRootLogin prohibit-password</p> <p>添加 PermitRootLogin ye</p> <h2 id="重启-ssh-服务"><a href="#重启-ssh-服务" class="headerlink" title="重启 ssh 服务"></a>重启 ssh 服务</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root<span class="variable">@zans:</span>/home/z# /etc/init.d/ssh restart</span><br><span class="line">[ ok ] Restarting ssh (via systemctl): ssh.service.</span><br></pre></td></tr></table></figure>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2016/04/06/ubuntu/双系统下Linux（ubuntu）不能进入windows的NTFS分区之挂载错误问题解决/" itemprop="url">
                   双系统下Linux（ubuntu）不能进入windows的NTFS分区之挂载错误问题解决
                 </a>
@@ -1100,108 +1197,11 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2016/02/17/git/docker-安装gitlab-服务/" itemprop="url">
-                  docker 安装gitlab 服务
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-02-17T16:31:18+08:00" content="2016-02-17">
-              2016-02-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/管理工具/" itemprop="url" rel="index">
-                    <span itemprop="name">管理工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/17/git/docker-安装gitlab-服务/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/git/docker-安装gitlab-服务/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="Launch-a-postgresql-container"><a href="#Launch-a-postgresql-container" class="headerlink" title="Launch a postgresql container"></a>Launch a postgresql container</h2><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run --name gitlab-postgresql -d \</span><br><span class="line">    --env <span class="string">'DB_NAME=gitlabhq_production'</span> \</span><br><span class="line">    --env <span class="string">'DB_USER=gitlab'</span> --env <span class="string">'DB_PASS=password'</span> \</span><br><span class="line">    --volume /srv/docker/gitlab/<span class="symbol">postgresql:</span>/var/<span class="class"><span class="keyword">lib</span>/<span class="title">postgresql</span> \</span></span><br><span class="line">    sameersbn/<span class="symbol">postgresql:</span><span class="number">9.4</span>-<span class="number">12</span></span><br></pre></td></tr></table></figure> <h2 id="Launch-a-redis-container"><a href="#Launch-a-redis-container" class="headerlink" title="Launch a redis container"></a>Launch a redis container</h2><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run --name gitlab-redis -d \</span><br><span class="line">    --volume /srv/docker/gitlab/<span class="symbol">redis:</span>/var/<span class="class"><span class="keyword">lib</span>/<span class="title">redis</span> \</span></span><br><span class="line">    sameersbn/<span class="symbol">redis:</span>latest</span><br></pre></td></tr></table></figure> <h2 id="Launch-the-gitlab-container"><a href="#Launch-the-gitlab-container" class="headerlink" title="Launch the gitlab container"></a>Launch the gitlab container</h2><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run --name gitlab -d \</span><br><span class="line">    -<span class="ruby">-link gitlab-<span class="symbol">postgresql:</span>postgresql --link gitlab-<span class="symbol">redis:</span>redisio \</span><br><span class="line"></span>    -<span class="ruby">-publish <span class="number">10022</span><span class="symbol">:</span><span class="number">22</span> --publish <span class="number">10080</span><span class="symbol">:</span><span class="number">80</span> \</span><br><span class="line"></span>    -<span class="ruby">-env <span class="string">'GITLAB_PORT=10080'</span> --env <span class="string">'GITLAB_SSH_PORT=10022'</span> \</span><br><span class="line"></span>    -<span class="ruby">-env <span class="string">'GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alpha-numeric-string'</span> \</span><br><span class="line"></span>    -<span class="ruby">-volume /srv/docker/gitlab/<span class="symbol">gitlab:</span>/home/git/data \</span><br><span class="line"></span>    sameersbn/gitlab:8.4.2</span><br></pre></td></tr></table></figure> <h2 id="login"><a href="#login" class="headerlink" title="login"></a>login</h2><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">username:</span> root</span><br><span class="line"><span class="symbol">password:</span> <span class="number">5</span>iveL!fe</span><br></pre></td></tr></table></figure>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1242,7 +1242,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1256,7 +1256,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

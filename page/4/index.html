@@ -227,6 +227,103 @@
             
             
               
+                <a class="post-title-link" href="/2015/11/06/git/git学习总结/" itemprop="url">
+                  git学习总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-06T09:46:48+08:00" content="2015-11-06">
+              2015-11-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/管理工具/" itemprop="url" rel="index">
+                    <span itemprop="name">管理工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/06/git/git学习总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/06/git/git学习总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="从svn到git"><a href="#从svn到git" class="headerlink" title="从svn到git"></a>从svn到git</h2><p>两者都是优秀的版本管理工具（giter请不要鄙视svner）</p> <ul> <li>svn上手非常容易，操作简单</li> <li>git功能强大，但是要熟练使用分支不算容易</li> </ul> <p>git因为是分布式的，所以其核心就是分支（只有master分支情况下和svn差不多？），分支的意义在于，可以将项目代码按照功能、模块拆分成不同的分支。比如这个产品要加一个支付功能和一个登陆功能，可以创建两个分支，交给不同的开发人员并行开发。登陆功能先开发完，测试无误后合并改分支到master分支，master分支部署上线。支付功能虽然没有开发完成，但是在另一条分支上，所以产品上线和功能开发完全不受影响。这才是分布式开发的高效模式。</p> <p>被git坑了一个星期之后决心把官方文档看一下，结合实践经验进行了整理。</p> <hr>  <h2 id="新手常见问题"><a href="#新手常见问题" class="headerlink" title="新手常见问题"></a>新手常见问题</h2><ol> <li><p>如何查看有哪些分支？<br><code>git branch -a</code></p> </li> <li><p>如何强制检出/切换分支或分支指定文件<br><code>git checkout &lt;branch&gt; [file] [-f]</code><br>强制更新，以branch版本的代码为主</p> </li> <li><p>提交代码出现冲突冲突怎么办？<br><code>hint: Updates were rejected because the tip of your current branch is behind</code><br><code>hint: its remote counterpart. Integrate the remote changes (e.g.</code><br><code>hint: &#39;git pull ...&#39;) before pushing again.</code><br><code>hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</code><br>先切换分支，然后拉取分支上最新的代码覆盖到本地<br><code>git pull</code><br>添加或者提交代码，解决冲突之后<br><code>git push</code></p> </li> <li><p>如何新建分支<br><code>git checkout -b &lt;branch_name&gt;</code><br>本地建立 branch 並立即切換到新分支<br><code>git branch -m &lt;new_name&gt;</code><br>修改分支名称 </p> </li> <li><p>从远程仓库拉取代码到本地仓库，并建立跟踪关系<br><code>git clone http://xxx.git</code><br>或者<br><code>get clone git@xxx.git</code><br>然后<br><code>git checkout -b &lt;本地新分支名&gt; &lt;对应的远程分支名&gt;</code></p> </li> <li><p>远程仓库新建了一个分支，如何更新远程分支信息<br><code>git fetch &lt;remote base&gt;</code></p> </li> <li><p>如何在远程仓库新建一个分支<br><code>git branch &lt;branch name&gt;</code><br>新建一个本地分支，按照正常流程提交完代码后，推送到远程<br><code>git push &lt;remote base&gt; &lt;local branch&gt;:&lt;remote branch&gt;</code></p> </li> </ol> <h2 id="实用指令"><a href="#实用指令" class="headerlink" title="实用指令"></a>实用指令</h2><h3 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h3><p><code>git reset [file]</code><br>取消暂存 </p> <h3 id="remote"><a href="#remote" class="headerlink" title="remote"></a>remote</h3><p>查看远程仓库名 </p> <p><code>git remote -v</code><br>查看远程仓库url</p> <p><code>git remote add &lt;basename&gt; &lt;url&gt;</code><br>新增远程仓库</p> <p><code>git remote show &lt;basename&gt;</code><br>查看远程仓库详细信息</p> <p><code>git remote rename &lt;old basename&gt; &lt;new basename&gt;</code><br>重命名远程仓库</p> <h3 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h3><p>相当于fetch和merge</p> <h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3><p><code>git push [remote_branch] [local_branch]</code><br>推送本地仓库代码到远程仓库，相当于svn的commit</p> <p><code>git push &lt;remote base&gt; [tag name]</code><br>推送本地标签到远程仓库</p> <p><code>git push &lt;remote base&gt; &lt;remote branch&gt;:&lt;local branch&gt;</code><br>将本地分支推送到指定的远程分支</p> <p><code>git push &lt;remote base&gt; --delete &lt;remote branch&gt;</code><br>删除远程分支</p> <h3 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h3><p>查看标签（用来标记标志性的稳定版本信息）</p> <p><code>git tag -l &#39;[expression]&#39;</code><br>查看那符合正则表达式的</p> <p><code>git tag -a &lt;tag name&gt; -m &lt;comment&gt;</code><br>添加带注释的标签</p> <p><code>git tag -a &lt;tag name&gt; &lt;md5&gt;</code><br>对某个版本打标签</p> <p><code>git tag [tag name]</code><br>如果没有标签名，则为查看所有标签。带标签名则为新建标签</p> <h3 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h3><p><code>git merge &lt;branch name&gt;</code><br>将其他分支合并到本分支</p> <h3 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h3><p><code>git commit -a -m &#39;xx&#39;</code><br>暂存并提交</p> <h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h3><p><code>git branch</code><br>查看本地仓库分支</p> <p><code>git branch -v</code><br>查看本地仓库分支最后一次提交情况</p> <p><code>git branch -vv</code><br>查看分支跟踪情况</p> <p><code>git branch &lt;branch name&gt;</code><br>新建分支</p> <p><code>git branch -d &lt;branch name&gt;</code><br>删除分支</p> <p><code>git branch [--merged | --no-merged]</code><br>查看已合并|未合并的本地仓库分支</p> <p><code>git branch -u &lt;remote base&gt;/&lt;remote branch&gt;</code><br>修改当前跟踪分支</p> <h3 id="commit-1"><a href="#commit-1" class="headerlink" title="commit"></a>commit</h3><p><code>git commit -a -m &#39;xx&#39;</code><br>提交并且暂存暂存的方法</p> <h3 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h3><p><code>git checkout -- [file]</code><br>恢复文件</p> <p><code>git checkout -b [branchname] [tagname]</code><br>在特定的版本上创建一个新的分支并切换到此分支</p> <p><code>git checkout -b [local branch] [remote base]/[remote branch]</code><br>将远程分支检出到本地分支</p> <p><code>git checkout --track &lt;remote base&gt;/&lt;remote branch&gt;</code><br>让当前分支跟踪远程分支</p> <p><code>git checkout --track &lt;remote base&gt;/&lt;remote branch&gt;</code><br><code>git checkout -b &lt;local branch&gt; &lt;remote base&gt;/&lt;remote branch&gt;</code><br>让当前分支跟踪到远程分支。两条命令作用基本一致，不同的是第二条命令可以重命名检出的分支。</p> <h3 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h3><p><code>git rebase [basebranch]</code><br>变基是将一系列提交按照原有次序依次应用到另一分支上，而合并是把最终结果合在一起。</p> <h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><h3 id="查看配置"><a href="#查看配置" class="headerlink" title="查看配置"></a>查看配置</h3><p><code>git config -1</code></p> <h3 id="设置别名"><a href="#设置别名" class="headerlink" title="设置别名"></a>设置别名</h3><p><code>git config --global alias.&lt;name&gt; &lt;commend&gt;</code> </p> <h3 id="保存用户名和密码"><a href="#保存用户名和密码" class="headerlink" title="保存用户名和密码"></a>保存用户名和密码</h3><h4 id="对于http-s-协议，可以用下面命令临时缓存"><a href="#对于http-s-协议，可以用下面命令临时缓存" class="headerlink" title="对于http(s)协议，可以用下面命令临时缓存"></a>对于http(s)协议，可以用下面命令临时缓存</h4><p><code>git config --global credential.helper cache</code><br>开启linux缓存<br><code>git config --global credential.helper wincred</code><br>开启windows缓存</p> <h4 id="对于ssh协议，可以用ssh-key，具体教程网上很多"><a href="#对于ssh协议，可以用ssh-key，具体教程网上很多" class="headerlink" title="对于ssh协议，可以用ssh  key，具体教程网上很多"></a>对于ssh协议，可以用ssh key，具体教程网上很多</h4><p><a href="http://git-scm.com/book/zh/v2" target="_blank" rel="external">权威教程</a></p>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/11/05/redux/redux框架-介绍-三大原则/" itemprop="url">
                   redux框架-介绍(三大原则)
                 </a>
@@ -578,7 +675,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cio2ki26t003f0d55vnaguaue"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08h0037f855q5vxqjmp"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -691,7 +788,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cio2ki26p00370d552cdhpi4j"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08g0035f855u48x8k6f"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -804,7 +901,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cio2ki26r003c0d55nlgvu8s2"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08l003mf8558t4e17nn"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -917,7 +1014,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cio2ki26i002x0d55du6uy52k"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08d0031f855zrh6p4ge"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -1030,7 +1127,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cio2ki26j002z0d55gh10fm77"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08a002wf855p0on96xd"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -1143,7 +1240,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cio2ki26v003m0d55va8126kx"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08j003ff855hcjysn00"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -1160,119 +1257,6 @@
           <span itemprop="articleBody">
             
               <h2 id="Install-StrongLoop-安装到全局"><a href="#Install-StrongLoop-安装到全局" class="headerlink" title="Install StrongLoop 安装到全局"></a>Install StrongLoop 安装到全局</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g strongloop</span><br></pre></td></tr></table></figure> <h2 id="Create-app-创建一个应用"><a href="#Create-app-创建一个应用" class="headerlink" title="Create app 创建一个应用"></a>Create app 创建一个应用</h2><blockquote> <p>Create a “Hello World” LoopBack application.</p> <p>创建一个 “Hello World” 的 LoopBack 应用</p> </blockquote> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ slc loopback</span><br><span class="line">[?] Enter a directory name <span class="built_in">where</span> to create the project: hello-world</span><br><span class="line">[?] What\<span class="string">'s the name of your application? hello-world</span></span><br></pre></td></tr></table></figure>  <h2 id="Create-models-为应用创建一个模型"><a href="#Create-models-为应用创建一个模型" class="headerlink" title="Create models 为应用创建一个模型"></a>Create models 为应用创建一个模型</h2><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span> cd hello-world</span><br><span class="line"><span class="symbol">$</span> slc loopback:<span class="keyword">model</span></span><br></pre></td></tr></table></figure> <p>接下来会交互 模型的 值 按照您的需求输入</p> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[?] Enter the model name: person</span><br><span class="line">[?] <span class="keyword">Select</span> the <span class="keyword">data</span>-<span class="keyword">source</span> <span class="keyword">to</span> attach person <span class="keyword">to</span>: db (<span class="keyword">memory</span>)</span><br><span class="line">[?] Expose person via the REST API? Yes</span><br><span class="line">[?] Custom plural <span class="keyword">form</span> (used <span class="keyword">to</span> <span class="keyword">build</span> REST <span class="keyword">URL</span>): people</span><br><span class="line">Let<span class="string">'s add some person properties now.</span></span><br></pre></td></tr></table></figure> <p>创建模型的字段名称</p> <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter an empty <span class="keyword">property</span><span class="title"> </span>name when done.</span><br><span class="line">[?] <span class="keyword">Property</span><span class="title"> name:</span> firstname</span><br></pre></td></tr></table></figure> <p> 选择字段类型 上下键切换</p> <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> [?] Property type: (Use arrow keys)</span><br><span class="line">❯ string</span><br><span class="line">  number</span><br><span class="line">  boolean</span><br><span class="line">  object</span><br><span class="line"> <span class="built_in"> array</span><br><span class="line"></span>  date</span><br><span class="line">  buffer</span><br><span class="line">  geopoint</span><br><span class="line">  (other)</span><br></pre></td></tr></table></figure> <p> 是否是必填 默认为 N</p> <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="name">?</span>] Required? (<span class="name">y/N</span>) y</span><br></pre></td></tr></table></figure> <h2 id="Run-the-application-运行-这个应用"><a href="#Run-the-application-运行-这个应用" class="headerlink" title="Run the application 运行 这个应用"></a>Run the application 运行 这个应用</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ node .</span><br><span class="line">Browse your REST API at <span class="string">http:</span><span class="comment">//0.0.0.0:3000/explorer</span></span><br><span class="line">Web server listening <span class="string">at:</span> <span class="string">http:</span><span class="comment">//0.0.0.0:3000/</span></span><br></pre></td></tr></table></figure> <p>浏览器打开 <a href="http://localhost:3000/explorer" target="_blank" rel="external">http://localhost:3000/explorer</a></p> <p>就可以看到 所有 http 请求的 api 接口 ,这里提供了很方便的测试，棒棒的</p>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/25/atom/atom使用帮助/" itemprop="url">
-                  atom使用帮助
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-25T18:30:37+08:00" content="2015-10-25">
-              2015-10-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/开发工具/" itemprop="url" rel="index">
-                    <span itemprop="name">开发工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/25/atom/atom使用帮助/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/25/atom/atom使用帮助/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" rel="gallery_cio2ki25n001l0d55ebe4ad3g"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://zanjs.b0.upaiyun.com/image/2/47/c7766d97ed2718ad7bd94dfc134e9.png" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><p>一款编辑器入门还是很简单的，学会怎么样创建，打开，编辑，保存文件就行。<br>剩下的就是慢慢熟悉，Atom 会不断带给你惊喜，如果你想简化或者加快平时工作中的某些任务或者动作，你就可以去搜索一下，Atom 要么本身就为你提供你需要的功能，没有的话，也可以通过现成的插件（Packages）或者自定义的方式解决。</p> <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>如果你顺着我们的路线走过来，你的电脑上应该已经安装好了系统的包管理工具，<br>Windows 上的 Chocolatey，Mac 上的 Homebrew，Atom 编辑器可以通过包管理工具来安装。</p>  <h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>用管理员的身份打开 Powershell，然后用 choco install 去安装 Atom：</p> <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco <span class="keyword">install</span> atom</span><br></pre></td></tr></table></figure> <blockquote> <p>提示：Atom 编辑器体积挺大，在国内由于网络环境问题，在下载的时候会比较慢，<br>有时也可能出现不能连接到远程服务器的错误，解决的方法就是，准备 “梯子” 。</p> </blockquote> <h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>打开系统的 终端，然后用 Homebrew 的 brew install 命令去安装 Atom：</p> <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span>install Caskroom/cask/atom</span><br></pre></td></tr></table></figure> <p>在命令行下面安装完 Atom 以后，可以输入 atom ，后面指定一个目录，这样会用 Atom 编辑器打开这个目录。<br>另外 Atom 编辑器还自带了一个包管理工具叫 apm （Atom Package Manager），<br>用这个工具可以在命令行下面为编辑器去安装包 （Package） ，包就是 Atom 的插件。</p> <h2 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h2><p>Atom 核心的功能是由 Core Packages（核心包） 提供的，另外还有 Community Packages（社区包），<br>就是由社区成员自己开发并且分享出来的 Package。Atom 可以通过安装这些 Package 来扩展编辑器的功能。<br>安装 Package 可以在 Atom 的配置界面上去搜索，然后安装，也可以使用 apm 在命令行下面管理编辑器的 Package 。</p> <p>Packages 列表：<a href="https://atom.io/packages" target="_blank" rel="external">https://atom.io/packages</a></p> <p><img src="http://zanjs.b0.upaiyun.com/image/a/0f/ae18039ff2750d0a0d7de123108a4.png" alt="atom"></p> <h3 id="安装包：通过配置界面"><a href="#安装包：通过配置界面" class="headerlink" title="安装包：通过配置界面"></a>安装包：通过配置界面</h3><ul> <li>打开 Atom 编辑器。</li> <li>打开 Atom 的配置界面（Windows：ctrl + , Mac：command + , ）。</li> <li>点击边栏上的 Install（安装）。</li> <li>在界面上的 Install Packages 下面，选中 Packages 标签，然后搜索你想要安装的 Package。</li> <li>在搜索结果找到想要的 Package ，点击 Install 安装。</li> </ul> <p><img src="http://zanjs.b0.upaiyun.com/image/5/bb/f3f7dd7cd5ca08f8d523840d1cc2e.png" alt="atom 编辑器"></p> <h3 id="安装包：通过-apm"><a href="#安装包：通过-apm" class="headerlink" title="安装包：通过 apm"></a>安装包：通过 apm</h3><ul> <li>打开命令行工具，Windows 用 Powershell，Mac 可以使用终端。</li> <li>搜索包用的是 apm search &lt;关键词&gt; 。</li> <li>找到想要的包以后，再用 apm install &lt;包的名字&gt;。</li> </ul> <blockquote> <p>下面，你可以搜索一个叫 Localization 的包，然后安装一下，这个包会为 Atom 的菜单栏提供一个中文翻译。<br>下面我们再看一下怎么样去配置与管理包。</p> </blockquote> <h2 id="管理包"><a href="#管理包" class="headerlink" title="管理包"></a>管理包</h2><p>打开配置界面，在边栏上选中 Packages ，在这个界面上的 Communtity Packages 区域里，你可以找到自己安装的来自社区成员分享的包。<br>Core Packages 下面是 Atom 编辑器核心自带的包。</p> <p><img src="http://zanjs.b0.upaiyun.com/image/d/a6/62c3be1ede689b80f9b3d9595fa7f.png" alt=""></p> <p>这里会显示包的名字，还有介绍，不想用的包，可以点击 Disable 按钮禁用它，或者直接点击 Uninstall 卸载掉包，点击 Settings 按钮可以打开包的配置界面，在这个界面上，你可以找到包的主页，说明的文档，可以查看包的源文件，还有相关的配置与快捷键。</p> <p>下面打开之前安装的 Localization 这个包的配置界面，然后在 Settings 区域里面，在 Current Language 下面的文本框里输入：Chinese - Simplified ，这样会把菜单栏的语言设置成简体中文，如果设置成 Chinese - Traditional，会把菜单栏设置成繁体中文。输入以后，用鼠标点一下浏览器的其它的地方，这样编辑器会保存你的配置。</p> <p>完成以后，想让设置生效，可以关掉并且重新打开编辑器，或者可以刷新一下编辑器。</p> <blockquote> <p>刷新编辑器的快捷键：</p> </blockquote> <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Mac</span>    ：ctrl + alt + command + <span class="keyword">L</span></span><br><span class="line">Windows：ctrl + alt + <span class="built_in">R</span></span><br></pre></td></tr></table></figure> <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>编辑器没有使用的门槛，打开以后，你就已经知道怎么用了，不过有些小技巧可以了解一下，可以提高工作效率。<br>先去下载点东西，HTML5Boilerplate（<a href="https://html5boilerplate.com/），这个东西可以作为项目的基础，" target="_blank" rel="external">https://html5boilerplate.com/），这个东西可以作为项目的基础，</a><br>以后我们会再跟它见面，以后在介绍前端包管理的时候，这个下载的动作可以用命令去做。<br>下载以后，解压一下，把解压以后的目录重命名成你自己想要创建的项目的名字，<br>然后用编辑器打开这个项目的目录（<code>Ｍac：command + O，Windows：ctrl + shift + O</code>）。</p> <p><img src="http://zanjs.b0.upaiyun.com/image/c/2e/7334fcbcd7a81d474c014bacd030f.png" alt=""></p> <p>编辑器的工作区有两部分组成，左边是编辑器的 Tree View（树形视图），上面会显示你打开的目录里面的东西，<br>右边是编辑器，在这可以处理打开的文件，最上面是标签栏，点击不同的标签可以打开对应的文件。</p> <h2 id="树形视图"><a href="#树形视图" class="headerlink" title="树形视图"></a>树形视图</h2><p>你想打开在树形视图上的文件，创建新的文件或者目录，展开与收起目录，这些动作可以用鼠标完成，或者也可以使用键盘上的按键。<br>想要在树形视图上操作，你需要把焦点放到树形视图上，切换焦点使用 ctrl + 0 。<br>你会发现树形视图上的背景颜色会有点变化，具体是什么变化，取决于你的编辑器使用的主题。</p> <p>查看跟树形视图相关的命令，先确定你的焦点在树形视图上，然后打开命令面板（Command Palette），用快捷键：</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：<span class="built_in">command</span> + <span class="built_in">shift</span> + P</span><br><span class="line">Windows：ctrl + <span class="built_in">shift</span> + P</span><br></pre></td></tr></table></figure> <p>搜索一下 tree view ，列出的就是跟树形视图相关的命令。</p> <p><img src="http://zanjs.b0.upaiyun.com/image/e/c4/1d687351bddbb3ba974a9f5342657.png" alt="tree view "></p> <ul> <li>向下移动：↓ 或 J</li> <li>向上移动：↑ 或 K</li> <li>展开目录：→ 或 L</li> <li>收起目录：← 或 H</li> <li>打开文件：enter 回车</li> </ul> <blockquote> <p>多试几次上面的快捷键，把它变成自己的肌肉记忆。</p> </blockquote> <h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><p>先随便打开几个项目里的文件，比如 humans.txt，index.html，还有 css/main.css 。<br>打开的文件会出现在编辑器的标签栏上，除了用鼠标点击标签可以打开对应的文件，也可以使用快捷键：</p> <p>打开下一个标签面板</p> <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：alt + <span class="keyword">command</span> + →</span><br><span class="line">Windows：ctrl + pagedown</span><br></pre></td></tr></table></figure> <p>打开上一个标签面板</p> <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：alt + <span class="keyword">command</span> + ←</span><br><span class="line">Windows：ctrl + pageup</span><br></pre></td></tr></table></figure> <blockquote> <p>在 Mac 上，你还可以使用 command + 数字 ，打开对应的标签面板。</p> </blockquote> <p>关闭标签面板</p> <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Mac</span>    ：command + <span class="built_in">W</span></span><br><span class="line">Windows：ctrl + <span class="built_in">W</span></span><br></pre></td></tr></table></figure> <h2 id="分离面板"><a href="#分离面板" class="headerlink" title="分离面板"></a>分离面板</h2><p>在编辑器上打开的文件可以分离到不同的面板上显示，你可以把编辑器分隔成上，下，左，右，四个部分。<br>方法是，找到要分离显示的标签面板，鼠标右键点击，然后选择 Split Up，Split Down，Split Left 或者 Split Right。</p> <p><img src="http://zanjs.b0.upaiyun.com/image/2/a4/8a77269fd1060245153c88b0bb187.png" alt=""></p> <p>这些动作也都有对应的快捷键，可以打开命令面板（Mac：command + shift + P，Windows：ctrl + shift + P），<br>然后搜索 Pane ，这样会显示出面板相关的操作命令。</p> <blockquote> <p>分离到上面</p> </blockquote> <figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：command + <span class="keyword">K</span> ↑</span><br><span class="line">Windows：ctrl + <span class="keyword">K</span> ↑</span><br></pre></td></tr></table></figure> <blockquote> <p>分离到下面</p> </blockquote> <figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：command + <span class="keyword">K</span> ↓</span><br><span class="line">Windows：ctrl + <span class="keyword">K</span> ↓</span><br></pre></td></tr></table></figure> <blockquote> <p>分离到左面</p> </blockquote> <figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：command + <span class="keyword">K</span> ←</span><br><span class="line">Windows：ctrl + <span class="keyword">K</span> ←</span><br></pre></td></tr></table></figure> <blockquote> <p>分离到右面</p> </blockquote> <figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：command + <span class="keyword">K</span> →</span><br><span class="line">Windows：ctrl + <span class="keyword">K</span> →</span><br></pre></td></tr></table></figure> <blockquote> <p>注意上面这些快捷键的用法，是先按一下 command + K 或者 ctrl + K ，然后松开按键，再按一下上，下，左，右这些箭头按键。</p> </blockquote> <h2 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h2><p>项目里的文件多了，想找到对应的文件，用鼠标点出这个文件很费事，可以用搜索找到文件。</p> <p>在已经打开的文件里找到你想要的文件：</p> <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：<span class="keyword">command</span> + <span class="title">B</span></span><br><span class="line">Windows：ctrl + B</span><br></pre></td></tr></table></figure> <p><img src="http://zanjs.b0.upaiyun.com/image/4/1b/d643f0a52d1e1457321f8b6b61433.png" alt=""></p> <p>在整个项目里找到你需要的文件：</p> <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：<span class="keyword">command</span> + <span class="title">P</span></span><br><span class="line">Windows：ctrl + P</span><br></pre></td></tr></table></figure> <p>查找文件里的内容</p> <p>你可以搜索包含特定内容的文件，比如在当前打开的文件里搜索，或者也可以在整个项目里搜索，<br>找到以后，可以把搜索的内容替换成新的内容。</p> <p>在当前打开的文件中搜索</p> <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Mac</span>    ：command + <span class="built_in">F</span></span><br><span class="line">Windows：ctrl + <span class="built_in">F</span></span><br></pre></td></tr></table></figure> <p>我想知道有没有查找下一处或者上一处的快捷键，<br>打开命令面板（Mac：command + shift + P，Windows：ctrl + shift + P），搜索 find ，仔细阅读一下，<br>你会看到 Find Next ， Find Previous 还有跟它们对应的快捷键。</p> <p>查找下一个地方</p> <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：<span class="keyword">command</span> + <span class="title">G</span></span><br><span class="line">Windows：F3</span><br></pre></td></tr></table></figure> <p>查找上一个地方</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：<span class="built_in">shift</span> + <span class="built_in">command</span> + G</span><br><span class="line">Windows：<span class="built_in">shift</span> + F3</span><br></pre></td></tr></table></figure> <p>在整个项目中搜索</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac    ：<span class="built_in">shift</span> + <span class="built_in">command</span> + F</span><br><span class="line">Windows：<span class="built_in">shift</span> + ctrl + F</span><br></pre></td></tr></table></figure> <p>下面，是我搜索了项目中的 header ，回车以后，会显示出找到的结果，<br>这个结果显示了包含搜索的内容的文件，还有出现这个内容的位置，点一下，会打开出现这个搜索内容的文件，并且会定位到对应的位置上。</p> <p><img src="http://zanjs.b0.upaiyun.com/image/6/94/e6a866d83ab1e28d8bf6b0cb81b9e.png" alt="整个项目"></p> <h2 id="读后感"><a href="#读后感" class="headerlink" title="读后感"></a>读后感</h2><p>小伙伴们 辛苦了， 能读到这里，一定吐了吧 ，<code>O(∩_∩)O哈哈~</code> , 写的我也快吐了, 排版的不是很好 见谅一下吧。</p> <p>下面欣赏一下美图吧！</p> <p><img src="http://zanjs.b0.upaiyun.com/image/5/09/af43f4834b28c25f60bfcfb3ec523.jpeg" alt="美图"></p>
             
           </span>
         
@@ -1338,7 +1322,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

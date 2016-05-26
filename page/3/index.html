@@ -227,6 +227,103 @@
             
             
               
+                <a class="post-title-link" href="/2015/12/28/git/git-fetch-的简单用法-更新远程代码到本地仓库/" itemprop="url">
+                  git fetch 的简单用法:更新远程代码到本地仓库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-28T15:17:40+08:00" content="2015-12-28">
+              2015-12-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/管理工具/" itemprop="url" rel="index">
+                    <span itemprop="name">管理工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/28/git/git-fetch-的简单用法-更新远程代码到本地仓库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/28/git/git-fetch-的简单用法-更新远程代码到本地仓库/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="查看远程仓库"><a href="#查看远程仓库" class="headerlink" title="查看远程仓库"></a>查看远程仓库</h2><blockquote> <p>git remote -v</p> </blockquote> <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  git@github<span class="selector-class">.com</span>:zanjs/ippt<span class="selector-class">.git</span> (fetch)</span><br><span class="line">origin  git@github<span class="selector-class">.com</span>:zanjs/ippt<span class="selector-class">.git</span> (push)</span><br></pre></td></tr></table></figure> <p>从上面的结果可以看出，远程仓库有一个 origin</p> <p>##　从远程获取最新版本到本地</p> <blockquote> <p>git fetch origin master</p> </blockquote> <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin <span class="keyword">master</span></span><br><span class="line"><span class="title">remote</span>: Counting objects: <span class="number">17</span>, done.</span><br><span class="line">remote: Compressing objects: <span class="number">100</span>% (<span class="number">7</span>/<span class="number">7</span>), done.</span><br><span class="line">remote: Total <span class="number">17</span> (delta <span class="number">11</span>), reused <span class="number">15</span> (delta <span class="number">9</span>), pack-reused <span class="number">0</span></span><br><span class="line">Unpacking objects: <span class="number">100</span>% (<span class="number">17</span>/<span class="number">17</span>), done.</span><br><span class="line">From github.com:zanjs/ippt</span><br><span class="line"> * branch            <span class="keyword">master</span>     <span class="title">-&gt; FETCH_HEAD</span></span><br><span class="line">   <span class="number">7</span>c6a6db..<span class="number">8</span>dafd85  <span class="keyword">master</span>     <span class="title">-&gt; origin</span>/<span class="literal">master</span></span><br></pre></td></tr></table></figure> <p>$ git fetch origin master 这句的意思是：<br>从远程的origin仓库的master分支下载代码到本地的origin master</p> <h2 id="比较本地的仓库和远程参考的区别"><a href="#比较本地的仓库和远程参考的区别" class="headerlink" title="比较本地的仓库和远程参考的区别"></a>比较本地的仓库和远程参考的区别</h2><blockquote> <p>git log -p master.. origin/master</p> </blockquote> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ git log -p master.. origin/master</span><br><span class="line"><span class="keyword">commit</span> <span class="number">8</span>dafd85f249f1d20275052a402657a746a51111c</span><br><span class="line">Author: zanjs &lt;root@zanjs.com&gt;</span><br><span class="line"><span class="built_in">Date</span>:   Sat <span class="built_in">Dec</span> <span class="number">26</span> <span class="number">13</span>:<span class="number">37</span>:<span class="number">42</span> <span class="number">2015</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    ippt <span class="keyword">By</span> gitpush</span><br><span class="line"></span><br><span class="line">diff <span class="comment">--git a/package.json b/package.json</span></span><br><span class="line"><span class="keyword">index</span> <span class="number">21</span>aac2b.<span class="number">.43523</span>a8 <span class="number">100644</span></span><br><span class="line"><span class="comment">--- a/package.json</span></span><br><span class="line">+++ b/package.json</span><br><span class="line">@@ <span class="number">-1</span>,<span class="number">6</span> +<span class="number">1</span>,<span class="number">6</span> @@</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="string">"name"</span>: <span class="string">"ippt"</span>,</span><br><span class="line">-  <span class="string">"version"</span>: <span class="string">"0.0.7"</span>,</span><br><span class="line">+  <span class="string">"version"</span>: <span class="string">"0.0.8"</span>,</span><br><span class="line">   <span class="string">"description"</span>: <span class="string">"ppt,nodejs,javascript"</span>,</span><br><span class="line">   <span class="string">"main"</span>: <span class="string">"./bin/ippt"</span>,</span><br><span class="line">   <span class="string">"bin"</span>: &#123; <span class="string">"ppt"</span>: <span class="string">"./bin/ippt"</span> &#125;,</span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span> <span class="number">8</span>ea5978c749b71eace036f6ba05424e24b947e6b</span><br><span class="line">Author: zanjs &lt;root@zanjs.com&gt;</span><br><span class="line"><span class="built_in">Date</span>:   Sat <span class="built_in">Dec</span> <span class="number">26</span> <span class="number">13</span>:<span class="number">36</span>:<span class="number">02</span> <span class="number">2015</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">:</span><br></pre></td></tr></table></figure> <p>我的本地代码和远程代码不相同,由于是在2台电脑上做了提交</p> <h2 id="把远程下载下来的代码合并到本地仓库，远程的和本地的合并"><a href="#把远程下载下来的代码合并到本地仓库，远程的和本地的合并" class="headerlink" title="把远程下载下来的代码合并到本地仓库，远程的和本地的合并"></a>把远程下载下来的代码合并到本地仓库，远程的和本地的合并</h2><blockquote> <p>git merge origin/master</p> </blockquote> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Administrator@WIN-9PH4ISN44NM MINGW64 /e/zan/coding/panli/ppt/ippt (master)</span><br><span class="line">$ git <span class="keyword">merge</span> origin/<span class="keyword">master</span></span><br><span class="line">Updating <span class="number">7</span>c6a6db.<span class="number">.8</span>dafd85</span><br><span class="line"><span class="keyword">Fast</span>-forward</span><br><span class="line"> assets/js/nodeppt.js  |  <span class="number">4</span> ++<span class="comment">--</span></span><br><span class="line"> <span class="keyword">bin</span>/&#123;ippt.js =&gt; ippt&#125; |  <span class="number">0</span></span><br><span class="line"> lib/server.js         | <span class="number">12</span> ++++++<span class="comment">------</span></span><br><span class="line"> package.json          |  <span class="number">8</span> ++++<span class="comment">----</span></span><br><span class="line"> <span class="keyword">template</span>/markdown.ejs |  <span class="number">2</span> +-</span><br><span class="line"> up.md                 |  <span class="number">8</span> ++++++++</span><br><span class="line"> <span class="number">6</span> files <span class="keyword">changed</span>, <span class="number">21</span> insertions(+), <span class="number">13</span> deletions(-)</span><br><span class="line"> <span class="keyword">rename</span> <span class="keyword">bin</span>/&#123;ippt.js =&gt; ippt&#125; (<span class="number">100</span>%)</span><br><span class="line"> <span class="keyword">create</span> <span class="keyword">mode</span> <span class="number">100644</span> up.md</span><br></pre></td></tr></table></figure> <p>由于远程的是最新的 所以需要更新我本地的代码</p>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/12/23/nodejs/Node-js文件系统、路径的操作函数/" itemprop="url">
                   Node.js文件系统、路径的操作学习笔记
                 </a>
@@ -1063,104 +1160,7 @@
         
           <span itemprop="articleBody">
             
-              <h2 id="基础块"><a href="#基础块" class="headerlink" title="基础块"></a>基础块</h2><h3 id="Help查看命令提示"><a href="#Help查看命令提示" class="headerlink" title="Help查看命令提示"></a>Help查看命令提示</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.help</span>();</span><br><span class="line"></span><br><span class="line">db<span class="selector-class">.yourColl</span><span class="selector-class">.help</span>();</span><br><span class="line"></span><br><span class="line">db<span class="selector-class">.youColl</span><span class="selector-class">.find</span>()<span class="selector-class">.help</span>();</span><br><span class="line"></span><br><span class="line">rs<span class="selector-class">.help</span>();</span><br></pre></td></tr></table></figure> <h3 id="查询所有数据库"><a href="#查询所有数据库" class="headerlink" title="查询所有数据库"></a>查询所有数据库</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show </span>dbs<span class="comment">;</span></span><br></pre></td></tr></table></figure> <h3 id="切换-创建数据库"><a href="#切换-创建数据库" class="headerlink" title="切换/创建数据库"></a>切换/创建数据库</h3><blockquote> <p> 当创建一个集合(table)的时候会自动创建当前数据库</p> </blockquote> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">DBName</span>;</span><br></pre></td></tr></table></figure> <h3 id="查看当前使用的数据库"><a href="#查看当前使用的数据库" class="headerlink" title="查看当前使用的数据库"></a>查看当前使用的数据库</h3><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.getName()<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">db<span class="comment">;</span></span><br></pre></td></tr></table></figure> <h3 id="显示数据库列表"><a href="#显示数据库列表" class="headerlink" title="显示数据库列表"></a>显示数据库列表</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show </span>dbs<span class="comment">;</span></span><br></pre></td></tr></table></figure> <h3 id="显示当前数据库中的集合（类似关系数据库中的表）"><a href="#显示当前数据库中的集合（类似关系数据库中的表）" class="headerlink" title="显示当前数据库中的集合（类似关系数据库中的表）"></a>显示当前数据库中的集合（类似关系数据库中的表）</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show </span>collections<span class="comment">;</span></span><br></pre></td></tr></table></figure> <h3 id="显示用户"><a href="#显示用户" class="headerlink" title="显示用户"></a>显示用户</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure> <h3 id="从指定主机上克隆数据库"><a href="#从指定主机上克隆数据库" class="headerlink" title="从指定主机上克隆数据库"></a>从指定主机上克隆数据库</h3><blockquote> <p>将指定机器上的数据库的数据克隆到当前数据库</p> </blockquote> <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">db</span><span class="selector-class">.cloneDatabase</span>(“127<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.1</span>”);</span><br></pre></td></tr></table></figure> <h3 id="从指定的机器上复制指定数据库数据到某个数据库"><a href="#从指定的机器上复制指定数据库数据到某个数据库" class="headerlink" title="从指定的机器上复制指定数据库数据到某个数据库"></a>从指定的机器上复制指定数据库数据到某个数据库</h3><blockquote> <p>将本机的mydb的数据复制到temp数据库中</p> </blockquote> <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.copyDatabase</span>(<span class="string">"mydb"</span>, <span class="string">"temp"</span>, <span class="string">"127.0.0.1"</span>);</span><br></pre></td></tr></table></figure> <h3 id="删除当前使用数据库"><a href="#删除当前使用数据库" class="headerlink" title="删除当前使用数据库"></a>删除当前使用数据库</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.dropDatabase</span>();</span><br></pre></td></tr></table></figure> <h3 id="修复当前数据库"><a href="#修复当前数据库" class="headerlink" title="修复当前数据库"></a>修复当前数据库</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.repairDatabase</span>();</span><br></pre></td></tr></table></figure> <blockquote> <p>db和getName方法是一样的效果，都可以查询当前使用的数据库</p> </blockquote> <h3 id="显示当前db状态"><a href="#显示当前db状态" class="headerlink" title="显示当前db状态"></a>显示当前db状态</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.stats</span>();</span><br></pre></td></tr></table></figure> <h3 id="当前db版本"><a href="#当前db版本" class="headerlink" title="当前db版本"></a>当前db版本</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.version</span>();</span><br></pre></td></tr></table></figure> <h3 id="查看当前db的链接机器地址"><a href="#查看当前db的链接机器地址" class="headerlink" title="查看当前db的链接机器地址"></a>查看当前db的链接机器地址</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.getMongo</span>();</span><br></pre></td></tr></table></figure>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/11/09/vscode/Mac命令行用Visual-Studio-Code编辑器打开/" itemprop="url">
-                  Mac命令行用Visual Studio Code编辑器打开
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-11-09T15:12:22+08:00" content="2015-11-09">
-              2015-11-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/开发工具/" itemprop="url" rel="index">
-                    <span itemprop="name">开发工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/09/vscode/Mac命令行用Visual-Studio-Code编辑器打开/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/09/vscode/Mac命令行用Visual-Studio-Code编辑器打开/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="Visual-Studio-Code-不卡了"><a href="#Visual-Studio-Code-不卡了" class="headerlink" title="Visual Studio Code 不卡了"></a>Visual Studio Code 不卡了</h2><p>前些日子一直在用 Atom 编辑器 ，很喜欢代码的面向，可用了些时间后 感觉越来越卡。<br>于是上手 Visual Studio Code，听说不卡！ O(∩_∩)O哈哈~</p> <h2 id="Setting-up-Visual-Studio-Code"><a href="#Setting-up-Visual-Studio-Code" class="headerlink" title="Setting up Visual Studio Code"></a>Setting up Visual Studio Code</h2><p>Getting up and running with VS Code is quick and easy. Follow the platform specific guides below as well as the list of handy tools.</p> <h3 id="Mac-OS-X"><a href="#Mac-OS-X" class="headerlink" title="Mac OS X"></a>Mac OS X</h3><ol> <li><a href="http://go.microsoft.com/fwlink/?LinkID=534106" target="_blank" rel="external">Download Visual Studio Code</a> for Mac OS X.</li> <li>Double-click on VSCode-osx.zip to expand the contents.</li> <li>Drag Visual Studio Code.app to the Applications folder, making it available in the Launchpad.</li> <li>Add VS Code to your Dock by right-clicking on the icon and choosing Options, Keep in Dock.</li> </ol> <blockquote> <p>Tip: If you want to run VS Code from the terminal, append the following to your ~/.bash_profile file (~/.zshrc in case you use zsh).</p> </blockquote> <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code () &#123; VSCODE_CWD=<span class="string">"$PWD"</span> <span class="keyword">open</span> -<span class="keyword">n</span> -b <span class="string">"com.microsoft.VSCode"</span> --<span class="keyword">args</span> $* ;&#125;</span><br></pre></td></tr></table></figure> <p>Now, you can simply type code . in any folder to start editing files in that folder.</p> <p>参考 <a href="https://code.visualstudio.com/Docs/editor/setup" target="_blank" rel="external">https://code.visualstudio.com/Docs/editor/setup</a></p>
+              <h2 id="基础块"><a href="#基础块" class="headerlink" title="基础块"></a>基础块</h2><h3 id="Help查看命令提示"><a href="#Help查看命令提示" class="headerlink" title="Help查看命令提示"></a>Help查看命令提示</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.help</span>();</span><br><span class="line"></span><br><span class="line">db<span class="selector-class">.yourColl</span><span class="selector-class">.help</span>();</span><br><span class="line"></span><br><span class="line">db<span class="selector-class">.youColl</span><span class="selector-class">.find</span>()<span class="selector-class">.help</span>();</span><br><span class="line"></span><br><span class="line">rs<span class="selector-class">.help</span>();</span><br></pre></td></tr></table></figure> <h3 id="查询所有数据库"><a href="#查询所有数据库" class="headerlink" title="查询所有数据库"></a>查询所有数据库</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show </span>dbs<span class="comment">;</span></span><br></pre></td></tr></table></figure> <h3 id="切换-创建数据库"><a href="#切换-创建数据库" class="headerlink" title="切换/创建数据库"></a>切换/创建数据库</h3><blockquote> <p> 当创建一个集合(table)的时候会自动创建当前数据库</p> </blockquote> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">DBName</span>;</span><br></pre></td></tr></table></figure> <h3 id="查看当前使用的数据库"><a href="#查看当前使用的数据库" class="headerlink" title="查看当前使用的数据库"></a>查看当前使用的数据库</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.getName</span>();</span><br><span class="line"></span><br><span class="line">db;</span><br></pre></td></tr></table></figure> <h3 id="显示数据库列表"><a href="#显示数据库列表" class="headerlink" title="显示数据库列表"></a>显示数据库列表</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show </span>dbs<span class="comment">;</span></span><br></pre></td></tr></table></figure> <h3 id="显示当前数据库中的集合（类似关系数据库中的表）"><a href="#显示当前数据库中的集合（类似关系数据库中的表）" class="headerlink" title="显示当前数据库中的集合（类似关系数据库中的表）"></a>显示当前数据库中的集合（类似关系数据库中的表）</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show </span>collections<span class="comment">;</span></span><br></pre></td></tr></table></figure> <h3 id="显示用户"><a href="#显示用户" class="headerlink" title="显示用户"></a>显示用户</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure> <h3 id="从指定主机上克隆数据库"><a href="#从指定主机上克隆数据库" class="headerlink" title="从指定主机上克隆数据库"></a>从指定主机上克隆数据库</h3><blockquote> <p>将指定机器上的数据库的数据克隆到当前数据库</p> </blockquote> <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">db</span><span class="selector-class">.cloneDatabase</span>(“127<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.1</span>”);</span><br></pre></td></tr></table></figure> <h3 id="从指定的机器上复制指定数据库数据到某个数据库"><a href="#从指定的机器上复制指定数据库数据到某个数据库" class="headerlink" title="从指定的机器上复制指定数据库数据到某个数据库"></a>从指定的机器上复制指定数据库数据到某个数据库</h3><blockquote> <p>将本机的mydb的数据复制到temp数据库中</p> </blockquote> <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.copyDatabase</span>(<span class="string">"mydb"</span>, <span class="string">"temp"</span>, <span class="string">"127.0.0.1"</span>);</span><br></pre></td></tr></table></figure> <h3 id="删除当前使用数据库"><a href="#删除当前使用数据库" class="headerlink" title="删除当前使用数据库"></a>删除当前使用数据库</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.dropDatabase</span>();</span><br></pre></td></tr></table></figure> <h3 id="修复当前数据库"><a href="#修复当前数据库" class="headerlink" title="修复当前数据库"></a>修复当前数据库</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.repairDatabase</span>();</span><br></pre></td></tr></table></figure> <blockquote> <p>db和getName方法是一样的效果，都可以查询当前使用的数据库</p> </blockquote> <h3 id="显示当前db状态"><a href="#显示当前db状态" class="headerlink" title="显示当前db状态"></a>显示当前db状态</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.stats</span>();</span><br></pre></td></tr></table></figure> <h3 id="当前db版本"><a href="#当前db版本" class="headerlink" title="当前db版本"></a>当前db版本</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.version</span>();</span><br></pre></td></tr></table></figure> <h3 id="查看当前db的链接机器地址"><a href="#查看当前db的链接机器地址" class="headerlink" title="查看当前db的链接机器地址"></a>查看当前db的链接机器地址</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.getMongo</span>();</span><br></pre></td></tr></table></figure>
             
           </span>
         
@@ -1226,21 +1226,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

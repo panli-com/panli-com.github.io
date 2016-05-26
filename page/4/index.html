@@ -227,6 +227,103 @@
             
             
               
+                <a class="post-title-link" href="/2015/11/09/vscode/Mac命令行用Visual-Studio-Code编辑器打开/" itemprop="url">
+                  Mac命令行用Visual Studio Code编辑器打开
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-09T15:12:22+08:00" content="2015-11-09">
+              2015-11-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/09/vscode/Mac命令行用Visual-Studio-Code编辑器打开/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/09/vscode/Mac命令行用Visual-Studio-Code编辑器打开/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="Visual-Studio-Code-不卡了"><a href="#Visual-Studio-Code-不卡了" class="headerlink" title="Visual Studio Code 不卡了"></a>Visual Studio Code 不卡了</h2><p>前些日子一直在用 Atom 编辑器 ，很喜欢代码的面向，可用了些时间后 感觉越来越卡。<br>于是上手 Visual Studio Code，听说不卡！ O(∩_∩)O哈哈~</p> <h2 id="Setting-up-Visual-Studio-Code"><a href="#Setting-up-Visual-Studio-Code" class="headerlink" title="Setting up Visual Studio Code"></a>Setting up Visual Studio Code</h2><p>Getting up and running with VS Code is quick and easy. Follow the platform specific guides below as well as the list of handy tools.</p> <h3 id="Mac-OS-X"><a href="#Mac-OS-X" class="headerlink" title="Mac OS X"></a>Mac OS X</h3><ol> <li><a href="http://go.microsoft.com/fwlink/?LinkID=534106" target="_blank" rel="external">Download Visual Studio Code</a> for Mac OS X.</li> <li>Double-click on VSCode-osx.zip to expand the contents.</li> <li>Drag Visual Studio Code.app to the Applications folder, making it available in the Launchpad.</li> <li>Add VS Code to your Dock by right-clicking on the icon and choosing Options, Keep in Dock.</li> </ol> <blockquote> <p>Tip: If you want to run VS Code from the terminal, append the following to your ~/.bash_profile file (~/.zshrc in case you use zsh).</p> </blockquote> <figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">code</span> () &#123; VSCODE_CWD=<span class="string">"$PWD"</span> <span class="keyword">open</span> -n -b <span class="string">"com.microsoft.VSCode"</span> --args $* ;&#125;</span><br></pre></td></tr></table></figure> <p>Now, you can simply type code . in any folder to start editing files in that folder.</p> <p>参考 <a href="https://code.visualstudio.com/Docs/editor/setup" target="_blank" rel="external">https://code.visualstudio.com/Docs/editor/setup</a></p>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/11/06/git/git学习总结/" itemprop="url">
                   git学习总结
                 </a>
@@ -578,7 +675,7 @@
         
           <span itemprop="articleBody">
             
-              <p>最近在做项目的时候，一直出现 客户端时间不对的问题,鉴于顺应 上个前端开发的布道，在设置时间方面，也一直按照以往的惯例.<br>由于时间是海外客户，在取服务器时间的接口上，总是比北京时间提早8小时，于是希望服务器接口返回的时间是格林威治时间，<br>根据客户端的时区转换时间。</p> <blockquote> <p>gg接口<br>GetDateTimeUtc 返回UTC标准时间毫秒<br>GetDateTimeStamp 返回标准UTC时间戳</p> <p>##　服务接口返回格林威治时间</p> </blockquote> <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">"<span class="keyword">POST</span>"</span>,</span><br><span class="line">    url: <span class="string">"/App_Services/wsDefault.asmx/GetDateTimeStamp"</span>,</span><br><span class="line">    dataType: <span class="string">"json"</span>,</span><br><span class="line">    contentType: <span class="string">"application/json;utf-8"</span>,</span><br><span class="line">    timeout: <span class="number">10000</span>,</span><br><span class="line">    error: function () &#123; &#125;,</span><br><span class="line">    success: function (msg) &#123;</span><br><span class="line">        if (msg)</span><br><span class="line">            ajaxInit(parseFloat(msg.d));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> <h2 id="根据客户端的时区获取时差"><a href="#根据客户端的时区获取时差" class="headerlink" title="根据客户端的时区获取时差"></a>根据客户端的时区获取时差</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clientTimeZoneT</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//获得时区偏移量</span></span><br><span class="line">    <span class="keyword">var</span> timeOffset = <span class="keyword">new</span> <span class="built_in">Date</span>().getTimezoneOffset();</span><br><span class="line">    <span class="comment">//获得时区小时偏移基数</span></span><br><span class="line">    <span class="keyword">var</span> hour = <span class="built_in">parseInt</span>(timeOffset / <span class="number">60</span>);</span><br><span class="line">    <span class="comment">//获得时区分钟偏移基数</span></span><br><span class="line">    <span class="keyword">var</span> munite = timeOffset % <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">var</span> prefix = <span class="string">"-"</span>;</span><br><span class="line">    <span class="keyword">if</span> (hour &lt; <span class="number">0</span> || munite &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        prefix = <span class="string">"+"</span>;</span><br><span class="line">        hour = -hour;</span><br><span class="line">        <span class="keyword">if</span> (munite &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            munite = -munite;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    hour += <span class="string">" "</span>;</span><br><span class="line">    munite += <span class="string">" "</span>;</span><br><span class="line">    <span class="keyword">if</span> (hour.length == <span class="number">2</span>) &#123;</span><br><span class="line">        hour = <span class="string">"0"</span> + hour;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (munite.length == <span class="number">2</span>) &#123;</span><br><span class="line">        munite = <span class="string">"0"</span> + munite;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> TimeZone = prefix + hour + munite;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> TimeZoneJ = &#123;</span><br><span class="line">        TimeZone: TimeZone,</span><br><span class="line">        Minute:timeOffset,</span><br><span class="line">        millisecond: -(timeOffset*<span class="number">60</span>*<span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> TimeZoneJ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <p>clientTimeZoneT 函数 返回一个 json 对象<br><code>TimeZone</code> 时区差<br><code>Minute</code> 相差分钟数<br><code>millisecond</code> 毫秒数 ：为了和服务器返回的时间做对应客户端时间</p> <h2 id="JavaScript-getTimezoneOffset-方法"><a href="#JavaScript-getTimezoneOffset-方法" class="headerlink" title="JavaScript getTimezoneOffset() 方法"></a>JavaScript getTimezoneOffset() 方法</h2><p>返回格林威治时间和本地时间之间的时差：</p> <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">d</span> = new <span class="built_in">Date</span>()</span><br><span class="line"><span class="keyword">var</span> <span class="keyword">n</span> = <span class="keyword">d</span>.getTimezoneOffset();</span><br></pre></td></tr></table></figure> <p>n 输出结果:</p> <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-480</span></span><br></pre></td></tr></table></figure> <h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>getTimezoneOffset() 方法可返回格林威治时间和本地时间之间的时差，以分钟为单位。<br>例如，如果时区为 GMT+2, 将返回-120 。<br>注意： 由于使用夏令时的惯例，该方法的返回值不是一个常量。<br>提示： 协调世界时，又称世界统一时间，世界标准时间，国际协调时间，简称UTC（Universal Coordinated Time）。<br>注意： UTC 时间即是 GMT（格林尼治） 时间。</p> <h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>Number : 本地时间与 GMT 时间之间的时间差，以分钟为单位。</p> <h2 id="最终方案"><a href="#最终方案" class="headerlink" title="最终方案"></a>最终方案</h2><p>选择了 GetDateTimeStamp 返回标准UTC时间戳</p> <p>遇到的坑 是 <code>GetDateTimeStamp</code> 给我返回的是 10 位数的 时间戳 哈哈 ，所以需要给返回的值 * 1000</p> <p>可以看到一下代码 返回的时间戳 * 1000 后在交给 js 处理。</p> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">"POST"</span>,</span><br><span class="line">    url: <span class="string">"/App_Services/wsDefault.asmx/GetDateTimeStamp"</span>,</span><br><span class="line">    dataType: <span class="string">"json"</span>,</span><br><span class="line">    contentType: <span class="string">"application/json;utf-8"</span>,</span><br><span class="line">    timeout: <span class="number">10000</span>,</span><br><span class="line">    error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> millisecond = <span class="built_in">parseInt</span>(clientTimeZoneT().millisecond);</span><br><span class="line">        <span class="keyword">var</span> HDateTime = <span class="built_in">parseFloat</span>(msg.d * <span class="number">1000</span>);     </span><br><span class="line">        <span class="keyword">if</span> (msg)</span><br><span class="line">            ajaxInit(HDateTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> <hr>
+              <p>最近在做项目的时候，一直出现 客户端时间不对的问题,鉴于顺应 上个前端开发的布道，在设置时间方面，也一直按照以往的惯例.<br>由于时间是海外客户，在取服务器时间的接口上，总是比北京时间提早8小时，于是希望服务器接口返回的时间是格林威治时间，<br>根据客户端的时区转换时间。</p> <blockquote> <p>gg接口<br>GetDateTimeUtc 返回UTC标准时间毫秒<br>GetDateTimeStamp 返回标准UTC时间戳</p> <p>##　服务接口返回格林威治时间</p> </blockquote> <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">"<span class="keyword">POST</span>"</span>,</span><br><span class="line">    url: <span class="string">"/App_Services/wsDefault.asmx/GetDateTimeStamp"</span>,</span><br><span class="line">    dataType: <span class="string">"json"</span>,</span><br><span class="line">    contentType: <span class="string">"application/json;utf-8"</span>,</span><br><span class="line">    timeout: <span class="number">10000</span>,</span><br><span class="line">    error: function () &#123; &#125;,</span><br><span class="line">    success: function (msg) &#123;</span><br><span class="line">        if (msg)</span><br><span class="line">            ajaxInit(parseFloat(msg.d));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> <h2 id="根据客户端的时区获取时差"><a href="#根据客户端的时区获取时差" class="headerlink" title="根据客户端的时区获取时差"></a>根据客户端的时区获取时差</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clientTimeZoneT</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//获得时区偏移量</span></span><br><span class="line">    <span class="keyword">var</span> timeOffset = <span class="keyword">new</span> <span class="built_in">Date</span>().getTimezoneOffset();</span><br><span class="line">    <span class="comment">//获得时区小时偏移基数</span></span><br><span class="line">    <span class="keyword">var</span> hour = <span class="built_in">parseInt</span>(timeOffset / <span class="number">60</span>);</span><br><span class="line">    <span class="comment">//获得时区分钟偏移基数</span></span><br><span class="line">    <span class="keyword">var</span> munite = timeOffset % <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">var</span> prefix = <span class="string">"-"</span>;</span><br><span class="line">    <span class="keyword">if</span> (hour &lt; <span class="number">0</span> || munite &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        prefix = <span class="string">"+"</span>;</span><br><span class="line">        hour = -hour;</span><br><span class="line">        <span class="keyword">if</span> (munite &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            munite = -munite;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    hour += <span class="string">" "</span>;</span><br><span class="line">    munite += <span class="string">" "</span>;</span><br><span class="line">    <span class="keyword">if</span> (hour.length == <span class="number">2</span>) &#123;</span><br><span class="line">        hour = <span class="string">"0"</span> + hour;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (munite.length == <span class="number">2</span>) &#123;</span><br><span class="line">        munite = <span class="string">"0"</span> + munite;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> TimeZone = prefix + hour + munite;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> TimeZoneJ = &#123;</span><br><span class="line">        TimeZone: TimeZone,</span><br><span class="line">        Minute:timeOffset,</span><br><span class="line">        millisecond: -(timeOffset*<span class="number">60</span>*<span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> TimeZoneJ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <p>clientTimeZoneT 函数 返回一个 json 对象<br><code>TimeZone</code> 时区差<br><code>Minute</code> 相差分钟数<br><code>millisecond</code> 毫秒数 ：为了和服务器返回的时间做对应客户端时间</p> <h2 id="JavaScript-getTimezoneOffset-方法"><a href="#JavaScript-getTimezoneOffset-方法" class="headerlink" title="JavaScript getTimezoneOffset() 方法"></a>JavaScript getTimezoneOffset() 方法</h2><p>返回格林威治时间和本地时间之间的时差：</p> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="keyword">var</span> n = d.getTimezoneOffset();</span><br></pre></td></tr></table></figure> <p>n 输出结果:</p> <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-480</span></span><br></pre></td></tr></table></figure> <h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>getTimezoneOffset() 方法可返回格林威治时间和本地时间之间的时差，以分钟为单位。<br>例如，如果时区为 GMT+2, 将返回-120 。<br>注意： 由于使用夏令时的惯例，该方法的返回值不是一个常量。<br>提示： 协调世界时，又称世界统一时间，世界标准时间，国际协调时间，简称UTC（Universal Coordinated Time）。<br>注意： UTC 时间即是 GMT（格林尼治） 时间。</p> <h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>Number : 本地时间与 GMT 时间之间的时间差，以分钟为单位。</p> <h2 id="最终方案"><a href="#最终方案" class="headerlink" title="最终方案"></a>最终方案</h2><p>选择了 GetDateTimeStamp 返回标准UTC时间戳</p> <p>遇到的坑 是 <code>GetDateTimeStamp</code> 给我返回的是 10 位数的 时间戳 哈哈 ，所以需要给返回的值 * 1000</p> <p>可以看到一下代码 返回的时间戳 * 1000 后在交给 js 处理。</p> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">"POST"</span>,</span><br><span class="line">    url: <span class="string">"/App_Services/wsDefault.asmx/GetDateTimeStamp"</span>,</span><br><span class="line">    dataType: <span class="string">"json"</span>,</span><br><span class="line">    contentType: <span class="string">"application/json;utf-8"</span>,</span><br><span class="line">    timeout: <span class="number">10000</span>,</span><br><span class="line">    error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> millisecond = <span class="built_in">parseInt</span>(clientTimeZoneT().millisecond);</span><br><span class="line">        <span class="keyword">var</span> HDateTime = <span class="built_in">parseFloat</span>(msg.d * <span class="number">1000</span>);     </span><br><span class="line">        <span class="keyword">if</span> (msg)</span><br><span class="line">            ajaxInit(HDateTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> <hr>
             
           </span>
         
@@ -675,7 +772,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08h0037f855q5vxqjmp"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cioo3984e003l1r55x99c9fx3"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -788,7 +885,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08g0035f855u48x8k6f"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cioo3984d003i1r55ctbwxso2"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -901,7 +998,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08l003mf8558t4e17nn"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cioo3984g003p1r55uxwu1qz5"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -1014,7 +1111,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08d0031f855zrh6p4ge"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cioo39849003a1r55y5mztv94"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -1127,7 +1224,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08a002wf855p0on96xd"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cioo3984b003f1r55x5pbol90"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -1144,119 +1241,6 @@
           <span itemprop="articleBody">
             
               <h2 id="安装数据库驱动"><a href="#安装数据库驱动" class="headerlink" title="安装数据库驱动"></a>安装数据库驱动</h2><p>LoopBack 不是所有的事情都帮你做了，你还需要手动安装一下你需要的数据库</p> <p>目前 LoopBack 支持如下数据库:</p> <p>mongodb<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> loopback-connector-mongodb <span class="comment">--save</span></span><br></pre></td></tr></table></figure></p> <p>出处详情<br><a href="https://docs.strongloop.com/display/public/LB/MongoDB+connector" target="_blank" rel="external">https://docs.strongloop.com/display/public/LB/MongoDB+connector</a></p> <p>mysql<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> loopback-connector-mysql <span class="comment">--save</span></span><br></pre></td></tr></table></figure></p> <p>出处详情<br><a href="https://docs.strongloop.com/display/public/LB/MySQL+connector" target="_blank" rel="external">https://docs.strongloop.com/display/public/LB/MySQL+connector</a></p> <p>oracle<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> loopback-connector-<span class="keyword">oracle</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure></p> <p>出处详情<br><a href="https://docs.strongloop.com/display/public/LB/Oracle+connector" target="_blank" rel="external">https://docs.strongloop.com/display/public/LB/Oracle+connector</a></p> <p>postgresql</p> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> loopback-connector-postgresql <span class="comment">--save</span></span><br></pre></td></tr></table></figure> <p>出处详情<br><a href="https://docs.strongloop.com/display/public/LB/PostgreSQL+connector" target="_blank" rel="external">https://docs.strongloop.com/display/public/LB/PostgreSQL+connector</a></p> <p>SQL+Server</p> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> loopback-connector-mssql <span class="comment">--save</span></span><br></pre></td></tr></table></figure> <p>出处详情<br><a href="https://docs.strongloop.com/display/public/LB/SQL+Server+connector" target="_blank" rel="external">https://docs.strongloop.com/display/public/LB/SQL+Server+connector</a></p>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/29/strongloop/node-js框架StrongLoop一步步搭建/" itemprop="url">
-                  node.js框架StrongLoop一步步搭建 第一节 (LoopBack run)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-29T09:00:39+08:00" content="2015-10-29">
-              2015-10-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/29/strongloop/node-js框架StrongLoop一步步搭建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/29/strongloop/node-js框架StrongLoop一步步搭建/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciodvk08j003ff855hcjysn00"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="Install-StrongLoop-安装到全局"><a href="#Install-StrongLoop-安装到全局" class="headerlink" title="Install StrongLoop 安装到全局"></a>Install StrongLoop 安装到全局</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g strongloop</span><br></pre></td></tr></table></figure> <h2 id="Create-app-创建一个应用"><a href="#Create-app-创建一个应用" class="headerlink" title="Create app 创建一个应用"></a>Create app 创建一个应用</h2><blockquote> <p>Create a “Hello World” LoopBack application.</p> <p>创建一个 “Hello World” 的 LoopBack 应用</p> </blockquote> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ slc loopback</span><br><span class="line">[?] Enter a directory name <span class="built_in">where</span> to create the project: hello-world</span><br><span class="line">[?] What\<span class="string">'s the name of your application? hello-world</span></span><br></pre></td></tr></table></figure>  <h2 id="Create-models-为应用创建一个模型"><a href="#Create-models-为应用创建一个模型" class="headerlink" title="Create models 为应用创建一个模型"></a>Create models 为应用创建一个模型</h2><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span> cd hello-world</span><br><span class="line"><span class="symbol">$</span> slc loopback:<span class="keyword">model</span></span><br></pre></td></tr></table></figure> <p>接下来会交互 模型的 值 按照您的需求输入</p> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[?] Enter the model name: person</span><br><span class="line">[?] <span class="keyword">Select</span> the <span class="keyword">data</span>-<span class="keyword">source</span> <span class="keyword">to</span> attach person <span class="keyword">to</span>: db (<span class="keyword">memory</span>)</span><br><span class="line">[?] Expose person via the REST API? Yes</span><br><span class="line">[?] Custom plural <span class="keyword">form</span> (used <span class="keyword">to</span> <span class="keyword">build</span> REST <span class="keyword">URL</span>): people</span><br><span class="line">Let<span class="string">'s add some person properties now.</span></span><br></pre></td></tr></table></figure> <p>创建模型的字段名称</p> <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter an empty <span class="keyword">property</span><span class="title"> </span>name when done.</span><br><span class="line">[?] <span class="keyword">Property</span><span class="title"> name:</span> firstname</span><br></pre></td></tr></table></figure> <p> 选择字段类型 上下键切换</p> <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> [?] Property type: (Use arrow keys)</span><br><span class="line">❯ string</span><br><span class="line">  number</span><br><span class="line">  boolean</span><br><span class="line">  object</span><br><span class="line"> <span class="built_in"> array</span><br><span class="line"></span>  date</span><br><span class="line">  buffer</span><br><span class="line">  geopoint</span><br><span class="line">  (other)</span><br></pre></td></tr></table></figure> <p> 是否是必填 默认为 N</p> <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="name">?</span>] Required? (<span class="name">y/N</span>) y</span><br></pre></td></tr></table></figure> <h2 id="Run-the-application-运行-这个应用"><a href="#Run-the-application-运行-这个应用" class="headerlink" title="Run the application 运行 这个应用"></a>Run the application 运行 这个应用</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ node .</span><br><span class="line">Browse your REST API at <span class="string">http:</span><span class="comment">//0.0.0.0:3000/explorer</span></span><br><span class="line">Web server listening <span class="string">at:</span> <span class="string">http:</span><span class="comment">//0.0.0.0:3000/</span></span><br></pre></td></tr></table></figure> <p>浏览器打开 <a href="http://localhost:3000/explorer" target="_blank" rel="external">http://localhost:3000/explorer</a></p> <p>就可以看到 所有 http 请求的 api 接口 ,这里提供了很方便的测试，棒棒的</p>
             
           </span>
         
@@ -1322,21 +1306,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

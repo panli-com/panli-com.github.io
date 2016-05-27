@@ -227,6 +227,103 @@
             
             
               
+                <a class="post-title-link" href="/2016/03/02/php/幸运抽奖大转盘-算法解析/" itemprop="url">
+                  幸运抽奖大转盘-算法解析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-02T15:07:14+08:00" content="2016-03-02">
+              2016-03-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/php/" itemprop="url" rel="index">
+                    <span itemprop="name">php</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/02/php/幸运抽奖大转盘-算法解析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/02/php/幸运抽奖大转盘-算法解析/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="中奖池"><a href="#中奖池" class="headerlink" title="中奖池"></a>中奖池</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$prize_arr = <span class="keyword">array</span>( </span><br><span class="line">    <span class="string">'0'</span> =&gt; <span class="keyword">array</span>(<span class="string">'id'</span>=&gt;<span class="number">1</span>,<span class="string">'min'</span>=&gt;<span class="number">1</span>,<span class="string">'max'</span>=&gt;<span class="number">29</span>,<span class="string">'prize'</span>=&gt;<span class="string">'一等奖'</span>,<span class="string">'v'</span>=&gt;<span class="number">1</span>), </span><br><span class="line">    <span class="string">'1'</span> =&gt; <span class="keyword">array</span>(<span class="string">'id'</span>=&gt;<span class="number">2</span>,<span class="string">'min'</span>=&gt;<span class="number">302</span>,<span class="string">'max'</span>=&gt;<span class="number">328</span>,<span class="string">'prize'</span>=&gt;<span class="string">'二等奖'</span>,<span class="string">'v'</span>=&gt;<span class="number">2</span>), </span><br><span class="line">    <span class="string">'2'</span> =&gt; <span class="keyword">array</span>(<span class="string">'id'</span>=&gt;<span class="number">3</span>,<span class="string">'min'</span>=&gt;<span class="number">242</span>,<span class="string">'max'</span>=&gt;<span class="number">268</span>,<span class="string">'prize'</span>=&gt;<span class="string">'三等奖'</span>,<span class="string">'v'</span>=&gt;<span class="number">5</span>), </span><br><span class="line">    <span class="string">'3'</span> =&gt; <span class="keyword">array</span>(<span class="string">'id'</span>=&gt;<span class="number">4</span>,<span class="string">'min'</span>=&gt;<span class="number">182</span>,<span class="string">'max'</span>=&gt;<span class="number">208</span>,<span class="string">'prize'</span>=&gt;<span class="string">'四等奖'</span>,<span class="string">'v'</span>=&gt;<span class="number">7</span>), </span><br><span class="line">    <span class="string">'4'</span> =&gt; <span class="keyword">array</span>(<span class="string">'id'</span>=&gt;<span class="number">5</span>,<span class="string">'min'</span>=&gt;<span class="number">122</span>,<span class="string">'max'</span>=&gt;<span class="number">148</span>,<span class="string">'prize'</span>=&gt;<span class="string">'五等奖'</span>,<span class="string">'v'</span>=&gt;<span class="number">10</span>), </span><br><span class="line">    <span class="string">'5'</span> =&gt; <span class="keyword">array</span>(<span class="string">'id'</span>=&gt;<span class="number">6</span>,<span class="string">'min'</span>=&gt;<span class="number">62</span>,<span class="string">'max'</span>=&gt;<span class="number">88</span>,<span class="string">'prize'</span>=&gt;<span class="string">'六等奖'</span>,<span class="string">'v'</span>=&gt;<span class="number">25</span>), </span><br><span class="line">    <span class="string">'6'</span> =&gt; <span class="keyword">array</span>(<span class="string">'id'</span>=&gt;<span class="number">7</span>,<span class="string">'min'</span>=&gt;<span class="keyword">array</span>(<span class="number">32</span>,<span class="number">92</span>,<span class="number">152</span>,<span class="number">212</span>,<span class="number">272</span>,<span class="number">332</span>), </span><br><span class="line">    <span class="string">'max'</span>=&gt;<span class="keyword">array</span>(<span class="number">58</span>,<span class="number">118</span>,<span class="number">178</span>,<span class="number">238</span>,<span class="number">298</span>,<span class="number">358</span>),<span class="string">'prize'</span>=&gt;<span class="string">'七等奖'</span>,<span class="string">'v'</span>=&gt;<span class="number">50</span>) </span><br><span class="line">);</span><br></pre></td></tr></table></figure> <p>定义一个数组$prize_arr，id用来标识不同的奖项，<br>min表示圆盘中各奖项区间对应的最小角度，max表示最大角度，<br>如一等奖对应的最小角度：0，最大角度30，这里我们设置max值为1、max值为29，<br>是为了避免抽奖后指针指向两个相邻奖项的中线。<br>由于圆盘中设置了多个七等奖，所以我们在数组中设置每个七等奖对应的角度范围。</p> <p>prize表示奖项内容，v表示中奖几率，我们会发现，<br>数组中七个奖项的v的总和为100，如果v的值为1，则代表中奖几率为1%，依此类推。</p> <h3 id="中奖概率算法"><a href="#中奖概率算法" class="headerlink" title="中奖概率算法"></a>中奖概率算法</h3><p>先来看概率计算函数</p> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRand</span><span class="params">($proArr)</span> </span>&#123; </span><br><span class="line">    $result = <span class="string">''</span>; </span><br><span class="line"> </span><br><span class="line">    <span class="comment">//概率数组的总概率精度 </span></span><br><span class="line">    $proSum = array_sum($proArr); </span><br><span class="line"> </span><br><span class="line">    <span class="comment">//概率数组循环 </span></span><br><span class="line">    <span class="keyword">foreach</span> ($proArr <span class="keyword">as</span> $key =&gt; $proCur) &#123; </span><br><span class="line">        $randNum = mt_rand(<span class="number">1</span>, $proSum); </span><br><span class="line">        <span class="keyword">if</span> ($randNum &lt;= $proCur) &#123; </span><br><span class="line">            $result = $key; </span><br><span class="line">            <span class="keyword">break</span>; </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">            $proSum -= $proCur; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">unset</span> ($proArr); </span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> $result; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <p>上述代码是一段经典的概率算法，$proArr是一个预先设置的数组，<br>假设数组为：array(100,200,300，400)，<br>开始是从1,1000这个概率范围内筛选第一个数是否在他的出现概率范围之内，<br>如果不在，则将概率空间，也就是k的值减去刚刚的那个数字的概率空间，<br>在本例当中就是减去100，也就是说第二个数是在1，900这个范围内筛选的。<br>这样筛选到最终，总会有一个数满足要求。<br>就相当于去一个箱子里摸东西，第一个不是，第二个不是，第三个还不是，那最后一个一定是。</p> <p>这个算法简单，而且效率非常高，关键是这个算法已在我们以前的项目中有应用，尤其是大数据量的项目中效率非常棒。</p> <p>函数getRand()会根据数组中设置的几率计算出符合条件的id，我们可以接着调用getRand()。</p> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> ($prize_arr <span class="keyword">as</span> $key =&gt; $val) &#123; </span><br><span class="line">    $arr[$val[<span class="string">'id'</span>]] = $val[<span class="string">'v'</span>]; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">$rid = getRand($arr); <span class="comment">//根据概率获取奖项id </span></span><br><span class="line"> </span><br><span class="line">$res = $prize_arr[$rid<span class="number">-1</span>]; <span class="comment">//中奖项 </span></span><br><span class="line">$min = $res[<span class="string">'min'</span>]; </span><br><span class="line">$max = $res[<span class="string">'max'</span>]; </span><br><span class="line"><span class="keyword">if</span>($res[<span class="string">'id'</span>]==<span class="number">7</span>)&#123; <span class="comment">//七等奖 </span></span><br><span class="line">    $i = mt_rand(<span class="number">0</span>,<span class="number">5</span>); </span><br><span class="line">    $result[<span class="string">'angle'</span>] = mt_rand($min[$i],$max[$i]); </span><br><span class="line">&#125;<span class="keyword">else</span>&#123; </span><br><span class="line">    $result[<span class="string">'angle'</span>] = mt_rand($min,$max); <span class="comment">//随机生成一个角度 </span></span><br><span class="line">&#125; </span><br><span class="line">$result[<span class="string">'prize'</span>] = $res[<span class="string">'prize'</span>]; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">echo</span> json_encode($result);</span><br></pre></td></tr></table></figure> <p>代码中，我们调用getRand()，获得通过概率运算后得到的奖项，然后根据奖项中配置的角度范围，<br>在最小角度和最大角度间生成一个角度值，并构建数组，包含角度angle和奖项prize，最终以json格式输出。</p> <h3 id="为什么我抽不到大奖？"><a href="#为什么我抽不到大奖？" class="headerlink" title="为什么我抽不到大奖？"></a>为什么我抽不到大奖？</h3><p>在很多类似的抽奖活动中，参与者往往抽不到大奖，笔者从程序的角度举个例给你看，<br>假如我是抽奖活动的主办方，我设置了6个奖项，每个奖项不同的中奖概率，假如一等奖是一台高级轿车，<br>可是我设置了其中奖概率为0，<br>这意味着什么？这意味着参与抽奖者无论怎么抽，<br>永远也得不到这台高级轿车。<br>而当主办方每次翻动剩下的方块时，参与者会发现一等奖也许就在刚刚抽奖的方块旁边的一个数字下，<br>都怪自己运气差。真的是运气差吗？其实在参与者翻动那个方块时程序已经决定了中奖项，<br>而翻动查看其他方块看到的奖项只是一个烟雾弹，迷惑了观众和参与者。<br>我想看完这篇文章后，您或许会知道电视节目中的翻板抽奖猫腻了，您也许大概再不会去机选双色球了。</p>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2016/03/02/chrome/订单信息抓取工具-chrome扩展/" itemprop="url">
                   订单信息抓取工具-chrome扩展 2016年05月18日10:26:29更新
                 </a>
@@ -1084,103 +1181,6 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/12/31/ruby/ruby-gem-安装笔记/" itemprop="url">
-                  ruby gem 安装笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-31T10:16:54+08:00" content="2015-12-31">
-              2015-12-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ruby/" itemprop="url" rel="index">
-                    <span itemprop="name">ruby</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/31/ruby/ruby-gem-安装笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/31/ruby/ruby-gem-安装笔记/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>本文将记录一些常用gem命令，以备不时之需（每次都查还烦人）</p> <h2 id="更换淘宝镜像"><a href="#更换淘宝镜像" class="headerlink" title="更换淘宝镜像"></a>更换淘宝镜像</h2><p>由于国内网络原因（你懂的），导致 rubygems.org 存放在 Amazon S3 上面的资源文件间歇性连接失败。<br>这里要更换默认镜像为淘宝的镜像。</p> <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gem sources --<span class="built_in">remove</span> http<span class="variable">s:</span>//rubygems.org/</span><br><span class="line">gem sources -<span class="keyword">a</span> http<span class="variable">s:</span>//<span class="keyword">ruby</span>.taobao.org/</span><br><span class="line">gem sources -<span class="keyword">l</span></span><br><span class="line">*** CURRENT SOURCES ***</span><br><span class="line"></span><br><span class="line">http<span class="variable">s:</span>//<span class="keyword">ruby</span>.taobao.org</span><br><span class="line"># 请确保只有 <span class="keyword">ruby</span>.taobao.org</span><br></pre></td></tr></table></figure> <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">gem -v <span class="comment"># 查看RubyGems软件的版本</span></span><br><span class="line"></span><br><span class="line">gem help <span class="comment">#显示RubyGem使用帮助</span></span><br><span class="line">gem help example <span class="comment">#列出RubyGem命令一些使用范例</span></span><br><span class="line"></span><br><span class="line">gem <span class="keyword">install</span> [gemname] <span class="comment"># 安装指定gem包，程序先从本机查找gem包并安装，如果本地没有，则从远程gem安装。</span></span><br><span class="line">gem <span class="keyword">install</span> -l [gemname] <span class="comment"># 仅从本机安装gem包</span></span><br><span class="line">gem <span class="keyword">install</span> -r [gemname] <span class="comment"># 仅从远程安装gem包</span></span><br><span class="line">gem <span class="keyword">install</span> [gemname] --version=[ver] <span class="comment"># 安装指定版本的gem包</span></span><br><span class="line"></span><br><span class="line">gem uninstall [gemname] <span class="comment"># 删除指定的gem包，注意此命令将删除所有已安装的版本</span></span><br><span class="line">gem uninstall [gemname] --version=[ver] <span class="comment"># 删除某指定版本gem</span></span><br><span class="line"></span><br><span class="line">gem update --system <span class="comment"># 更新升级RubyGems软件自身</span></span><br><span class="line">gem update [gemname] <span class="comment">#更新所有|指定已安装的gem包</span></span><br><span class="line"></span><br><span class="line">gem list <span class="comment"># 查看本机已安装的所有gem包 #显示RubyGem使用帮助</span></span><br></pre></td></tr></table></figure> <h2 id="更多文档"><a href="#更多文档" class="headerlink" title="更多文档"></a>更多文档</h2><ul> <li><a href="http://guides.rubygems.org/command-reference/" target="_blank" rel="external">Guides</a></li> </ul>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1226,21 +1226,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-count">57</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

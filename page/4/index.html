@@ -227,6 +227,103 @@
             
             
               
+                <a class="post-title-link" href="/2015/11/13/flintjs，主打Super-Hot-Reload/" itemprop="url">
+                  flintjs，主打Super Hot Reload
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-13T17:47:09+08:00" content="2015-11-13">
+              2015-11-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/13/flintjs，主打Super-Hot-Reload/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/13/flintjs，主打Super-Hot-Reload/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="flintjs-将颠覆前端-UI-开发？"><a href="#flintjs-将颠覆前端-UI-开发？" class="headerlink" title="flintjs 将颠覆前端 UI 开发？"></a>flintjs 将颠覆前端 UI 开发？</h2><p>在<a href="http://www.zhihu.com/question/37234467" target="_blank" rel="external">知乎</a> 上 看到尤雨溪 针对 flintjs 的问答</p> <p>著作权归作者所有。<br>商业转载请联系作者获得授权，非商业转载请注明出处。<br>作者：尤雨溪<br>链接：<a href="http://www.zhihu.com/question/37234467/answer/71143805" target="_blank" rel="external">http://www.zhihu.com/question/37234467/answer/71143805</a><br>来源：知乎</p> <p>没想到还真有人问了。首先楼下什么『我也有能一个月内干掉 bat 的思路』，就一边歇着去吧。<br>人家这个不是思路，是已经做出来了。<br>创始人之一 Nick 是 20 under 20 的 Thiel Fellow，25 岁不到就卖掉了自己的第一个公司，恕我直言，人家这种执行力有一个思路和你有一个思路，不是一个层次。<br>我说它是个颠覆，并不是说这东西一出来就能在实际生产中取代 React Angular 之类的东西，<br>而是因为它代表了一种更先进的开发模式，而且可以预见将来不仅仅是前端开发，<br>而是所有的 UI 开发都会向这个模式发展。<br>【补充一段，这里一开始没讲清楚，Flint 作为一个框架也就是简化版的 React，但我觉得颠覆的主要是它提供的即时反馈的开发体验。】<br>Bret Victor 的演讲很多人都看过，但他的 demo 并不普适，他虽然自己能做出那样的 demo，<br>却并没有告诉我们如何提供一个普通人都可以使用的即时开发环境；LightTable 搞了那么久也没见几个人用，<br>感觉基本已经坑了；Swift Playground 已经做得很接近，但也只能用来做 prototyping。可以说 Flint 的颠覆性在于把这种实时反馈的开发模式第一次做到了和实际生产环境接轨。<br>Flint 的核心实际上是一套实时代码编译 + 热更新系统，也就是在你一边打字的时候就一边对你的代码进行实时编译（不需要存档，注意这个功能需要依赖 atom 编辑器插件，目前还没有公开），<br>保留应用当前状态，实时反馈，并且有完善的错误提示甚至类型检查。这是个什么概念，你不亲手用下可能体会不出来。<br>我看到有些人说 figwheel 已经实现啦，其实还是不一样。因为 Flint 直接利用编辑器插件，所以你打下每一个字母的时候它都知道。<br>借此 Flint 极大地优化了它的 parsing，直接在现有的 AST 局部进行修改，而不是对整个文件重新 parse。<br>大部分情况下，你按下一个字母，20ms 以内就会有反馈。想象一下，从手动 F5 到 auto reload 带来了开发体验的一个质的提升，<br>从 auto reload 到 hot reload (on save) 又是一个质的提升，从 hot reload on save 到 hot reload on type… 又是一个质的提升。<br>如果说几个月前看 Dan Abramov 的 hot-reload 演讲大家是被惊艳的话，看过 Nick 的实际 demo 后真的只能用震撼来形容。<br>它最后产出的代码是标准的可用于生产环境的 React 代码… 是否经受过工程检验是一回事（实际上 Flint 现在就有 FB Apple 的人作为 beta tester 在使用)，<br>但你不能否认一旦这玩意儿成熟了，你不会再想用旧的模式去开发 UI。就算最后不是 Flint，<br>也一定会有另一个项目把这个模式发扬光大。一个 trivia: Flint 最早的版本是用 Haskell 写的，只是因为用 Haskell 的人太少了所以才用 js 重写（Elm 哭了）。</p>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/11/10/mongodb/MongoDB学习基本命令的使用笔记/" itemprop="url">
                   MongoDB学习基本命令的使用笔记
                 </a>
@@ -869,7 +966,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciopag456003gfk55qdvtdsis"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cip3b8jny003bbv55eumodf2x"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -982,7 +1079,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciopag455003cfk55o1kvwmzc"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cip3b8jnw0034bv55657m4zcd"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -1095,7 +1192,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciopag458003jfk55dpo1b44t"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cip3b8jo9003zbv55d5lsxkzb"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -1112,119 +1209,6 @@
           <span itemprop="articleBody">
             
               <h2 id="创建新模型-model"><a href="#创建新模型-model" class="headerlink" title="创建新模型(model)"></a>创建新模型(model)</h2><p>如果您还在停留在手工创建 模型(model)，是不是感觉很不爽 ！<br>是的，<code>StrongLoop</code> 给我们带来的更加规范的模式！下面进入正题</p> <h3 id="命令行方式"><a href="#命令行方式" class="headerlink" title="命令行方式"></a>命令行方式</h3><ul> <li>cd 到项目根目录下 <code>slc loopback:model</code></li> </ul> <blockquote> <p>接下来会进入交互模式</p> </blockquote> <p>这里是输入模型名称 我输入了 <code>PanUser</code> (我理解为数据库的表名！！ 惭愧了 (<em>^__^</em>) 嘻嘻……)</p> <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? Enter <span class="keyword">the</span> model <span class="built_in">name</span>: PanUser</span><br></pre></td></tr></table></figure> <p>下面选择 模型(model) 的 存放数据源， 由于在前面我已经创建了 mongodb 的数据源 (为数据持久化)</p> <p>如果您还没有创建数据源的话，可能选项只有 一个 <code>db (memory)</code> 存放在内存中</p> <p>这里我选择了 mongodb (mongodb) 第二个选择</p> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">? <span class="keyword">Select</span> the <span class="keyword">data</span>-<span class="keyword">source</span> <span class="keyword">to</span> attach PanUser <span class="keyword">to</span>:</span><br><span class="line">  (<span class="keyword">no</span> <span class="keyword">data</span>-<span class="keyword">source</span>)</span><br><span class="line">&gt; db (<span class="keyword">memory</span>)</span><br><span class="line">  mongodb (mongodb)</span><br></pre></td></tr></table></figure> <p>接下来我们要选择 模型继承类 ，这里我们想建立一个用户系统，<br><code>PanUser</code> 这个模型 继续 loopback 自身内建的 <code>User</code> 类<br>一直下拉 选择 <code>User</code> 回车</p> <figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">? Enter the model name: PanUser</span><br><span class="line">? <span class="keyword">Select</span> the data-source <span class="keyword">to</span> attach PanUser <span class="keyword">to</span>: mongodb (mongodb)</span><br><span class="line">? <span class="keyword">Select</span> model<span class="symbol">'s</span> base class (<span class="keyword">Use</span> arrow keys)</span><br><span class="line">  Model</span><br><span class="line">&gt; PersistedModel</span><br><span class="line">  ACL</span><br><span class="line">  AccessToken</span><br><span class="line">  Application</span><br><span class="line">  Change</span><br><span class="line">  Checkpoint</span><br><span class="line">(Move up <span class="keyword">and</span> down <span class="keyword">to</span> reveal more choices)</span><br></pre></td></tr></table></figure> <p>回车后我们看到了 如下</p> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">? Enter the model name: PanUser</span><br><span class="line">? <span class="keyword">Select</span> the <span class="keyword">data</span>-<span class="keyword">source</span> <span class="keyword">to</span> attach PanUser <span class="keyword">to</span>: mongodb (mongodb)</span><br><span class="line">? <span class="keyword">Select</span> <span class="keyword">model</span><span class="string">'s base class User</span><br><span class="line">? Expose PanUser via the REST API? (Y/n) -- Y键回车 暴露这个接口</span></span><br></pre></td></tr></table></figure> <p>下面填写 REST 接口 的 url 地址 – 我填写了 users<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">? Enter the model name: PanUser</span><br><span class="line">? <span class="keyword">Select</span> the <span class="keyword">data</span>-<span class="keyword">source</span> <span class="keyword">to</span> attach PanUser <span class="keyword">to</span>: mongodb (mongodb)</span><br><span class="line">? <span class="keyword">Select</span> <span class="keyword">model</span><span class="string">'s base class User</span><br><span class="line">? Expose PanUser via the REST API? Yes</span><br><span class="line">? Custom plural form (used to build REST URL): users</span></span><br></pre></td></tr></table></figure></p> <p>主要配置都完成了 当输入完 REST 接口 的 url 地址 回车后，<br>就该添加字段了 ,由于 <code>PanUser</code> 已经继承了 loopback 的 <code>User</code><br>所以 一些该有的字段 都已经有了 例如 username email password 等等<br>这里我输入了 <code>fullname</code></p> <figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">E:\zan\www\strongloop\loopback\panli-auth&gt;slc loopback:model</span><br><span class="line">? Enter the model name: PanUser</span><br><span class="line">? <span class="keyword">Select</span> the data-source <span class="keyword">to</span> attach PanUser <span class="keyword">to</span>: mongodb (mongodb)</span><br><span class="line">? <span class="keyword">Select</span> model<span class="comment">'s base class User</span></span><br><span class="line">? Expose PanUser via the REST API? Yes</span><br><span class="line">? <span class="keyword">Custom</span> plural form (used <span class="keyword">to</span> build REST URL): users</span><br><span class="line"><span class="keyword">Let</span><span class="comment">'s add some PanUser properties now.</span></span><br><span class="line"></span><br><span class="line">Enter an empty <span class="keyword">property</span> name <span class="keyword">when</span> done.</span><br><span class="line">? <span class="keyword">Property</span> name: fullname</span><br></pre></td></tr></table></figure> <p>选择 字段类型 ‘string’</p> <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Enter an empty property name when done.</span><br><span class="line">? Property name: fullname</span><br><span class="line">(!) generator<span class="comment">#invoke() is deprecated. Use generator#composeWith() - see http:</span></span><br><span class="line">eoman.io/authoring/composability.html</span><br><span class="line">  <span class="built_in"> invoke </span>  loopback:property</span><br><span class="line">? Property type: (Use arrow keys)</span><br><span class="line">&gt; string</span><br><span class="line">  number</span><br><span class="line">  boolean</span><br><span class="line">  object</span><br><span class="line"> <span class="built_in"> array</span><br><span class="line"></span>  date</span><br><span class="line">  buffer</span><br><span class="line">(Move up<span class="built_in"> and </span>down to reveal more choices)</span><br></pre></td></tr></table></figure> <p>是否必填 no</p> <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">? <span class="keyword">Property</span><span class="title"> type:</span> <span class="keyword">string</span></span><br><span class="line">? Required? No</span><br><span class="line"></span><br><span class="line">Let's add another PanUser <span class="keyword">property</span>.<span class="title"></span><br><span class="line"></span>Enter an empty <span class="keyword">property</span><span class="title"> </span>name when done.</span><br><span class="line">? <span class="keyword">Property</span><span class="title"> name:</span></span><br></pre></td></tr></table></figure> <p>接下来会继续增加字段 这里就不增加了 按下 ctrl+c 退出交互</p> <p>有人会问 以上命令都做了哪些 设置呢？</p> <p>在项目根目录下 多了 一个 common 文件夹 结构如下</p> <p><img src="http://zanjs.b0.upaiyun.com/image/6/bd/d24478084298afc75a0ece6bd7712.png" alt="common"></p> <p>可以看到 models 增加了 2个文件 <code>pan-user.js</code> 和 <code>pan-user.json</code></p> <p>pan-user.js 可以写入我们的业务逻辑</p> <p>pan-user.json 是模型配置参数</p> <p>还有一个地方做了修改 在 server/model-config.json 下 可以看到 增加了如下配置</p> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"_meta"</span>: &#123;</span><br><span class="line">    <span class="attr">"sources"</span>: [</span><br><span class="line">      <span class="string">"loopback/common/models"</span>,</span><br><span class="line">      <span class="string">"loopback/server/models"</span>,</span><br><span class="line">      <span class="string">"../common/models"</span>,</span><br><span class="line">      <span class="string">"./models"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"mixins"</span>: [</span><br><span class="line">      <span class="string">"loopback/common/mixins"</span>,</span><br><span class="line">      <span class="string">"loopback/server/mixins"</span>,</span><br><span class="line">      <span class="string">"../common/mixins"</span>,</span><br><span class="line">      <span class="string">"./mixins"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"User"</span>: &#123;</span><br><span class="line">    <span class="attr">"dataSource"</span>: <span class="string">"db"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"AccessToken"</span>: &#123;</span><br><span class="line">    <span class="attr">"dataSource"</span>: <span class="string">"db"</span>,</span><br><span class="line">    <span class="attr">"public"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"ACL"</span>: &#123;</span><br><span class="line">    <span class="attr">"dataSource"</span>: <span class="string">"db"</span>,</span><br><span class="line">    <span class="attr">"public"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"RoleMapping"</span>: &#123;</span><br><span class="line">    <span class="attr">"dataSource"</span>: <span class="string">"db"</span>,</span><br><span class="line">    <span class="attr">"public"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"Role"</span>: &#123;</span><br><span class="line">    <span class="attr">"dataSource"</span>: <span class="string">"db"</span>,</span><br><span class="line">    <span class="attr">"public"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"PanUser"</span>: &#123;</span><br><span class="line">    <span class="attr">"dataSource"</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">    <span class="attr">"public"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <p>在最后面 增加 了 <code>PanUser</code>;<br>这个在 我们手工 写入 <code>model</code> 时 是不能忘记的</p> <h3 id="web在线网页方式"><a href="#web在线网页方式" class="headerlink" title="web在线网页方式"></a>web在线网页方式</h3><blockquote> <p>如果您看过了 第三季的 话， 我想这里就很简单了<br>如果您没有看,可以看一下上一节的 操作</p> </blockquote> <p><img src="http://zanjs.b0.upaiyun.com/image/2/a5/1d82a29ecfb182ac919b8d578e07d.png" alt="model"></p> <p>可以看到 这里已经显示了 刚才 我们用命令行的方式 添加的 <code>PanUser</code></p> <p>这里都是傻瓜式操作了，大家自己玩玩吧！ <code>O(∩_∩)O哈哈</code></p> <p>如果有不对的地方，请大神 指错， 我也是一边学习 一边 写的</p>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/29/strongloop/node-js框架StrongLoop一步步搭建-第三节/" itemprop="url">
-                  node.js框架StrongLoop一步步搭建 第三节 (LoopBack 数据库配置连接)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-29T11:21:14+08:00" content="2015-10-29">
-              2015-10-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/29/strongloop/node-js框架StrongLoop一步步搭建-第三节/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/29/strongloop/node-js框架StrongLoop一步步搭建-第三节/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_ciopag4530036fk55m8setve8"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="配置数据库连接"><a href="#配置数据库连接" class="headerlink" title="配置数据库连接"></a>配置数据库连接</h2><p>Loopback 提供了 多种连接数据库的 方案 一下分别是 <code>命令行</code> 和 StrongLoop 为我们提供的管理系统</p> <h3 id="命令行方式"><a href="#命令行方式" class="headerlink" title="命令行方式"></a>命令行方式</h3><ul> <li>cd 到项目根目录下 <code>slc loopback:datasource</code></li> </ul> <blockquote> <p>接下来会进入交互模式</p> </blockquote> <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">? Enter <span class="keyword">the</span> data-source name: mongodb</span><br><span class="line">? Select <span class="keyword">the</span> connector <span class="keyword">for</span> mongodb: MongoDB (supported <span class="keyword">by</span> StrongLoop)</span><br></pre></td></tr></table></figure> <p>这里我 选了 <code>mongodb</code></p> <p>下面是选择界面</p> <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">? Enter the <span class="meta">data</span>-source name: mysql</span><br><span class="line">? <span class="keyword">Select </span>the connector for mysql:</span><br><span class="line">  In-memory db (supported <span class="keyword">by </span><span class="keyword">StrongLoop)</span><br><span class="line"></span>  Email (supported <span class="keyword">by </span><span class="keyword">StrongLoop)</span><br><span class="line"></span>&gt; MySQL (supported <span class="keyword">by </span><span class="keyword">StrongLoop)</span><br><span class="line"></span>  PostgreSQL (supported <span class="keyword">by </span><span class="keyword">StrongLoop)</span><br><span class="line"></span>  Oracle (supported <span class="keyword">by </span><span class="keyword">StrongLoop)</span><br><span class="line"></span>  Microsoft SQL (supported <span class="keyword">by </span><span class="keyword">StrongLoop)</span><br><span class="line"></span>  MongoDB (supported <span class="keyword">by </span><span class="keyword">StrongLoop)</span><br><span class="line"></span>(<span class="keyword">Move </span>up <span class="keyword">and </span>down to <span class="keyword">reveal </span>more choices)</span><br></pre></td></tr></table></figure> <p>操作后会在项目目录下的 <code>server/datasources.json</code> 文件里增加 我们的 数据源</p> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"db"</span>: &#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"db"</span>,</span><br><span class="line">    <span class="attr">"connector"</span>: <span class="string">"memory"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"mongodb"</span>: &#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">    <span class="attr">"connector"</span>: <span class="string">"mongodb"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <p>在这里 需要我们手动添加 <code>mongodb</code> 的连接配置信息 加入 host, port, database, username和password等项</p> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"db"</span>: &#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"db"</span>,</span><br><span class="line">    <span class="attr">"connector"</span>: <span class="string">"memory"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"mongodb"</span>: &#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">    <span class="attr">"connector"</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">    <span class="attr">"host"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="attr">"database"</span>: <span class="string">"devDB"</span>,</span><br><span class="line">    <span class="attr">"username"</span>: <span class="string">"devUser"</span>,</span><br><span class="line">    <span class="attr">"password"</span>: <span class="string">"devPassword"</span>,</span><br><span class="line">    <span class="attr">"port"</span>: <span class="number">27017</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <h3 id="web在线网页方式"><a href="#web在线网页方式" class="headerlink" title="web在线网页方式"></a>web在线网页方式</h3><blockquote> <p>StrongLoop 为我们提供非常方便的 在线管理您的应用后台</p> </blockquote> <p>如果您是克隆了 同事的项目 请记得 先全局安装 <code>npm i -g strongloop</code></p> <p>到我们的项目根目录下 <code>slc arc</code> 命令</p> <p>会自动打开浏览器进入管理界面</p> <figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E:<span class="symbol">\z</span>an<span class="symbol">\w</span>ww<span class="symbol">\s</span>trongloop<span class="symbol">\l</span>oopback<span class="symbol">\p</span>anli-auth&gt;slc arc</span><br><span class="line">Loading workspace E:<span class="symbol">\z</span>an<span class="symbol">\w</span>ww<span class="symbol">\s</span>trongloop<span class="symbol">\l</span>oopback<span class="symbol">\p</span>anli-auth</span><br><span class="line">StrongLoop Arc is running here: http://localhost:24033/#/</span><br></pre></td></tr></table></figure> <p><img src="http://zanjs.b0.upaiyun.com/image/6/73/d4ad7baca1f78490838e4010815f1.png" alt="loopback login"></p> <p>这里需要到 <a href="https://strongloop.com/register/" target="_blank" rel="external">strongloop</a> 的官网注册一个帐号 才可以登录后台 ，至于为什么，目前还不清楚，很抱歉，哈哈！</p> <p>注册好后 我们输出帐号登录来到了 非常漂亮的后台</p> <p><img src="http://zanjs.b0.upaiyun.com/image/b/a3/73d5f70f710616cbbe6c0216f64db.png" alt="loopback main page"></p> <p>由于刚才敲入的 是 <code>mongodb</code> 的 数据源 所以 在 左侧的 导航 会看到 <code>Data Sources</code> 会有2个数据源<br>第一个 <code>db</code> 表示 内存 一开始项目初始化的时候数据都是存放在 内存中的。<br>第二个 <code>mongodb</code> 是要链接本地mongodb 数据库的 下面是我的配置</p> <p><img src="http://zanjs.b0.upaiyun.com/image/3/83/db52891c31449d0d2c964201150ec.png" alt="mongodb 数据库"></p> <p>点击 <code>Test Connection 按钮</code> 如果出现 绿色 的 <code>Success</code> 提示 说明 连接数据库成功 ，你可以开心的耍了</p> <p>如果有不对的地方，请大神 指错， 我也是一边学习 一边 写的 </p> <p>祝你顺利完成！</p> <p>(<em>^__^</em>) 嘻嘻……</p>
             
           </span>
         
@@ -1290,7 +1274,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-count">46</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1304,7 +1288,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">57</span>
+              <span class="site-state-item-count">58</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

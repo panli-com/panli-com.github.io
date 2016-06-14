@@ -227,6 +227,103 @@
             
             
               
+                <a class="post-title-link" href="/2016/03/28/mongodb/windos-10-安装-mongodb-3-2/" itemprop="url">
+                  windos 10 安装 mongodb 3.2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-28T15:26:14+08:00" content="2016-03-28">
+              2016-03-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/mongodb/" itemprop="url" rel="index">
+                    <span itemprop="name">mongodb</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/28/mongodb/windos-10-安装-mongodb-3-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/mongodb/windos-10-安装-mongodb-3-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://www.mongodb.org/downloads?_ga=1.184892399.797153712.1459146001#production" target="_blank" rel="external">官方下载地址</a></p> <blockquote> <p>Windows 64-bit 2008 R2+</p> </blockquote> <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul> <li>安装路径 E:\Program Files\MongoDB\Server\3.2\bin</li> <li>设置数据文件路径 E:\Program Files\MongoDB\Server\3.2\data\db</li> <li>设置数据日志文件 E:\Program Files\MongoDB\Server\3.2\data\db\logs.txt</li> </ul> <h2 id="配置Mongo服务端"><a href="#配置Mongo服务端" class="headerlink" title="配置Mongo服务端"></a>配置Mongo服务端</h2><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E:<span class="symbol">\P</span>rogram Files<span class="symbol">\M</span>ongoDB<span class="symbol">\S</span>erver<span class="symbol">\3</span>.2<span class="symbol">\b</span>in&gt;</span><br><span class="line">mongod --logpath "E:<span class="symbol">\P</span>rogram Files<span class="symbol">\M</span>ongoDB<span class="symbol">\S</span>erver<span class="symbol">\3</span>.2<span class="symbol">\d</span>ata<span class="symbol">\d</span>b<span class="symbol">\l</span>ogs.txt" --logappend --dbpath "E:<span class="symbol">\P</span>rogram Files<span class="symbol">\M</span>ongoDB<span class="symbol">\S</span>erver<span class="symbol">\3</span>.2<span class="symbol">\d</span>ata<span class="symbol">\d</span>b" --directoryperdb --serviceName "MongoDB" --serviceDisplayName "MongoDB" --install</span><br></pre></td></tr></table></figure> <blockquote> <p>然后到服务中启 <code>mongodB</code> 或者 命令行 <code>net start MongoDB</code> (服务名)</p> </blockquote> <h2 id="客户端连接"><a href="#客户端连接" class="headerlink" title="客户端连接"></a>客户端连接</h2><p>下载 <a href="https://robomongo.org/download" target="_blank" rel="external">Robomongo</a></p> <h2 id="停止服务"><a href="#停止服务" class="headerlink" title="停止服务"></a>停止服务</h2><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E:<span class="symbol">\P</span>rogram Files<span class="symbol">\M</span>ongoDB<span class="symbol">\S</span>erver<span class="symbol">\3</span>.2<span class="symbol">\b</span>in&gt;net stop MongoDB</span><br><span class="line">MongoDB 服务正在停止.</span><br><span class="line">MongoDB 服务已成功停止。</span><br></pre></td></tr></table></figure>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2016/03/16/panli/首页弹框广告配置说明/" itemprop="url">
                   首页弹框广告配置说明
                 </a>
@@ -1084,103 +1181,6 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2016/01/08/webapp/使用Flexible实现手淘H5页面的终端适配2前端实现方案/" itemprop="url">
-                  使用Flexible实现手淘H5页面的终端适配 笔记之(2)前端实现方案
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-08T11:49:36+08:00" content="2016-01-08">
-              2016-01-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mobile/" itemprop="url" rel="index">
-                    <span itemprop="name">mobile</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/08/webapp/使用Flexible实现手淘H5页面的终端适配2前端实现方案/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/08/webapp/使用Flexible实现手淘H5页面的终端适配2前端实现方案/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="前端实现方案"><a href="#前端实现方案" class="headerlink" title="前端实现方案"></a>前端实现方案</h2><p>了解了前面一些相关概念之后，接下来我们来看实际解决方案。<br>在整个手淘团队，我们有一个名叫 <a href="https://github.com/amfe/lib-flexible" target="_blank" rel="external">lib-flexible</a>的库，而这个库就是用来解决H5页面终端适配的。</p> <h3 id="lib-flexible是什么？"><a href="#lib-flexible是什么？" class="headerlink" title="lib-flexible是什么？"></a>lib-flexible是什么？</h3><p><a href="https://github.com/amfe/lib-flexible" target="_blank" rel="external">lib-flexible</a> 是一个制作H5适配的开源库。</p> <p>当然你可以直接使用阿里CDN：</p> <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://g.tbcdn.cn/mtb/lib-flexible/</span></span></span><span class="template-variable">&#123;&#123;version&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">/??flexible_css.js,flexible.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure> <p>将代码中的 <code></code>换成对应的版本号0.3.4。</p> <h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>lib-flexible库的使用方法非常的简单，只需要在Web页面的 <code>&lt;head&gt;&lt;/head&gt;</code> 中添加对应的flexible_css.js,flexible.js文件：</p>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1226,7 +1226,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

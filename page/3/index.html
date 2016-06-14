@@ -227,6 +227,103 @@
             
             
               
+                <a class="post-title-link" href="/2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/" itemprop="url">
+                  PanLi app 内嵌厂家页面去除浮动元素 v0.0.2 (注入方案)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-11T09:59:03+08:00" content="2016-01-11">
+              2016-01-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/mobile/" itemprop="url" rel="index">
+                    <span itemprop="name">mobile</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="应用场景说明"><a href="#应用场景说明" class="headerlink" title="应用场景说明"></a>应用场景说明</h2><blockquote> <p>在第一版的时候,我们尝试通过 <code>Panli.com</code> 主站 ifarme 厂家的各个页面,<br>由于涉及到浏览器安全的问题，浏览器阻住跨域 网站的操作 <code>dom</code> 信息 ;<br>我们只好尝试在 Panli 主站页面 设置遮罩层的方式来弥补<br>随着开发测试的进度一点点完成,最终发现 这个方案不可行</p> </blockquote> <h2 id="注入方案"><a href="#注入方案" class="headerlink" title="注入方案"></a>注入方案</h2><blockquote> <p>在思考许久后， 原生 app 那边 说可以 执行 <code>javascript</code>代码 ;</p> </blockquote> <p>后来我们就开始执行操作， 我们试着写了一下 执行 网页 <code>dom</code> 元素的 <code>javascript</code> 脚本</p> <p>最终发现可以操作 web view 厂家页面的 <code>dom</code> 元素，可行性方案已找到。</p> <h2 id="开发敏捷"><a href="#开发敏捷" class="headerlink" title="开发敏捷"></a>开发敏捷</h2><blockquote> <p>在开发注入脚本的时候，在手机上调试结果，非常痛苦,<br>浪费了大量的时间去小心意义的点击 web view 页面 的链接<br>测试机又不给力</p> </blockquote> <p>无奈之下，既然都是注入 <code>javascript</code> 脚本 何不尝试在 <code>pc</code> 浏览器上一样注入呢；<br>我们开发了一套 基于 <code>Chrome</code> 浏览器的 插件 。</p> <p><a href="https://github.com/browser-extensions/appRemove" target="_blank" rel="external">插件详细介绍 和 安装</a></p> <h2 id="淘宝首页头部元素寻找"><a href="#淘宝首页头部元素寻找" class="headerlink" title="淘宝首页头部元素寻找"></a>淘宝首页头部元素寻找</h2><p><img src="http://zanjs.b0.upaiyun.com/image/1/f5/52ba910f9917a128b2b0ec64f710f.png" alt=""></p> <p>可以看到在代码区域我看到了 <code>id=&quot;v539213&quot; class=&quot;v61dsk&quot;</code> </p> <p>我们要录入的元素 就是 id=后面 双引号里面的值 和 class=后面 双引号里面的值</p> <h2 id="数据录入"><a href="#数据录入" class="headerlink" title="数据录入"></a>数据录入</h2><blockquote> <p>为了能及时跟进 各个厂家的 页面的改动 ,<br>我们将数据统一后台录入为标准，前台调用接口的形式,来操作厂家 页面元素的去除</p> </blockquote> <h3 id="后台录入如下数据"><a href="#后台录入如下数据" class="headerlink" title="后台录入如下数据"></a>后台录入如下数据</h3><p><img src="http://zanjs.b0.upaiyun.com/image/4/ae/dd0f6acb0780d2fb129bc0e6e26b3.png" alt=""></p> <blockquote> <p>id 以#开头，class以.开头<br>录入的数据 以 英文的 <code>,</code> 作为分割</p> </blockquote> <h3 id="淘宝客户端广告"><a href="#淘宝客户端广告" class="headerlink" title="淘宝客户端广告"></a>淘宝客户端广告</h3><p>在测试数据的时候 , 我们发现 淘宝 头部 的客户端 广告 的 <code>id</code> 和 <code>class</code> 都是 随机haxi算法生成的。<br>也就是后台没办法录入这样的数据，因为你录了这次的 <code>id</code> 和 <code>class</code> 值 页面刷新一下 就又变了,<br>所以我们只好 在脚本里面写死，根据我们的算法模糊匹配 <code>id</code> 和 <code>class</code></p> <blockquote> <p>如果您在寻找 浮动广告元素的 <code>id</code> 和 <code>class</code> 的时候，<br>发现 是 数据和 字母组合的，并且没有意义的组合,请告知我 @julian 。 </p> </blockquote>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2016/01/08/webapp/使用Flexible实现手淘H5页面的终端适配2前端实现方案/" itemprop="url">
                   使用Flexible实现手淘H5页面的终端适配 笔记之(2)前端实现方案
                 </a>
@@ -1096,103 +1193,6 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/12/02/ajax/跨域的另一种解决方案——CORS（Cross-Origin-Resource-Sharing）跨域资源共享/" itemprop="url">
-                  跨域的另一种解决方案——CORS（Cross-Origin Resource Sharing）跨域资源共享
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-02T17:57:45+08:00" content="2015-12-02">
-              2015-12-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/02/ajax/跨域的另一种解决方案——CORS（Cross-Origin-Resource-Sharing）跨域资源共享/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/02/ajax/跨域的另一种解决方案——CORS（Cross-Origin-Resource-Sharing）跨域资源共享/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>在我们日常的项目开发时使用AJAX，传统的Ajax请求只能获取在同一个域名下面的资源，<br>但是HTML5打破了这个限制，允许Ajax发起跨域的请求。<br>浏览器是可以发起跨域请求的，比如你可以外链一个外域的图片或者脚本。<br>但是Javascript脚本是不能获取这些资源的内容的，它只能被浏览器执行或渲染。<br>主要原因还是出于安全考虑，浏览器会限制脚本中发起的跨站请求。<br>(同源策略， 即JavaScript或Cookie只能访问同域下的内容)。<br>跨域的解决方案有多重JSONP、Flash、Iframe等，<br>当然还有CORS（跨域资源共享，Cross-Origin Resource Sharing）今天就来了解下CORS的原理，以及如何使用。</p>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1238,7 +1238,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

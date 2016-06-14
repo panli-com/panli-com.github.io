@@ -227,6 +227,115 @@
             
             
               
+                <a class="post-title-link" href="/2016/03/29/git/git代码管理仓库回滚笔记/" itemprop="url">
+                  git代码管理仓库回滚笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-29T15:52:06+08:00" content="2016-03-29">
+              2016-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/管理工具/" itemprop="url" rel="index">
+                    <span itemprop="name">管理工具</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/管理工具/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/29/git/git代码管理仓库回滚笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/29/git/git代码管理仓库回滚笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <blockquote> <p>git代码库回滚: 指的是将代码库某分支退回到以前的某个commit id</p> </blockquote> <h2 id="本地代码库回滚"><a href="#本地代码库回滚" class="headerlink" title="本地代码库回滚"></a>本地代码库回滚</h2><ul> <li><p><code>git reset --hard commit-id</code> :回滚到commit-id，讲commit-id之后提交的commit都去除</p> </li> <li><p><code>git reset --hard HEAD~3</code> ：将最近3次的提交回滚</p> </li> </ul> <h2 id="远程代码库回滚"><a href="#远程代码库回滚" class="headerlink" title="远程代码库回滚"></a>远程代码库回滚</h2><blockquote> <p>这个是重点要说的内容，过程比本地回滚要复杂</p> <p>应用场景：自动部署系统发布后发现问题，需要回滚到某一个commit，再重新发布</p> <p>原理：先将本地分支退回到某个commit，删除远程分支，再重新push本地分支</p> </blockquote> <h3 id="操作步骤："><a href="#操作步骤：" class="headerlink" title="操作步骤："></a>操作步骤：</h3><ol> <li><p><code>git checkout dev</code></p> </li> <li><p><code>git pull</code></p> </li> <li><p><code>git branch dev_backup</code> //备份一下这个分支当前的情况</p> </li> <li><p><code>git reset --hard the_commit_id</code> //把dev本地回滚到the_commit_id</p> </li> <li><p><code>git push origin :dev</code> //删除远程 dev</p> </li> <li><p>git push origin dev //用回滚后的本地分支重新建立远程分支</p> </li> <li><p>git push origin :dev_backup //如果前面都成功了，删除这个备份分支</p> </li> </ol> <blockquote> <p>如果使用了gerrit做远程代码中心库和code review平台，<br>需要确保操作git的用户具备分支的push权限，<br>并且选择了 Force Push选项（在push权限设置里有这个选项）</p> <p>另外，gerrit中心库是个bare库，将HEAD默认指向了master，<br>因此master分支是不能进行删除操作的，最好不要选择删除master分支的策略，换用其他分支。<br>如果一定要这样做，可以考虑到gerrit服务器上修改HEAD指针。。。不建议这样搞</p> </blockquote> <p>参考资料：<a href="https://review.typo3.org/Documentation/access-control.html#category_push" target="_blank" rel="external">https://review.typo3.org/Documentation/access-control.html#category_push</a></p>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2016/03/28/mongodb/windos-10-安装-mongodb-3-2/" itemprop="url">
                   windos 10 安装 mongodb 3.2
                 </a>
@@ -1084,103 +1193,6 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/" itemprop="url">
-                  PanLi app 内嵌厂家页面去除浮动元素 v0.0.2 (注入方案)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-11T09:59:03+08:00" content="2016-01-11">
-              2016-01-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mobile/" itemprop="url" rel="index">
-                    <span itemprop="name">mobile</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/11/webapp/PanLi-app-内嵌厂家页面去除浮动元素/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="应用场景说明"><a href="#应用场景说明" class="headerlink" title="应用场景说明"></a>应用场景说明</h2><blockquote> <p>在第一版的时候,我们尝试通过 <code>Panli.com</code> 主站 ifarme 厂家的各个页面,<br>由于涉及到浏览器安全的问题，浏览器阻住跨域 网站的操作 <code>dom</code> 信息 ;<br>我们只好尝试在 Panli 主站页面 设置遮罩层的方式来弥补<br>随着开发测试的进度一点点完成,最终发现 这个方案不可行</p> </blockquote> <h2 id="注入方案"><a href="#注入方案" class="headerlink" title="注入方案"></a>注入方案</h2><blockquote> <p>在思考许久后， 原生 app 那边 说可以 执行 <code>javascript</code>代码 ;</p> </blockquote> <p>后来我们就开始执行操作， 我们试着写了一下 执行 网页 <code>dom</code> 元素的 <code>javascript</code> 脚本</p> <p>最终发现可以操作 web view 厂家页面的 <code>dom</code> 元素，可行性方案已找到。</p> <h2 id="开发敏捷"><a href="#开发敏捷" class="headerlink" title="开发敏捷"></a>开发敏捷</h2><blockquote> <p>在开发注入脚本的时候，在手机上调试结果，非常痛苦,<br>浪费了大量的时间去小心意义的点击 web view 页面 的链接<br>测试机又不给力</p> </blockquote> <p>无奈之下，既然都是注入 <code>javascript</code> 脚本 何不尝试在 <code>pc</code> 浏览器上一样注入呢；<br>我们开发了一套 基于 <code>Chrome</code> 浏览器的 插件 。</p> <p><a href="https://github.com/browser-extensions/appRemove" target="_blank" rel="external">插件详细介绍 和 安装</a></p> <h2 id="淘宝首页头部元素寻找"><a href="#淘宝首页头部元素寻找" class="headerlink" title="淘宝首页头部元素寻找"></a>淘宝首页头部元素寻找</h2><p><img src="http://zanjs.b0.upaiyun.com/image/1/f5/52ba910f9917a128b2b0ec64f710f.png" alt=""></p> <p>可以看到在代码区域我看到了 <code>id=&quot;v539213&quot; class=&quot;v61dsk&quot;</code> </p> <p>我们要录入的元素 就是 id=后面 双引号里面的值 和 class=后面 双引号里面的值</p> <h2 id="数据录入"><a href="#数据录入" class="headerlink" title="数据录入"></a>数据录入</h2><blockquote> <p>为了能及时跟进 各个厂家的 页面的改动 ,<br>我们将数据统一后台录入为标准，前台调用接口的形式,来操作厂家 页面元素的去除</p> </blockquote> <h3 id="后台录入如下数据"><a href="#后台录入如下数据" class="headerlink" title="后台录入如下数据"></a>后台录入如下数据</h3><p><img src="http://zanjs.b0.upaiyun.com/image/4/ae/dd0f6acb0780d2fb129bc0e6e26b3.png" alt=""></p> <blockquote> <p>id 以#开头，class以.开头<br>录入的数据 以 英文的 <code>,</code> 作为分割</p> </blockquote> <h3 id="淘宝客户端广告"><a href="#淘宝客户端广告" class="headerlink" title="淘宝客户端广告"></a>淘宝客户端广告</h3><p>在测试数据的时候 , 我们发现 淘宝 头部 的客户端 广告 的 <code>id</code> 和 <code>class</code> 都是 随机haxi算法生成的。<br>也就是后台没办法录入这样的数据，因为你录了这次的 <code>id</code> 和 <code>class</code> 值 页面刷新一下 就又变了,<br>所以我们只好 在脚本里面写死，根据我们的算法模糊匹配 <code>id</code> 和 <code>class</code></p> <blockquote> <p>如果您在寻找 浮动广告元素的 <code>id</code> 和 <code>class</code> 的时候，<br>发现 是 数据和 字母组合的，并且没有意义的组合,请告知我 @julian 。 </p> </blockquote>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1226,7 +1238,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

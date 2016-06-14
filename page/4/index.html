@@ -227,6 +227,103 @@
             
             
               
+                <a class="post-title-link" href="/2015/12/02/ajax/跨域的另一种解决方案——CORS（Cross-Origin-Resource-Sharing）跨域资源共享/" itemprop="url">
+                  跨域的另一种解决方案——CORS（Cross-Origin Resource Sharing）跨域资源共享
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-02T17:57:45+08:00" content="2015-12-02">
+              2015-12-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/02/ajax/跨域的另一种解决方案——CORS（Cross-Origin-Resource-Sharing）跨域资源共享/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/02/ajax/跨域的另一种解决方案——CORS（Cross-Origin-Resource-Sharing）跨域资源共享/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>在我们日常的项目开发时使用AJAX，传统的Ajax请求只能获取在同一个域名下面的资源，<br>但是HTML5打破了这个限制，允许Ajax发起跨域的请求。<br>浏览器是可以发起跨域请求的，比如你可以外链一个外域的图片或者脚本。<br>但是Javascript脚本是不能获取这些资源的内容的，它只能被浏览器执行或渲染。<br>主要原因还是出于安全考虑，浏览器会限制脚本中发起的跨站请求。<br>(同源策略， 即JavaScript或Cookie只能访问同域下的内容)。<br>跨域的解决方案有多重JSONP、Flash、Iframe等，<br>当然还有CORS（跨域资源共享，Cross-Origin Resource Sharing）今天就来了解下CORS的原理，以及如何使用。</p>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/12/02/ajax/同样域名下端口号不一样-ajax-请求ie-浏览器可以而firefox和-谷歌不可以/" itemprop="url">
                   同样域名下端口号不一样 ajax 请求ie 浏览器可以而firefox和 谷歌不可以
                 </a>
@@ -1063,7 +1160,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cipeqq4oq003a8055km0k7oei"
+                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cipeuqkot003d5d555ntewy9h"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
               </a>
@@ -1080,119 +1177,6 @@
           <span itemprop="articleBody">
             
               <h2 id="loopback-插入数据库"><a href="#loopback-插入数据库" class="headerlink" title="loopback 插入数据库"></a>loopback 插入数据库</h2><blockquote> <p>mongodb 篇</p> </blockquote> <p>上几节相信大家的项目都可以运行起来了,下面就开始 玩玩 mongodb 这个家伙吧</p> <p>在玩之前希望测试一下是否已经 连接到 <code>mongodb</code></p> <p> 可以登录 启动 StrongLoop 的 api 平台</p> <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>slc arc</span><br></pre></td></tr></table></figure> <p> <img src="http://zanjs.b0.upaiyun.com/image/9/6c/b4c228b5d0bb089ad8f83cbfbae94.png" alt="StrongLoop api 平台"></p> <blockquote> <p>点击 大大的按钮 看到 Success 就正常已经正常连接到 mongodb 了</p> </blockquote> <h3 id="配置-datasources-json-内容如下"><a href="#配置-datasources-json-内容如下" class="headerlink" title="配置 datasources.json  内容如下"></a>配置 datasources.json 内容如下</h3><blockquote> <p>根据您 mongodb 的 配置 填入</p> </blockquote> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"db"</span>: &#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"db"</span>,</span><br><span class="line">    <span class="attr">"connector"</span>: <span class="string">"memory"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"mongodb"</span>: &#123;</span><br><span class="line">    <span class="attr">"host"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="attr">"port"</span>: <span class="number">27017</span>,</span><br><span class="line">    <span class="attr">"password"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">    <span class="attr">"connector"</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">    <span class="attr">"url"</span>: <span class="string">"mongodb://localhost:27017/panli-auth"</span>,</span><br><span class="line">    <span class="attr">"user"</span>: <span class="string">""</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <h3 id="配置-model-config-json"><a href="#配置-model-config-json" class="headerlink" title="配置 model-config.json"></a>配置 model-config.json</h3><blockquote> <p>这里我吧 <code>dataSource</code> 都改成了 ‘mongodb’ </p> <p>mongodb 的数据源 在 datasources.json 的文件里配置好了 上面已经配置了</p> </blockquote> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"_meta"</span>: &#123;</span><br><span class="line">    <span class="attr">"sources"</span>: [</span><br><span class="line">      <span class="string">"loopback/common/models"</span>,</span><br><span class="line">      <span class="string">"loopback/server/models"</span>,</span><br><span class="line">      <span class="string">"../common/models"</span>,</span><br><span class="line">      <span class="string">"./models"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"mixins"</span>: [</span><br><span class="line">      <span class="string">"loopback/common/mixins"</span>,</span><br><span class="line">      <span class="string">"loopback/server/mixins"</span>,</span><br><span class="line">      <span class="string">"../common/mixins"</span>,</span><br><span class="line">      <span class="string">"./mixins"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"AccessToken"</span>: &#123;</span><br><span class="line">    <span class="attr">"dataSource"</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">    <span class="attr">"public"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"ACL"</span>: &#123;</span><br><span class="line">    <span class="attr">"dataSource"</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">    <span class="attr">"public"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"RoleMapping"</span>: &#123;</span><br><span class="line">    <span class="attr">"dataSource"</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">    <span class="attr">"public"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"Role"</span>: &#123;</span><br><span class="line">    <span class="attr">"dataSource"</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">    <span class="attr">"public"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"PanUser"</span>: &#123;</span><br><span class="line">    <span class="attr">"dataSource"</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">    <span class="attr">"public"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <h3 id="scl-run-运行应用"><a href="#scl-run-运行应用" class="headerlink" title="scl run 运行应用"></a>scl run 运行应用</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">E:</span>\zan\www\strongloop\loopback\panli-auth&gt;slc run</span><br><span class="line">INFO strong-agent v2<span class="number">.0</span><span class="number">.2</span> profiling app <span class="string">'panli-auth'</span> pid <span class="string">'7752'</span></span><br><span class="line">INFO strong-agent[<span class="number">7752</span>] started profiling agent</span><br><span class="line">INFO supervisor reporting metrics to `<span class="string">internal:</span>`</span><br><span class="line">supervisor running without clustering (unsupervised)</span><br><span class="line"><span class="string">Swagger:</span> skipping unknown type <span class="string">"ObjectID"</span>.</span><br><span class="line">Web server listening <span class="string">at:</span> <span class="string">http:</span><span class="comment">//localhost:3000</span></span><br><span class="line">Browse your REST API at <span class="string">http:</span><span class="comment">//localhost:3000/explorer</span></span><br></pre></td></tr></table></figure> <p>浏览器打开 <a href="http://localhost:3000/explorer" target="_blank" rel="external">http://localhost:3000/explorer</a></p> <p>在这里 我们可以测试接口的数据</p> <p>下面演示一下</p> <p><img src="http://zanjs.b0.upaiyun.com/image/f/0c/f07b3315a75d8f13ff07e21b6dd8b.gif" alt="api gif"></p> <blockquote> <p>上面是演示注册用户的api 接口 post 提交 <a href="http://localhost:3000/api/users" target="_blank" rel="external">http://localhost:3000/api/users</a></p> </blockquote> <p>在文本框内输入三个必填项 username ， email 和 password</p> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"username"</span>:<span class="string">"za2"</span>,</span><br><span class="line"><span class="attr">"email"</span>:<span class="string">"zz@z2.com"</span>,</span><br><span class="line"><span class="attr">"password"</span>:<span class="string">"qq123"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <p>提交后 在下面的 Response Body 可以看到 我们注册的用户信息了</p> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"username"</span>: <span class="string">"za2"</span>,</span><br><span class="line">  <span class="attr">"email"</span>: <span class="string">"zz@z2.com"</span>,</span><br><span class="line">  <span class="attr">"id"</span>: <span class="string">"5631dc4d59ab85481e474aec"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <p>看到 id 的键值 就可以知道 他插入到了 mongodb 了</p> <p>我还是不相信我的眼睛 ， 吓得我 跑到 mongodb 瞧一瞧 嘻嘻！</p> <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt; show dbs</span><br><span class="line"><span class="keyword">local</span>       <span class="number">0</span>.<span class="number">07</span>8GB</span><br><span class="line">panli-auth  <span class="number">0</span>.<span class="number">07</span>8GB</span><br><span class="line">test        <span class="number">0</span>.<span class="number">07</span>8GB</span><br><span class="line">&gt; <span class="keyword">use</span> panli-auth</span><br><span class="line">switched to db panli-auth</span><br><span class="line">&gt; show tables</span><br><span class="line">PanUser</span><br><span class="line">system.indexes</span><br><span class="line">&gt; show collections</span><br><span class="line">PanUser</span><br><span class="line">system.indexes</span><br><span class="line">&gt; db.PanUser.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5631d38859ab85481e474aeb"</span>), <span class="string">"username"</span> : <span class="string">"za"</span>, <span class="string">"password"</span> :</span><br><span class="line"><span class="string">"$2a$10$OnuNv/YTPSYzYUi9S9UJ3eArmRmZQbRCyBnqt6xxozYEjSMIE2PTK"</span>, <span class="string">"email"</span> : <span class="string">"zz@z.</span><br><span class="line">com"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5631dc4d59ab85481e474aec"</span>), <span class="string">"username"</span> : <span class="string">"za2"</span>, <span class="string">"password"</span> :</span><br><span class="line"> <span class="string">"$2a$10$9q5X4y570Ti3SdfMg4ANr.dHOdjZpPW3.JOxE5GB2U6t9XCngZyVq"</span>, <span class="string">"email"</span> : <span class="string">"zz@z</span><br><span class="line">2.com"</span> &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure> <p>可以看到 数据以及躺在 mongodb 里啦</p> <p>如果有不对的地方，请大神 指错， 我也是一边学习 一边 写的</p>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/29/strongloop/node-js框架StrongLoop一步步搭建-第五节/" itemprop="url">
-                  node.js框架StrongLoop一步步搭建 第五节 (LoopBack 模型(model)属性添加)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-29T15:10:28+08:00" content="2015-10-29">
-              2015-10-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/29/strongloop/node-js框架StrongLoop一步步搭建-第五节/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/29/strongloop/node-js框架StrongLoop一步步搭建-第五节/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" rel="gallery_cipeqq4os003e8055i9873jfn"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://zanjs.b0.upaiyun.com/image/3/a0/30b4cfec7a5c0e547153d0ac560e2.png" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="模型-model-添加新属性"><a href="#模型-model-添加新属性" class="headerlink" title="模型(model)添加新属性"></a>模型(model)添加新属性</h2><h3 id="命令行方式"><a href="#命令行方式" class="headerlink" title="命令行方式"></a>命令行方式</h3><ul> <li>cd 到项目根目录下 <code>slc loopback:property</code></li> </ul> <p>选择属性添加到哪个模型里 - 我选择了上节创建的 <code>PanUser</code> 模型</p> <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">E:\zan\www\strongloop\loopback\panli-auth&gt;slc loopback:<span class="keyword">property</span><span class="title"></span><br><span class="line"></span>? Select the model:</span><br><span class="line">  Change</span><br><span class="line">  Checkpoint</span><br><span class="line">  Email</span><br><span class="line">&gt; PanUser</span><br><span class="line">  <span class="keyword">Role</span></span><br><span class="line">  <span class="title">RoleMapping</span></span><br><span class="line">  Scope</span><br><span class="line">(Move up <span class="keyword">and</span> down to reveal more choices)</span><br></pre></td></tr></table></figure> <p>要添加属性的名称 输入 <code>age</code> 选择 number 字段类型</p> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">? <span class="keyword">Select</span> the <span class="keyword">model</span>: PanUser</span><br><span class="line">? Enter the property <span class="keyword">name</span>: age</span><br><span class="line">? Property <span class="keyword">type</span>:</span><br><span class="line">  <span class="keyword">string</span></span><br><span class="line">&gt; <span class="built_in">number</span></span><br><span class="line">  <span class="built_in">boolean</span></span><br><span class="line">  <span class="keyword">object</span></span><br><span class="line">  <span class="built_in">array</span></span><br><span class="line">  <span class="built_in">date</span></span><br><span class="line">  buffer</span><br><span class="line">(<span class="keyword">Move</span> up <span class="keyword">and</span> down <span class="keyword">to</span> reveal more choices)</span><br></pre></td></tr></table></figure> <p>是否必填 输入 N</p> <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">? Select the model: PanUser</span><br><span class="line">? Enter the <span class="keyword">property</span><span class="title"> name:</span> age</span><br><span class="line">? <span class="keyword">Property</span><span class="title"> type:</span> <span class="keyword">number</span></span><br><span class="line">? Required? No</span><br></pre></td></tr></table></figure> <p>到此 为 模型(model)添加新属性 结束</p> <h3 id="web在线网页方式"><a href="#web在线网页方式" class="headerlink" title="web在线网页方式"></a>web在线网页方式</h3><p>忽视吧 哈哈…</p> <p>StrongLoop API平台 傻瓜式操作 </p> <blockquote> <p>如果有不对的地方，请大神 指错， 我也是一边学习 一边 写的</p> </blockquote>
             
           </span>
         
@@ -1258,7 +1242,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

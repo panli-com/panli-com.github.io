@@ -227,6 +227,103 @@
             
             
               
+                <a class="post-title-link" href="/2016/06/22/tools/Localtunnel内网穿透工具的安装与使用/" itemprop="url">
+                  Localtunnel内网穿透工具的安装与使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-06-22T16:00:53+08:00" content="2016-06-22">
+              2016-06-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/22/tools/Localtunnel内网穿透工具的安装与使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/22/tools/Localtunnel内网穿透工具的安装与使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Localtunnel可以方便快捷的实现你的本地web服务通过外网访问，<br>无需修改DNS和防火墙设置，其实原理与ngrok类似。<br>但Localtunnel是基于nodejs的，而ngrok是基于go语言。</p> <h2 id="使用官方提供的Localtunnel服务端"><a href="#使用官方提供的Localtunnel服务端" class="headerlink" title="使用官方提供的Localtunnel服务端"></a>使用官方提供的Localtunnel服务端</h2><h3 id="安装localtunnel客户端"><a href="#安装localtunnel客户端" class="headerlink" title="安装localtunnel客户端"></a>安装localtunnel客户端</h3><p>localtunnel是基于node.js的一个模块，所以首先需要安装node.js和npm。</p> <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  npm <span class="keyword">install</span> -g localtunnel</span><br></pre></td></tr></table></figure> <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>假设本地服务器在81端口，我们可以通过下面的命令把本地服务器暴露到公网中</p> <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="vim">$   <span class="keyword">lt</span> --port <span class="number">81</span></span><br><span class="line">your url i<span class="variable">s:</span> http<span class="variable">s:</span>//ouumalrvoi.localtunnel.<span class="keyword">me</span></span></span><br></pre></td></tr></table></figure> <p>通过上面的命令，我们不需要做其他设置就可以通过 <code>https://ouumalrvoi.localtunnel.me</code> 来访问我们本地服务器了。</p> <p>如果想通过固定的域名访问，则可以通过以下命令进行设置，成功后可通过 <code>https://zanjs.localtunnel.me</code> 而访问到本地服务器。</p> <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span>   <span class="keyword">lt</span> --subdomain mike --port <span class="number">81</span></span><br><span class="line"><span class="symbol">$</span>   <span class="keyword">lt</span> -s mike -p <span class="number">81</span></span><br></pre></td></tr></table></figure> <h2 id="自建Localtunnel服务端"><a href="#自建Localtunnel服务端" class="headerlink" title="自建Localtunnel服务端"></a>自建Localtunnel服务端</h2><p>由于localtunnel.me是国外的服务器，访问速度有时候不太理想，这时候我们可以自己搭建localtunnel的服务端。</p> <h3 id="安装服务端"><a href="#安装服务端" class="headerlink" title="安装服务端"></a>安装服务端</h3><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span>   git clone https:<span class="comment">//github.com/localtunnel/server.git localtunnel-server</span></span><br><span class="line"><span class="symbol">$</span>   cd localtunnel-server</span><br><span class="line"><span class="symbol">$</span>   npm install</span><br></pre></td></tr></table></figure> <h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><p>以监听2000端口为例：</p> <p>直接使用</p> <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$   bin/server <span class="comment">--port 2000</span></span><br><span class="line">localtunnel server listening <span class="keyword">on</span> port: <span class="number">2000</span> +<span class="number">0</span>ms</span><br></pre></td></tr></table></figure> <p>配合pm2使用</p> <figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">$</span>   <span class="comment">npm</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">pm2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">$</span>   <span class="comment">pm2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">name</span> <span class="comment">lt</span> <span class="comment">start</span> <span class="comment">bin/server</span> <span class="literal">-</span><span class="literal">-</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">port</span> <span class="comment">2000</span></span><br></pre></td></tr></table></figure> <p>启动服务端程序后，我们只要在使用客户端lt时加上–host参数，就可以指定服务端了。</p> <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#host后面不要加/</span></span><br><span class="line">$lt --host http:<span class="comment">//zanjs.me:2000 --port 81</span></span><br><span class="line">your url <span class="keyword">is</span>: http:<span class="comment">//zanjs.me:2000</span></span><br></pre></td></tr></table></figure> <p>这样，我们就可以通过自己的代理服务器来访问本地服务器了，不用经过第三方代理服务器，不必担心代理服务器的安全问题。</p> <h2 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h2><h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>在Github 上面有一份Nginx的配置，我们可以直接使用，或者按照自己的需要做些修改。</p> <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">proxy_http_version 1.1;</span><br><span class="line"></span><br><span class="line"># http://nginx.org/en/docs/http/websocket.html</span><br><span class="line">map $http_upgrade $connection_upgrade &#123;</span><br><span class="line">    default upgrade;</span><br><span class="line">    ''      close;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">upstream lt-server &#123;</span><br><span class="line">    server 127.0.0.1:2000;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80 default_server;</span><br><span class="line">    listen [::]:80 default_server ipv6only=on;</span><br><span class="line"></span><br><span class="line">    server_name .localtunnel.me;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://lt-server/;</span><br><span class="line"></span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto http;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection $connection_upgrade;</span><br><span class="line"></span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 default_server ssl spdy;</span><br><span class="line">    listen [::]:443 default_server ipv6only=on;</span><br><span class="line"></span><br><span class="line">    server_name .localtunnel.me;</span><br><span class="line"></span><br><span class="line">    ssl on;</span><br><span class="line"></span><br><span class="line">    ssl_certificate      /etc/nginx/ssl/STAR.localtunnel.me.crt;</span><br><span class="line">    ssl_certificate_key  /etc/nginx/ssl/STAR.localtunnel.me.key;</span><br><span class="line"></span><br><span class="line">    ssl_protocols              SSLv3 TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_ciphers                RC4:HIGH:!aNULL:!MD5;</span><br><span class="line">    ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">    ssl_session_cache    shared:SSL:10m;</span><br><span class="line">    ssl_session_timeout  10m;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://lt-server/;</span><br><span class="line"></span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto https;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_set_header Connection $connection_upgrade;</span><br><span class="line"></span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <h3 id="指定子域名"><a href="#指定子域名" class="headerlink" title="指定子域名"></a>指定子域名</h3><p>有时候，用随机字符串作为子域名并不是一件好事，<br>我们可能需要固定的域名来访问本地服务器。这时，lt –subdomain就可以派上用场了。</p> <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#subdomain限制长度为4 ~ 63</span></span><br><span class="line">$lt --host http:<span class="comment">//tunnel.zanjs.me:2000 --port 81 --subdomain mysubdomain</span></span><br><span class="line">your url <span class="keyword">is</span>: http:<span class="comment">//mysubdomain.tunnel.zanjs.me:2000</span></span><br></pre></td></tr></table></figure> <p>看到了吗？通过–subdomain，我们就可以指定自己喜欢的子域名了。</p> <p>然而，如果我们通过–host来指定子域名，会发生什么？</p> <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$   lt --host <span class="string">http:</span><span class="comment">//tunnel.zanjs.me:2000 --port 81</span></span><br><span class="line"><span class="string">Error:</span> localtunnel server returned an error, please <span class="keyword">try</span> again</span><br></pre></td></tr></table></figure> <p>就算配置了 Nginx 的反向代理，你依然会得到这个错误。<br>可以查看 <a href="https://github.com/localtunnel/server/issues/21" target="_blank" rel="external">#21</a>和 <a href="https://github.com/localtunnel/server/issues/31" target="_blank" rel="external">#31</a>来看更多的细节。</p> <p>要解决这个问题，最简单的就是不用–host来指定子域名，而用–subdomain来指定。</p> <p>参考资料</p> <p><a href="http://www.google.com" target="_blank" rel="external">http://www.google.com</a></p> <p><a href="https://github.com/localtunnel/localtunnel" target="_blank" rel="external">https://github.com/localtunnel/localtunnel</a></p> <p><a href="https://github.com/localtunnel/server" target="_blank" rel="external">https://github.com/localtunnel/server</a></p>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2016/06/20/javascript/正则表达式几笔梅/" itemprop="url">
                   正则表达式几笔梅
                 </a>
@@ -396,7 +493,7 @@
         
           <span itemprop="articleBody">
             
-              <h2 id="需求说明"><a href="#需求说明" class="headerlink" title="需求说明"></a>需求说明</h2><p>H5 分享页 在 微信 <code>WebView</code> 下载按钮点击后，打开 <code>AppStore</code>下载页面；<br>如果是浏览器打开，则判断是否装了<code>APP</code>，如果装了则打开拼邮界面。</p> <h2 id="『经浏览器唤起APP』的最佳实现方案是怎样的？"><a href="#『经浏览器唤起APP』的最佳实现方案是怎样的？" class="headerlink" title="『经浏览器唤起APP』的最佳实现方案是怎样的？"></a>『经浏览器唤起APP』的最佳实现方案是怎样的？</h2><p>下面 一一作出解决方案</p> <h3 id="遇到的主要问题"><a href="#遇到的主要问题" class="headerlink" title="遇到的主要问题"></a>遇到的主要问题</h3><p>无法判断用户是否安装APP，来采用何种跳转逻辑：</p> <ol> <li><p><code>iOS</code> 有原生的 <code>Smart Banner</code>，可以帮助判断是否安装 <code>APP</code> 并跳转，<br>但也仅限于 <code>safari</code> 浏览器，并且不可定制样式和跳转URL。<br>需要通过 <code>schema</code> 来唤起 <code>APP</code>，因为需要带上具体的页面参数。</p> </li> <li><p>在比较旧的<code>iOS</code>版本里，业界有一个比较通用的办法，是可以通过 <code>iFrame</code>尝试唤起 <code>APP</code>，<br>以一个时间差来判断用户手机里是否已安装，再来决定是否跳到 <code>appStore</code>。<br>然而最新的 <code>iOS</code>中，这一套方案已经失效，<code>iFrame</code> 不再有效果。</p> </li> <li><p>尝试过用 <code>setTimeout</code> 来首先直接唤起APP，然后再唤起 <code>appStore</code>。<br>这样的话，如果没有安装APP，会有一个难看的提示『该网址已经失效』，还需要手动X掉。<br>尝试通过 <code>setTimeout</code> 来首先直接唤起 <code>APP</code> ，然后再跳转到另一个页面再唤起 <code>appStore</code>。</p> </li> </ol> <p>这样的话新页面虽然可以将『该网址已经失效』给顶掉，<br>但是同时也会把正常唤起APP的提示『是否打开APP』也给顶掉。</p> <ol> <li>如果用户是通过微信、qq等内置webview启动这一操作，那么提示用户启用 <code>safari</code> 打开并再走一次以上逻辑。<br>有的APP可以直接通过微信qq判断并唤起，<br>比如知乎？不知道此中是有友好协议，还是我并没有完全搞清楚原理，需要大家解答一下。</li> </ol> <h3 id="简单调查"><a href="#简单调查" class="headerlink" title="简单调查"></a>简单调查</h3><p>简单调查了一下某些其他应用，发现大家并没有一套通用并完美的方案：</p> <ol> <li><p>『知乎』及『网易云音乐』提供了两个入口，一个供跳转到APP，一个供跳转到 <code>appStore</code>。<br>未安装点击跳转到APP会有错误提示。</p> </li> <li><p>腾讯视频只有一个按钮，貌似是第一次点它会给你跳到 <code>appStore</code> ，此后再点它就会给你唤起APP。<br>未安装点击会有错误提示。</p> </li> <li><p>简书则是直接唤起APP。未安装点击会有错误提示。</p> </li> </ol> <p>大体上就是这三类方案，可是始终没有一个满足最上面需求的完美方案。</p> <h3 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h3><ol> <li><p>微信客户端与qq浏览器客户端</p> <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">跳转到下载地址</span><br><span class="line"></span><br><span class="line">至于为什么？</span><br><span class="line">有些<span class="keyword">app</span>会阉割掉深链接的功能，例如微信，QQ。</span><br><span class="line">这时候就需要引导用户通过打开外部浏览器来实现深链接的功能</span><br></pre></td></tr></table></figure> </li> <li><p>ios9 Safari </p> <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">直接打开 `Panli APP` 的 移动深链接, 如果安装了 直接弹出是否打开 `Panli APP`, </span><br><span class="line">如果未安装，Safari 会弹出『该网址已经失效』，然后跳转到 `appStore`</span><br></pre></td></tr></table></figure> </li> </ol> <h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><ul> <li><p><a href="https://ipanli.github.io/webapp/20160612/" target="_blank" rel="external">打开地址 https://ipanli.github.io</a></p> </li> <li><p>二维码扫一扫</p> <p><img src="/update/20160614/demo.png" alt="demo"></p> </li> </ul> <h2 id="android"><a href="#android" class="headerlink" title="android"></a>android</h2><p>经过小规模的测试，得到以下结论</p> <p>由于下载走的是 腾讯应用宝 , 在安卓的微信下面，需要借助 腾讯应用宝来打开App 的,<br>意思就是说，当安卓客户端未安装 应用宝的时候 ,中转页面会有一个 <code>普通下载</code> 和 <code>腾讯应用宝安全打开</code> 2 个选项 </p> <ul> <li><p>普通下载 ,不明显，且点击会有安全提示!</p> </li> <li><p>腾讯应用宝安全打开 会先下载应用宝 （家族产品的霸道，有种你别用微信，人在屋檐下呀,囧！）</p> </li> </ul> <p><strong>请注意</strong> 非官方已经安装过了 Panli App 点击 腾讯应用宝安全打开 ,会下载 Panli APP </p> <p>测试机点击没反应 是因为是直接在 开发人员电脑上安装的。</p> <p>由于 android 的特殊性 以及 Panli APP应用投放的应用商店，下载的地方除了谷歌应用商店外，只有应用宝了 ，<br>又由于 国内的安卓设备 谷歌的应用商店几乎都不能用 ，所以以上请注意可以忽略</p> <h2 id="主要代码实现"><a href="#主要代码实现" class="headerlink" title="主要代码实现"></a>主要代码实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(isWeixinBrowser() || isQQBrowser())&#123;</span><br><span class="line">            <span class="built_in">window</span>.open(downUrl)</span><br><span class="line">            PL.open(&#123;</span><br><span class="line">                content: <span class="string">'正在为您跳转...'</span>,</span><br><span class="line">                time: <span class="number">5</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(isAndroid)&#123;</span><br><span class="line">                <span class="comment">//android</span></span><br><span class="line">                <span class="comment">//唤醒app并阻止接下来的js执行</span></span><br><span class="line">                $(<span class="string">'body'</span>).append(<span class="string">"&lt;iframe src='panliapp://openapp' style='display:none' target='' &gt;&lt;/iframe&gt;"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//没有安装应用会跳转下载地址</span></span><br><span class="line">                setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">window</span>.location = Android&#125;,<span class="number">600</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//ios</span></span><br><span class="line">                <span class="comment">//唤醒app</span></span><br><span class="line">                <span class="built_in">window</span>.open(<span class="string">'panliapp://openapp'</span>, <span class="string">"_self"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//没有安装应用会跳到 appStore</span></span><br><span class="line">                setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">window</span>.location = <span class="string">'itms-apps://itunes.apple.com/app/id590216292'</span>&#125;,<span class="number">300</span>);</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+              <h2 id="需求说明"><a href="#需求说明" class="headerlink" title="需求说明"></a>需求说明</h2><p>H5 分享页 在 微信 <code>WebView</code> 下载按钮点击后，打开 <code>AppStore</code>下载页面；<br>如果是浏览器打开，则判断是否装了<code>APP</code>，如果装了则打开拼邮界面。</p> <h2 id="『经浏览器唤起APP』的最佳实现方案是怎样的？"><a href="#『经浏览器唤起APP』的最佳实现方案是怎样的？" class="headerlink" title="『经浏览器唤起APP』的最佳实现方案是怎样的？"></a>『经浏览器唤起APP』的最佳实现方案是怎样的？</h2><p>下面 一一作出解决方案</p> <h3 id="遇到的主要问题"><a href="#遇到的主要问题" class="headerlink" title="遇到的主要问题"></a>遇到的主要问题</h3><p>无法判断用户是否安装APP，来采用何种跳转逻辑：</p> <ol> <li><p><code>iOS</code> 有原生的 <code>Smart Banner</code>，可以帮助判断是否安装 <code>APP</code> 并跳转，<br>但也仅限于 <code>safari</code> 浏览器，并且不可定制样式和跳转URL。<br>需要通过 <code>schema</code> 来唤起 <code>APP</code>，因为需要带上具体的页面参数。</p> </li> <li><p>在比较旧的<code>iOS</code>版本里，业界有一个比较通用的办法，是可以通过 <code>iFrame</code>尝试唤起 <code>APP</code>，<br>以一个时间差来判断用户手机里是否已安装，再来决定是否跳到 <code>appStore</code>。<br>然而最新的 <code>iOS</code>中，这一套方案已经失效，<code>iFrame</code> 不再有效果。</p> </li> <li><p>尝试过用 <code>setTimeout</code> 来首先直接唤起APP，然后再唤起 <code>appStore</code>。<br>这样的话，如果没有安装APP，会有一个难看的提示『该网址已经失效』，还需要手动X掉。<br>尝试通过 <code>setTimeout</code> 来首先直接唤起 <code>APP</code> ，然后再跳转到另一个页面再唤起 <code>appStore</code>。</p> </li> </ol> <p>这样的话新页面虽然可以将『该网址已经失效』给顶掉，<br>但是同时也会把正常唤起APP的提示『是否打开APP』也给顶掉。</p> <ol> <li>如果用户是通过微信、qq等内置webview启动这一操作，那么提示用户启用 <code>safari</code> 打开并再走一次以上逻辑。<br>有的APP可以直接通过微信qq判断并唤起，<br>比如知乎？不知道此中是有友好协议，还是我并没有完全搞清楚原理，需要大家解答一下。</li> </ol> <h3 id="简单调查"><a href="#简单调查" class="headerlink" title="简单调查"></a>简单调查</h3><p>简单调查了一下某些其他应用，发现大家并没有一套通用并完美的方案：</p> <ol> <li><p>『知乎』及『网易云音乐』提供了两个入口，一个供跳转到APP，一个供跳转到 <code>appStore</code>。<br>未安装点击跳转到APP会有错误提示。</p> </li> <li><p>腾讯视频只有一个按钮，貌似是第一次点它会给你跳到 <code>appStore</code> ，此后再点它就会给你唤起APP。<br>未安装点击会有错误提示。</p> </li> <li><p>简书则是直接唤起APP。未安装点击会有错误提示。</p> </li> </ol> <p>大体上就是这三类方案，可是始终没有一个满足最上面需求的完美方案。</p> <h3 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h3><ol> <li><p>微信客户端与qq浏览器客户端</p> <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">跳转到下载地址</span><br><span class="line"></span><br><span class="line">至于为什么？</span><br><span class="line">有些<span class="keyword">app</span>会阉割掉深链接的功能，例如微信，QQ。</span><br><span class="line">这时候就需要引导用户通过打开外部浏览器来实现深链接的功能</span><br></pre></td></tr></table></figure> </li> <li><p>ios9 Safari </p> <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">直接打开 `Panli APP` 的 移动深链接, 如果安装了 直接弹出是否打开 `Panli APP`, </span><br><span class="line">如果未安装，Safari 会弹出『该网址已经失效』，然后跳转到 `appStore`</span><br></pre></td></tr></table></figure> </li> </ol> <h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><ul> <li><p><a href="https://ipanli.github.io/webapp/20160612/" target="_blank" rel="external">打开地址 https://ipanli.github.io</a></p> </li> <li><p>二维码扫一扫</p> <p><img src="/update/20160614/demo.png" alt="demo"></p> </li> </ul> <h2 id="android"><a href="#android" class="headerlink" title="android"></a>android</h2><p>经过小规模的测试，得到以下结论</p> <p>由于下载走的是 腾讯应用宝 , 在安卓的微信下面，需要借助 腾讯应用宝来打开App 的,<br>意思就是说，当安卓客户端未安装 应用宝的时候 ,中转页面会有一个 <code>普通下载</code> 和 <code>腾讯应用宝安全打开</code> 2 个选项 </p> <ul> <li><p>普通下载 ,不明显，且点击会有安全提示!</p> </li> <li><p>腾讯应用宝安全打开 会先下载应用宝 （家族产品的霸道，有种你别用微信，人在屋檐下呀,囧！）</p> </li> </ul> <p><strong>请注意</strong> 非官方已经安装过了 Panli App 点击 腾讯应用宝安全打开 ,会下载 Panli APP </p> <p>测试机点击没反应 是因为是直接在 开发人员电脑上安装的。</p> <p>由于 android 的特殊性 以及 Panli APP应用投放的应用商店，下载的地方除e了谷歌应用商店外，只有应用宝了 ，<br>又由于 国内的安卓设备 谷歌的应用商店几乎都不能用 ，所以以上请注意可以忽略</p> <h2 id="主要代码实现"><a href="#主要代码实现" class="headerlink" title="主要代码实现"></a>主要代码实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(isWeixinBrowser() || isQQBrowser())&#123;</span><br><span class="line">            <span class="built_in">window</span>.open(downUrl)</span><br><span class="line">            PL.open(&#123;</span><br><span class="line">                content: <span class="string">'正在为您跳转...'</span>,</span><br><span class="line">                time: <span class="number">5</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(isAndroid)&#123;</span><br><span class="line">                <span class="comment">//android</span></span><br><span class="line">                <span class="comment">//唤醒app并阻止接下来的js执行</span></span><br><span class="line">                $(<span class="string">'body'</span>).append(<span class="string">"&lt;iframe src='panliapp://openapp' style='display:none' target='' &gt;&lt;/iframe&gt;"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//没有安装应用会跳转下载地址</span></span><br><span class="line">                setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">window</span>.location = Android&#125;,<span class="number">600</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//ios</span></span><br><span class="line">                <span class="comment">//唤醒app</span></span><br><span class="line">                <span class="built_in">window</span>.open(<span class="string">'panliapp://openapp'</span>, <span class="string">"_self"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//没有安装应用会跳到 appStore</span></span><br><span class="line">                setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">window</span>.location = <span class="string">'itms-apps://itunes.apple.com/app/id590216292'</span>&#125;,<span class="number">300</span>);</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             
           </span>
         
@@ -1531,103 +1628,6 @@ main-937cc23ccbf192c9edd6.js  97.2 kB       0  [emitted]  main
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2016/04/06/ubuntu/双系统下Linux（ubuntu）不能进入windows的NTFS分区之挂载错误问题解决/" itemprop="url">
-                  双系统下Linux（ubuntu）不能进入windows的NTFS分区之挂载错误问题解决
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-04-06T10:43:32+08:00" content="2016-04-06">
-              2016-04-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/06/ubuntu/双系统下Linux（ubuntu）不能进入windows的NTFS分区之挂载错误问题解决/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/06/ubuntu/双系统下Linux（ubuntu）不能进入windows的NTFS分区之挂载错误问题解决/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h3 id="问题-不能访问"><a href="#问题-不能访问" class="headerlink" title="问题 不能访问"></a>问题 不能访问</h3><p>安装完ubuntu后，不能访问win10里面的分区，<br>访问会提示不能访问XXX ，Error mounting /dev/sda8 at /media/my/XXX: Command-line `mount -t “ntfs” -o</p> <h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>1、打开终端：如果没有安装ntfs-3g就要安装：<code>sudo apt-get install ntfs-3g</code><br>2、修复挂载错误的相应的分区如提示中的/dev/sda5，输入：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ntfsfix <span class="meta-keyword">/dev/</span>sda5</span><br></pre></td></tr></table></figure></p> <p>回车就可以了。</p> <h3 id="解决办法2"><a href="#解决办法2" class="headerlink" title="解决办法2"></a>解决办法2</h3><p>进入window系统设置——控制面板—–电源选项——–</p> <p>左侧项目栏“选择电源按钮的功能”或者“选择关闭盖子的功能”—–</p> <p>“更改当前不可用的设置”来 把下面的启动快速启动 去掉选择</p>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1673,21 +1673,21 @@ main-937cc23ccbf192c9edd6.js  97.2 kB       0  [emitted]  main
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-count">59</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

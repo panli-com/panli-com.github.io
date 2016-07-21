@@ -227,6 +227,115 @@
             
             
               
+                <a class="post-title-link" href="/2016/05/10/git/git-pull更新错误解决办法/" itemprop="url">
+                   git pull更新错误解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-10T15:54:30+08:00" content="2016-05-10">
+              2016-05-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/管理工具/" itemprop="url" rel="index">
+                    <span itemprop="name">管理工具</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/管理工具/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/10/git/git-pull更新错误解决办法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/10/git/git-pull更新错误解决办法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="git-pull-error"><a href="#git-pull-error" class="headerlink" title="git pull error"></a>git pull error</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Your <span class="built_in">local</span> changes <span class="built_in">to</span> <span class="keyword">the</span> following <span class="built_in">files</span> would be overwritten <span class="keyword">by</span> <span class="built_in">merge</span></span><br><span class="line">error: Your <span class="built_in">local</span> changes <span class="built_in">to</span> <span class="keyword">the</span> following <span class="built_in">files</span> would be overwritten <span class="keyword">by</span> <span class="built_in">merge</span>:</span><br></pre></td></tr></table></figure> <h2 id="保存更改"><a href="#保存更改" class="headerlink" title="保存更改"></a>保存更改</h2><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull</span><br><span class="line">git stash <span class="keyword">pop</span></span><br></pre></td></tr></table></figure> <p>然后可以使用git diff -w +文件名 来确认代码自动合并的情况.</p> <h2 id="完全覆盖本地工作"><a href="#完全覆盖本地工作" class="headerlink" title="完全覆盖本地工作"></a>完全覆盖本地工作</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard</span></span><br><span class="line">git pull</span><br></pre></td></tr></table></figure> <p>其中git reset是针对版本</p>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2016/05/10/ubuntu/ubuntu-16-04-开启root用户ssh登录/" itemprop="url">
                   ubuntu 16.04 开启root用户ssh登录
                 </a>
@@ -1100,103 +1209,6 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2016/02/18/docker/docker管理平台-shipyard-中文版部署/" itemprop="url">
-                  docker管理平台 shipyard 中文版部署
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-02-18T17:43:48+08:00" content="2016-02-18">
-              2016-02-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/18/docker/docker管理平台-shipyard-中文版部署/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/docker/docker管理平台-shipyard-中文版部署/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="如何使用-shipyard"><a href="#如何使用-shipyard" class="headerlink" title="如何使用 shipyard"></a>如何使用 shipyard</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><blockquote> <p>自动化安装脚本</p> </blockquote> <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="string">https:</span><span class="comment">//nnn.li/docker/deploy | bash -s</span></span><br></pre></td></tr></table></figure> <h3 id="快速删除-shipyard"><a href="#快速删除-shipyard" class="headerlink" title="快速删除 shipyard"></a>快速删除 shipyard</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="string">https:</span><span class="comment">//nnn.li/docker/deploy | ACTION=remove bash -s</span></span><br></pre></td></tr></table></figure> <h3 id="更新升级-shipyard"><a href="#更新升级-shipyard" class="headerlink" title="更新升级 shipyard"></a>更新升级 shipyard</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="string">https:</span><span class="comment">//nnn.li/docker/deploy | ACTION=upgrade bash -s</span></span><br></pre></td></tr></table></figure> <h3 id="增加一个节点"><a href="#增加一个节点" class="headerlink" title="增加一个节点"></a>增加一个节点</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://nnn.li/docker/deploy | <span class="attr">ACTION=</span><span class="keyword">node</span> <span class="title">DISCOVERY</span>=etcd://<span class="tag">&lt;你的首次安装主机IP&gt;</span> bash -s</span><br></pre></td></tr></table></figure>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1242,21 +1254,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">52</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">63</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
